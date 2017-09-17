@@ -18,15 +18,16 @@ Let us try writing it.
    
    (firstName, lastName) match {
      case (Just(f), Just(l)) => (new Name).withFirstName(f).withLastName(l)
-     case (Empty, Just(l)) => (new Name).withFirstName(l)
-     case (Just(f), Empty) => (new Name).withLastName(f)
+     case (Empty, Just(l)) => (new Name).withLastName(l)
+     case (Just(f), Empty) => (new Name).withFirstName(f)
      case (Empty, Empty) => new Name
    }
  
 {% endhighlight %}
 
-Think of ten to twenty classes similar to `Name` with parameters being optional.
-That's our problem, plus the weird looking `with....and new...` all over the place.
+Think of multiple classes similar to `Name` with multiple parameters (Ex: 10) parameters being optional. This is the problem definition.
+Abstracting out the above function and may be folding each element would be a tedious task. In fact, it is sort
+of discarding the possibility of using a better mechanism provided by Functional Programming paradigm. Below given is one of the solutions, inspired from mycolleagues and other scala based libraries. This may not be the only solution though.
  
 ## A Solution
 
@@ -101,7 +102,7 @@ expressive at this stage.
 You can see some of my code scribblings on State data-type (without scalaz) in the following links. 
 You may read them in its order. The comments in code may give you some idea on what is state data type. 
 That will make you feel comfortable with some notes in scalaz tutorial (Google).
-* https://github.com/afsalthaj/supaku-sukara/blob/master/src/main/scala/com/thaj/functionalprogramming/exercises/part1/PureStatefulAPI.scala
-* https://github.com/afsalthaj/supaku-sukara/blob/master/src/main/scala/com/thaj/functionalprogramming/exercises/part1/PureStatefulAPIAdvanced.scala
-* https://github.com/afsalthaj/supaku-sukara/blob/master/src/main/scala/com/thaj/functionalprogramming/exercises/part1/PureStatefulAPIGeneric.scala
-* https://github.com/afsalthaj/supaku-sukara/blob/master/src/main/scala/com/thaj/functionalprogramming/exercises/part1/PurelyFunctionalImperativeProgramming.scala
+* [Part 1](https://github.com/afsalthaj/supaku-sukara/blob/master/src/main/scala/com/thaj/functionalprogramming/exercises/part1/PureStatefulAPI.scala)
+* [Parr 2](https://github.com/afsalthaj/supaku-sukara/blob/master/src/main/scala/com/thaj/functionalprogramming/exercises/part1/PureStatefulAPIAdvanced.scala)
+* [Part 3] https://github.com/afsalthaj/supaku-sukara/blob/master/src/main/scala/com/thaj/functionalprogramming/exercises/part1/PureStatefulAPIGeneric.scala)
+* [Part 4] https://github.com/afsalthaj/supaku-sukara/blob/master/src/main/scala/com/thaj/functionalprogramming/exercises/part1/PurelyFunctionalImperativeProgramming.scala
