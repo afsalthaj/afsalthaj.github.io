@@ -4,7 +4,7 @@ title: A simple example of using java builder in a Functional Way!
 ---
 
 Assume you have 2 optional parameters: `Maybe(firstName), Maybe(lastName)`
-And you want to instantiate a `Name` class (Builder) in Java with these parameters, if they exist.
+You want to instantiate/build a `Name` class (Builder) in Java with these parameters, if they exist.
 Let us try writing it.
 
 {% highlight scala %}
@@ -26,6 +26,7 @@ Let us try writing it.
 {% endhighlight %}
 
 Think of ten to twenty classes similar to `Name` with parameters being optional.
+That's our problem, plus the weird looking `with....and new...` all over the place.
  
 ## A Solution
 
