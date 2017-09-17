@@ -104,5 +104,5 @@ You may read them in its order. The comments in code may give you some idea on w
 That will make you feel comfortable with some notes in scalaz tutorial (Google).
 * [Part 1](https://github.com/afsalthaj/supaku-sukara/blob/master/src/main/scala/com/thaj/functionalprogramming/exercises/part1/PureStatefulAPI.scala)
 * [Parr 2](https://github.com/afsalthaj/supaku-sukara/blob/master/src/main/scala/com/thaj/functionalprogramming/exercises/part1/PureStatefulAPIAdvanced.scala)
-* [Part 3] https://github.com/afsalthaj/supaku-sukara/blob/master/src/main/scala/com/thaj/functionalprogramming/exercises/part1/PureStatefulAPIGeneric.scala)
-* [Part 4] https://github.com/afsalthaj/supaku-sukara/blob/master/src/main/scala/com/thaj/functionalprogramming/exercises/part1/PurelyFunctionalImperativeProgramming.scala
+* [Part 3] (https://github.com/afsalthaj/supaku-sukara/blob/master/src/main/scala/com/thaj/functionalprogramming/exercises/part1/PureStatefulAPIGeneric.scala)
+* [Part 4] (https://github.com/afsalthaj/supaku-sukara/blob/master/src/main/scala/com/thaj/functionalprogramming/exercises/part1/PurelyFunctionalImperativeProgramming.scala)
