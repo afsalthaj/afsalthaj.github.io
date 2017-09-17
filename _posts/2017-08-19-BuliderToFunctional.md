@@ -29,7 +29,7 @@ Ok! Let us try writing it.
 
 Think of multiple classes similar to `Name` with multiple parameters (Ex: 10) parameters being optional. This is the problem definition.
 Abstracting out the above function and may be folding each element would be a tedious task. In fact, it is sort
-of discarding the possibility of using a better mechanism provided by Functional Programming paradigm. Below given is one of the solutions, inspired from mycolleagues and other scala based libraries. This may not be the only solution though.
+of discarding the possibility of using a better mechanism provided by Functional Programming paradigm. Below given is one of the solutions, inspired from my colleagues and other scala based open source libraries. While this may not be the only solution, it is still a cleaner way of solving this problem.
  
 ## A Solution
 
