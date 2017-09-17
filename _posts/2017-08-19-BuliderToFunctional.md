@@ -18,8 +18,8 @@ Let us try writing it.
    
    (firstName, lastName) match {
      case (Just(f), Just(l)) => (new Name).withFirstName(f).withLastName(l)
-     case (Empty, Just(l)) => (new Name).withLastName(l)
-     case (Just(f), Empty) => (new Name).withLastName(l)
+     case (Empty, Just(l)) => (new Name).withFirstName(l)
+     case (Just(f), Empty) => (new Name).withLastName(f)
      case (Empty, Empty) => new Name
    }
  
