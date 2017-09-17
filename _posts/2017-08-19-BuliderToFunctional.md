@@ -38,7 +38,7 @@ title: A simple example of using java builder in a Functional Way!
     } yield ()).exec(initialStateOfName) 
 res33: Id[Name] = Name("wrongfirstname", "thaj")
 
-{% highlight scala %}
+{% endhighlight %}
 
 
 {% highlight scala %}
