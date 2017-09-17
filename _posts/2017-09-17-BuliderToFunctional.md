@@ -28,7 +28,7 @@ Ok! Let us try writing it.
  
 {% endhighlight %}
 
-Think of multiple classes similar to `Name` with multiple (a list of) optional parameters (a list of). Now, this is our problem definition. A quick solution would be abstracting out the above function (say f) and fold the list of optional parameters (using f), but that is in fact,
+Think of multiple classes similar to `Name` with multiple (a list of) optional parameters. Now, this is our problem definition. A quick solution would be abstracting out the above function (say f) and fold the list of optional parameters (using f), but that is in fact,
 discarding the possibility of using a better mechanism provided by Functional Programming paradigm. Below given is one of the solutions. While this may not be the only solution, it is still a cleaner way of solving this problem.
  
 ## A Solution
