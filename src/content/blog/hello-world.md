@@ -2,6 +2,7 @@
 title: 'Hello World'
 description: 'The first post — why this blog exists and what to expect.'
 pubDate: 'Mar 31 2026'
+category: 'the-lab'
 ---
 
 Welcome to my blog. This is where I'll be writing about distributed systems,

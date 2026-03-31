@@ -9,6 +9,34 @@ import { SITE_TITLE } from '../../consts';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+const categories = [
+	{
+		id: 'the-lab',
+		name: 'The Lab',
+		icon: '⚙',
+		description: 'Engineering, systems, and the craft of building software.',
+	},
+	{
+		id: 'inner-loop',
+		name: 'Inner Loop',
+		icon: '◎',
+		description: 'Reflections on growth, learning, and the human side of engineering.',
+	},
+	{
+		id: 'waypoints',
+		name: 'Waypoints',
+		icon: '⬡',
+		description: 'People, places, and the moments that shape perspective.',
+	},
+] as const;
+
+type CategoryId = typeof categories[number]['id'];
+
+const grouped = categories.map((cat) => ({
+	...cat,
+	posts: posts.filter((p) => p.data.category === cat.id),
+}));
 ---
 
 <!doctype html>
@@ -19,24 +47,37 @@ const posts = (await getCollection('blog')).sort(
 	<body>
 		<Header />
 		<main>
-			<section>
-				<h1>Blog</h1>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									<span class="post-title">{post.data.title}</span>
-									<span class="post-date">
-										<FormattedDate date={post.data.pubDate} />
-									</span>
-								</a>
-								<p class="post-desc">{post.data.description}</p>
-							</li>
-						))
-					}
-				</ul>
-			</section>
+			<h1>Blog</h1>
+
+			{grouped.map((section) => (
+				<section class={`blog-section section-${section.id}`}>
+					<div class="section-header">
+						<span class="section-icon">{section.icon}</span>
+						<div>
+							<h2>{section.name}</h2>
+							<p class="section-desc">{section.description}</p>
+						</div>
+					</div>
+
+					{section.posts.length > 0 ? (
+						<ul>
+							{section.posts.map((post) => (
+								<li>
+									<a href={`/blog/${post.id}/`}>
+										<span class="post-title">{post.data.title}</span>
+										<span class="post-date">
+											<FormattedDate date={post.data.pubDate} />
+										</span>
+									</a>
+									<p class="post-desc">{post.data.description}</p>
+								</li>
+							))}
+						</ul>
+					) : (
+						<p class="empty">Nothing here yet. Stay tuned.</p>
+					)}
+				</section>
+			))}
 		</main>
 		<Footer />
 	</body>
@@ -45,16 +86,83 @@ const posts = (await getCollection('blog')).sort(
 <style>
 	h1 {
 		text-shadow: var(--glow-cyan);
-		margin-bottom: 1em;
+		margin-bottom: 1.5em;
 	}
+
+	/* Sections */
+	.blog-section {
+		margin-bottom: 3em;
+		padding: 1.5em;
+		background: var(--bg-surface);
+		border: 1px solid var(--border);
+		border-radius: 8px;
+		border-left: 3px solid var(--cyan);
+	}
+	.section-inner-loop {
+		border-left-color: var(--magenta);
+	}
+	.section-waypoints {
+		border-left-color: var(--yellow);
+	}
+
+	.section-header {
+		display: flex;
+		align-items: center;
+		gap: 1em;
+		margin-bottom: 1.2em;
+		padding-bottom: 1em;
+		border-bottom: 1px solid var(--border);
+	}
+	.section-icon {
+		font-size: 1.8em;
+		line-height: 1;
+		width: 50px;
+		height: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 10px;
+		flex-shrink: 0;
+	}
+	.section-the-lab .section-icon {
+		background: rgba(0, 255, 249, 0.08);
+		color: var(--cyan);
+	}
+	.section-inner-loop .section-icon {
+		background: rgba(255, 41, 117, 0.08);
+		color: var(--magenta);
+	}
+	.section-waypoints .section-icon {
+		background: rgba(240, 230, 140, 0.08);
+		color: var(--yellow);
+	}
+
+	.section-header h2 {
+		font-size: 1.1em;
+		margin: 0;
+		letter-spacing: 0.05em;
+	}
+	.section-the-lab .section-header h2 { color: var(--cyan); }
+	.section-inner-loop .section-header h2 { color: var(--magenta); }
+	.section-waypoints .section-header h2 { color: var(--yellow); }
+
+	.section-desc {
+		color: var(--text-muted);
+		font-size: 0.8em;
+		margin: 0.2em 0 0;
+	}
+
+	/* Posts */
 	ul {
 		list-style: none;
 		padding: 0;
 		margin: 0;
 	}
 	li {
-		border-bottom: 1px solid var(--border);
-		padding: 1em 0;
+		padding: 0.8em 0;
+	}
+	li + li {
+		border-top: 1px solid var(--border);
 	}
 	li a {
 		display: flex;
@@ -70,19 +178,26 @@ const posts = (await getCollection('blog')).sort(
 		text-shadow: var(--glow-cyan);
 	}
 	.post-title {
-		font-size: 1.1em;
+		font-size: 1em;
 		flex: 1;
 	}
 	.post-date {
 		color: var(--text-muted);
-		font-size: 0.85em;
+		font-size: 0.8em;
 		white-space: nowrap;
 	}
 	.post-desc {
 		color: var(--text-muted);
-		font-size: 0.85em;
-		margin: 0.3em 0 0 0;
+		font-size: 0.8em;
+		margin: 0.2em 0 0 0;
 	}
+	.empty {
+		color: var(--text-muted);
+		font-size: 0.85em;
+		font-style: italic;
+		margin: 0;
+	}
+
 	@media (max-width: 720px) {
 		li a {
 			flex-direction: column;
