@@ -10,6 +10,57 @@ const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 const recentPosts = posts.slice(0, 5);
+
+const talks = [
+	{
+		title: 'Rib — A Language That Could Improve the Ecosystem of WASM',
+		event: 'LambdaConf 2025',
+		year: 2025,
+		url: 'https://www.youtube.com/watch?v=vgrZxN0t-N0',
+	},
+	{
+		title: 'Timeline Analytics With Golem Backend',
+		event: 'LambdaConf 2024',
+		year: 2024,
+		url: 'https://www.youtube.com/watch?v=9WjUBOfgriY',
+	},
+	{
+		title: 'The Ubiquity of FP Concepts in Latest Tech',
+		event: 'Functional Scala 2023',
+		year: 2023,
+		url: 'https://www.youtube.com/watch?v=5SUvqLgJKRk',
+	},
+	{
+		title: 'ZIO Constraintless',
+		event: 'ZIO World 2023',
+		year: 2023,
+		url: 'https://www.youtube.com/watch?v=jtxO7LJXW0Q',
+	},
+	{
+		title: 'Easy Config For Your App',
+		event: 'Functional Scala 2020',
+		year: 2020,
+		url: 'https://www.youtube.com/watch?v=4SrSKluyyKo',
+	},
+	{
+		title: 'Transparent Analytical Engine Using FP in Scala',
+		event: 'Functional Scala 2020',
+		year: 2020,
+		url: 'https://www.youtube.com/watch?v=1_wlKnFo5wU',
+	},
+	{
+		title: 'Simplified Functional Programming in Scala',
+		event: 'YOW! 2020',
+		year: 2020,
+		url: 'https://www.youtube.com/watch?v=t5tMQ0Kcq1Q',
+	},
+	{
+		title: 'FP Meets Feature Engineering & ML',
+		event: 'BeeScala 2019',
+		year: 2019,
+		url: 'https://www.youtube.com/watch?v=mDiuI_Ip3_w',
+	},
+];
 ---
 
 <!doctype html>
@@ -39,6 +90,20 @@ const recentPosts = posts.slice(0, 5);
 				</ul>
 				<a href="/blog" class="view-all">View all posts →</a>
 			</section>
+
+			<section class="talks">
+				<h2>Talks</h2>
+				<div class="talks-grid">
+					{talks.map((talk) => (
+						<a href={talk.url} target="_blank" rel="noopener noreferrer" class="talk-card">
+							<span class="talk-event">{talk.event}</span>
+							<span class="talk-title">{talk.title}</span>
+							<span class="watch-link">▶ Watch</span>
+						</a>
+					))}
+				</div>
+				<a href="/talks" class="view-all">View all talks →</a>
+			</section>
 		</main>
 		<Footer />
 	</body>
@@ -60,7 +125,12 @@ const recentPosts = posts.slice(0, 5);
 		font-size: 1em;
 		margin: 0;
 	}
-	.recent-posts h2 {
+
+	/* Recent Posts */
+	.recent-posts {
+		margin-bottom: 3em;
+	}
+	.recent-posts h2, .talks h2 {
 		font-size: 1.2em;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
@@ -96,6 +166,61 @@ const recentPosts = posts.slice(0, 5);
 		font-size: 0.85em;
 		white-space: nowrap;
 	}
+
+	/* Talks */
+	.talks {
+		margin-bottom: 2em;
+	}
+	.talks-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1em;
+	}
+	.talk-card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4em;
+		padding: 1.2em;
+		background: var(--bg-surface);
+		border: 1px solid var(--border);
+		border-radius: 6px;
+		text-decoration: none;
+		color: var(--text);
+		transition: all 0.25s ease;
+	}
+	.talk-card:hover {
+		border-color: var(--cyan);
+		box-shadow: var(--glow-cyan);
+		transform: translateY(-2px);
+	}
+	.talk-event {
+		font-family: 'Orbitron', sans-serif;
+		font-size: 0.65em;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--magenta);
+	}
+	.talk-title {
+		font-size: 0.95em;
+		line-height: 1.4;
+		flex: 1;
+	}
+	.talk-card:hover .talk-title {
+		color: var(--cyan);
+	}
+	.watch-link {
+		font-family: 'Orbitron', sans-serif;
+		font-size: 0.7em;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--magenta);
+	}
+	.talk-card:hover .watch-link {
+		color: var(--cyan);
+		text-shadow: var(--glow-cyan);
+	}
+
+	/* Shared */
 	.view-all {
 		display: inline-block;
 		margin-top: 1.5em;
@@ -117,6 +242,9 @@ const recentPosts = posts.slice(0, 5);
 		.recent-posts li a {
 			flex-direction: column;
 			gap: 0.2em;
+		}
+		.talks-grid {
+			grid-template-columns: 1fr;
 		}
 	}
 </style>
