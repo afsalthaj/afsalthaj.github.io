@@ -1,0 +1,106 @@
+---
+title: 'A Planet Journey with Ziverge & Golem'
+description: 'Fifteen years into my career — across countries, companies, and cultures. Some experiences deserve to be remembered properly.'
+pubDate: 'Mar 18 2026'
+category: 'waypoints'
+---
+
+Fifteen years into my career — across countries, companies, and cultures — I've quit roles before. It's never been a big deal. You move on, maybe stay in touch with a few people, and life goes on.
+
+But this time felt different.
+
+Before I started writing this, I paused and asked myself — *is this even needed?*
+
+I know it might come off a bit emotional. But still, it felt right to write it down. Not because it has to be said — but because some experiences deserve to be remembered properly, before they slowly fade into just *another phase* in memory.
+
+And sometimes… you don't realize how much something meant until you step away from it.
+
+## 2018: Started with John
+
+2018, that's when I crossed paths with John De Goes — through open source work around ZIO. I was working for a different company at the time.
+
+I was exploring ideas, contributing, learning, and slowly finding my place in that ecosystem. It wasn't just about code — it was about a way of thinking that shaped how I approach systems today.
+
+Looking back, a lot of what I managed to put out publicly over the years had his influence and mentorship. I understood the value of such a mentorship and how much it can shape one's career and life. I am grateful John, if you are reading this.
+
+## Ziverge and the People
+
+In 2–3 years after I met John, I joined his high-end-performance consultancy, Ziverge. And then on, it was more of a planet visit for me now and then, probably every 3 months — all the way from Australia, to Barcelona, Hungary, Inverness, and many places in the US multiple times.
+
+Different continents, different settings — but most importantly, the people I met!
+
+An Indian living in Australia, a couple of Hungarians, a few from the US — sharing Airbnbs, pub visits, long conversations, and the occasional smoke with Noise64 (David).
+
+Sometimes they would switch to Hungarian mid-conversation. And strangely, after a while, this Malayalee (Keralite) living in Melbourne didn't even feel Hungarian as foreign. My brain just assumed I understood it — even if all I know in Hungarian is just *csirke* and *sör*. That's how natural it became.
+
+The farther the distance, the more memorable the landing became.
+
+## To Golem with John, Vigoo and David
+
+I have to talk about Vigoo (Daniel Vigovszky).
+
+I remember early days discussing things with Vigoo around zio-config. He still remembers a fight we had in early days when we didn't know each other. You know different perspectives, strong opinions, to later working together for a client, where I saw his extreme talent. Anyone who worked with him will say — an absolute 10x!
+
+That clarity that if it's John and Vigoo together in a team, that's going to be a strong team — and that made me wanting to be in Golem, and finally I got to be a part of it! Thankful…
+
+We all met in Inverness for the first time for Golem, in a small room that didn't quite reflect the size of what we were stepping into.
+
+It was an ambitious project — carefully thought through, almost like a masterclass in how to approach problems. And being there at that moment, with that group, is something I genuinely value.
+
+Now in 2026, watching it continue its journey towards success feels special in a way that's hard to put into words.
+
+Anyway, later on in a few months, Vigoo became the lead of Golem. The care he had — as a technical lead, and as a person — was very real. And a great person to be with! We had a long journey together, and I will always cherish it.
+
+And then came David into the team — one in a million character!
+
+Extremely experienced. Calm yet direct, thoughtful yet fast, and someone who genuinely cares — about code and about people around him. I will always remember the fun talks we had, and that too in different continents over time. We three gelled well with each other.
+
+At some point, this stopped feeling like a typical team. It just felt comfortable.
+
+Later on more people joined Golem team, through programs such as GitHub bounties and all of them proven to be fantastic guys to be with. It would be too much for a blog to point everyone's names here. I wish I worked more with you guys.
+
+## Hungary Visit to Kosd and Budapest
+
+In 2025, I visited them.
+
+Budapest and then Kosd, right after WasmIO in Barcelona. Two days including travel.
+
+People made fun of me — "you're flying all the way for two days?"
+
+But I wasn't visiting Hungary.
+
+I just wanted to know what it feels like to be there — with them. Outside work, outside Slack, outside everything.
+
+And I'm really glad I did that.
+
+## A Kind of Comfort You Don't Notice Immediately
+
+There were moments of disagreement, of course. That's natural when people care about what they're building.
+
+But what stood out more was how easy it felt to just be myself.
+
+At some point, I stopped overthinking conversations. I didn't have to filter much. Whether it was a technical discussion, a random rant, or just joking around — it all felt… normal.
+
+And that kind of comfort is rare.
+
+## John: More Than What You See
+
+From the outside, John can come across as intense, opinionated, very certain. But that's not the full picture.
+
+What I experienced was space, care and friendship. Freedom to think, to explore, to grow — without being forced into anything. At the same time, there was always direction. Subtle, but precise.
+
+A boss who is also a well-wisher is rare. A boss who becomes a friend — that's even rarer.
+
+## Closing This Chapter
+
+I'm leaving Ziverge and Golem now.
+
+There's no dramatic reason. Just personal reasons.
+
+It's rare to find a place where you can care deeply about what you're building, speak freely without second-guessing yourself, and still feel like you belong without trying too hard. Great People, Great Tech, all spiced up by Great Trips — Great Experience!
+
+I wrote this much for myself. Writing it made one thing very clear to me — this wasn't just another stop in my career. It was a phase where things aligned in a way that's hard to plan and even harder to replace.
+
+Whatever comes next will be different. And that's fine.
+
+But this — this is something I'll carry with me for a long time.
