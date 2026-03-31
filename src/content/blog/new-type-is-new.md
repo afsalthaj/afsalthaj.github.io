@@ -1,8 +1,8 @@
 ---
 title: 'NewType is New Now!'
-description: 'Let\'s come up with a new mechanism to define new types that is ergonomic, easy to use and devoid of boilerplates.'
+description: 'A new mechanism to define new types that is ergonomic, easy to use and devoid of boilerplates.'
 pubDate: 'Mar 18 2026'
-category: 'the lab'
+category: 'the-lab'
 ---
 
 # NewType is New Now!
