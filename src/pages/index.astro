@@ -1,10 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import profileImage from '../assets/profile.jpeg';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -15,50 +17,17 @@ const talks = [
 	{
 		title: 'Rib — A Language That Could Improve the Ecosystem of WASM',
 		event: 'LambdaConf 2025',
-		year: 2025,
 		url: 'https://www.youtube.com/watch?v=vgrZxN0t-N0',
 	},
 	{
 		title: 'Timeline Analytics With Golem Backend',
 		event: 'LambdaConf 2024',
-		year: 2024,
 		url: 'https://www.youtube.com/watch?v=9WjUBOfgriY',
 	},
 	{
 		title: 'The Ubiquity of FP Concepts in Latest Tech',
 		event: 'Functional Scala 2023',
-		year: 2023,
 		url: 'https://www.youtube.com/watch?v=5SUvqLgJKRk',
-	},
-	{
-		title: 'ZIO Constraintless',
-		event: 'ZIO World 2023',
-		year: 2023,
-		url: 'https://www.youtube.com/watch?v=jtxO7LJXW0Q',
-	},
-	{
-		title: 'Easy Config For Your App',
-		event: 'Functional Scala 2020',
-		year: 2020,
-		url: 'https://www.youtube.com/watch?v=4SrSKluyyKo',
-	},
-	{
-		title: 'Transparent Analytical Engine Using FP in Scala',
-		event: 'Functional Scala 2020',
-		year: 2020,
-		url: 'https://www.youtube.com/watch?v=1_wlKnFo5wU',
-	},
-	{
-		title: 'Simplified Functional Programming in Scala',
-		event: 'YOW! 2020',
-		year: 2020,
-		url: 'https://www.youtube.com/watch?v=t5tMQ0Kcq1Q',
-	},
-	{
-		title: 'FP Meets Feature Engineering & ML',
-		event: 'BeeScala 2019',
-		year: 2019,
-		url: 'https://www.youtube.com/watch?v=mDiuI_Ip3_w',
 	},
 ];
 ---
@@ -72,8 +41,11 @@ const talks = [
 		<Header />
 		<main>
 			<section class="hero">
-				<h1>Afsal Thaj</h1>
-				<p class="tagline">Distributed systems · Functional programming · Software engineering</p>
+				<div class="hero-text">
+					<h1>Afsal Thaj</h1>
+					<p class="tagline">Distributed systems · Functional programming · Software engineering</p>
+				</div>
+				<Image src={profileImage} alt="Afsal Thaj" class="profile-photo" width={140} height={140} />
 			</section>
 
 			<section class="recent-posts">
@@ -114,6 +86,13 @@ const talks = [
 		padding: 3em 0 2em;
 		border-bottom: 1px solid var(--border);
 		margin-bottom: 2em;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2em;
+	}
+	.hero-text {
+		flex: 1;
 	}
 	.hero h1 {
 		font-size: 2.8em;
@@ -124,6 +103,15 @@ const talks = [
 		color: var(--text-muted);
 		font-size: 1em;
 		margin: 0;
+	}
+	.profile-photo {
+		width: 140px;
+		height: 140px;
+		border-radius: 50%;
+		border: 2px solid var(--cyan);
+		box-shadow: var(--glow-cyan);
+		object-fit: cover;
+		flex-shrink: 0;
 	}
 
 	/* Recent Posts */
@@ -236,6 +224,10 @@ const talks = [
 		text-shadow: var(--glow-cyan);
 	}
 	@media (max-width: 720px) {
+		.hero {
+			flex-direction: column-reverse;
+			text-align: center;
+		}
 		.hero h1 {
 			font-size: 2em;
 		}
