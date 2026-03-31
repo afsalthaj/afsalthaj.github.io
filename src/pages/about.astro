@@ -1,8 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_TITLE } from '../consts';
+import profileImage from '../assets/profile.jpeg';
 ---
 
 <!doctype html>
@@ -13,16 +15,74 @@ import { SITE_TITLE } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<section class="about">
-				<h1>About</h1>
+			<section class="about-hero">
+				<Image src={profileImage} alt="Afsal Thaj" class="about-photo" width={180} height={180} />
+				<div>
+					<h1>Afsal Thaj</h1>
+					<p class="role">Senior Software Engineer · <a href="https://golem.cloud" target="_blank">Golem Cloud</a></p>
+					<p class="stack">Durable Execution · Systems Engineering · Distributed Systems · Functional Programming</p>
+				</div>
+			</section>
+
+			<section class="about-body">
 				<p>
-					Hi, I'm Afsal Thaj — a software engineer passionate about distributed systems,
-					functional programming, and building reliable software.
+					I build an agent-native platform at Golem Cloud using Rust and WebAssembly — one that persists state,
+					guarantees exactly-once external calls, provides full execution traces, and automatically recovers
+					from crashes, outages, and network failures — <em>without relying on databases, queues, or schedulers.</em>
 				</p>
+
 				<p>
-					This blog is where I write about technical topics that I find interesting,
-					challenges I've encountered, and ideas worth sharing.
+					Part of Golem almost from day one, I've made key contributions including building a
+					<a href="https://www.youtube.com/watch?v=TC6GXXUJ6jA" target="_blank">new programming language</a>
+					to interact with Wasmtime and developing language-specific SDKs. All fully open source.
 				</p>
+			</section>
+
+			<section class="timeline">
+				<h2>Journey</h2>
+				<div class="timeline-track">
+					<div class="timeline-item">
+						<span class="timeline-marker"></span>
+						<div class="timeline-content">
+							<span class="timeline-date">2023 — Present</span>
+							<h3>Golem Cloud</h3>
+							<p>Building durable computing infrastructure with Rust & WebAssembly. Created Rib language, language SDKs, and <a href="https://www.youtube.com/watch?v=9WjUBOfgriY" target="_blank">golem-timeline</a> — a data engineering layer powered by durable execution.</p>
+						</div>
+					</div>
+					<div class="timeline-item">
+						<span class="timeline-marker"></span>
+						<div class="timeline-content">
+							<span class="timeline-date">2021 — 2023</span>
+							<h3>Ziverge</h3>
+							<p>Built observability frameworks for a large streaming platform using Scala and Go. Deep work in the ZIO ecosystem — authored <strong>zio-config</strong>, my most notable contribution to the Scala ecosystem.</p>
+						</div>
+					</div>
+					<div class="timeline-item">
+						<span class="timeline-marker"></span>
+						<div class="timeline-content">
+							<span class="timeline-date">Earlier career</span>
+							<h3>Simple Machines & others · Sydney</h3>
+							<p>Dozens of projects across half a dozen companies. This is where I fell in love with Scala, Haskell, and functional programming. Gained deep experience in data engineering and ML ecosystems.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="about-cta">
+				<div class="cta-cards">
+					<a href="/talks" class="cta-card">
+						<span class="cta-icon">▶</span>
+						<span class="cta-label">Watch my talks</span>
+					</a>
+					<a href="https://github.com/afsalthaj" target="_blank" class="cta-card">
+						<span class="cta-icon">⟨/⟩</span>
+						<span class="cta-label">Open source work</span>
+					</a>
+					<a href="https://www.linkedin.com/in/afsal-thaj-10ab2842/" target="_blank" class="cta-card">
+						<span class="cta-icon">in</span>
+						<span class="cta-label">Connect on LinkedIn</span>
+					</a>
+				</div>
 			</section>
 		</main>
 		<Footer />
@@ -30,15 +90,193 @@ import { SITE_TITLE } from '../consts';
 </html>
 
 <style>
-	.about {
-		padding: 2em 0;
+	/* Hero */
+	.about-hero {
+		display: flex;
+		align-items: center;
+		gap: 2em;
+		padding: 3em 0 2em;
+		border-bottom: 1px solid var(--border);
+		margin-bottom: 2.5em;
 	}
-	.about h1 {
+	.about-photo {
+		width: 180px;
+		height: 180px;
+		border-radius: 50%;
+		border: 2px solid var(--cyan);
+		box-shadow: var(--glow-cyan), 0 0 30px rgba(0, 255, 249, 0.15);
+		object-fit: cover;
+		flex-shrink: 0;
+	}
+	.about-hero h1 {
+		font-size: 2.4em;
+		margin-bottom: 0.2em;
 		text-shadow: var(--glow-cyan);
-		margin-bottom: 1em;
 	}
-	.about p {
+	.role {
 		color: var(--text);
-		max-width: 600px;
+		font-size: 1em;
+		margin: 0 0 0.3em;
+	}
+	.role a {
+		color: var(--magenta);
+	}
+	.stack {
+		color: var(--text-muted);
+		font-size: 0.85em;
+		margin: 0;
+		letter-spacing: 0.03em;
+	}
+
+	/* Body */
+	.about-body {
+		max-width: 680px;
+		margin-bottom: 3em;
+	}
+	.about-body p {
+		color: var(--text);
+	}
+	.about-body em {
+		color: var(--cyan);
+		font-style: normal;
+	}
+
+	/* Timeline */
+	.timeline {
+		margin-bottom: 3em;
+	}
+	.timeline h2 {
+		font-size: 1.2em;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		margin-bottom: 1.5em;
+	}
+	.timeline-track {
+		position: relative;
+		padding-left: 2em;
+	}
+	.timeline-track::before {
+		content: '';
+		position: absolute;
+		left: 5px;
+		top: 8px;
+		bottom: 8px;
+		width: 2px;
+		background: linear-gradient(to bottom, var(--cyan), var(--magenta));
+	}
+	.timeline-item {
+		position: relative;
+		margin-bottom: 2em;
+	}
+	.timeline-item:last-child {
+		margin-bottom: 0;
+	}
+	.timeline-marker {
+		position: absolute;
+		left: -2em;
+		top: 6px;
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		background: var(--bg);
+		border: 2px solid var(--cyan);
+		box-shadow: var(--glow-cyan);
+	}
+	.timeline-item:nth-child(2) .timeline-marker {
+		border-color: var(--magenta);
+		box-shadow: var(--glow-magenta);
+	}
+	.timeline-content {
+		padding: 1em 1.2em;
+		background: var(--bg-surface);
+		border: 1px solid var(--border);
+		border-radius: 6px;
+		transition: border-color 0.2s ease;
+	}
+	.timeline-content:hover {
+		border-color: var(--cyan);
+	}
+	.timeline-date {
+		font-family: 'Orbitron', sans-serif;
+		font-size: 0.65em;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--magenta);
+	}
+	.timeline-content h3 {
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 1.05em;
+		color: var(--text);
+		margin: 0.3em 0 0.4em;
+	}
+	.timeline-content p {
+		font-size: 0.88em;
+		color: var(--text-muted);
+		margin: 0;
+		line-height: 1.6;
+	}
+	.timeline-content a {
+		color: var(--cyan);
+	}
+
+	/* CTA */
+	.about-cta {
+		margin-bottom: 2em;
+	}
+	.cta-cards {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1em;
+	}
+	.cta-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.6em;
+		padding: 1.5em 1em;
+		background: var(--bg-surface);
+		border: 1px solid var(--border);
+		border-radius: 6px;
+		text-decoration: none;
+		transition: all 0.25s ease;
+	}
+	.cta-card:hover {
+		border-color: var(--cyan);
+		box-shadow: var(--glow-cyan);
+		transform: translateY(-2px);
+	}
+	.cta-icon {
+		font-family: 'Orbitron', sans-serif;
+		font-size: 1.4em;
+		color: var(--magenta);
+		transition: color 0.2s ease;
+	}
+	.cta-card:hover .cta-icon {
+		color: var(--cyan);
+		text-shadow: var(--glow-cyan);
+	}
+	.cta-label {
+		font-family: 'Orbitron', sans-serif;
+		font-size: 0.7em;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--text-muted);
+		text-align: center;
+	}
+	.cta-card:hover .cta-label {
+		color: var(--text);
+	}
+
+	@media (max-width: 720px) {
+		.about-hero {
+			flex-direction: column;
+			text-align: center;
+		}
+		.about-hero h1 {
+			font-size: 1.8em;
+		}
+		.cta-cards {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>
