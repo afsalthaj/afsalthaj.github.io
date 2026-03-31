@@ -13,6 +13,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
+		<link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css" />
+		<script src="https://unpkg.com/applause-button/dist/applause-button.js" defer></script>
 		<style>
 			.prose {
 				width: 780px;
@@ -50,6 +52,26 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				color: var(--cyan);
 				text-shadow: var(--glow-cyan);
 			}
+			.like-section {
+				margin-top: 3em;
+				padding-top: 2em;
+				border-top: 1px solid var(--border);
+				display: flex;
+				align-items: center;
+				gap: 1em;
+			}
+			.like-section applause-button {
+				width: 50px;
+				height: 50px;
+				--applause-button-color: var(--magenta);
+			}
+			.like-label {
+				color: var(--text-muted);
+				font-size: 0.85em;
+				font-family: 'Orbitron', sans-serif;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+			}
 		</style>
 	</head>
 
@@ -73,6 +95,10 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						</div>
 					</div>
 					<slot />
+					<div class="like-section">
+						<applause-button multiclap="true" />
+						<span class="like-label">Like this post</span>
+					</div>
 				</div>
 			</article>
 		</main>
