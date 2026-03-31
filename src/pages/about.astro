@@ -1,0 +1,44 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`About | ${SITE_TITLE}`} description="About Afsal Thaj" />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="about">
+				<h1>About</h1>
+				<p>
+					Hi, I'm Afsal Thaj — a software engineer passionate about distributed systems,
+					functional programming, and building reliable software.
+				</p>
+				<p>
+					This blog is where I write about technical topics that I find interesting,
+					challenges I've encountered, and ideas worth sharing.
+				</p>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.about {
+		padding: 2em 0;
+	}
+	.about h1 {
+		text-shadow: var(--glow-cyan);
+		margin-bottom: 1em;
+	}
+	.about p {
+		color: var(--text);
+		max-width: 600px;
+	}
+</style>
