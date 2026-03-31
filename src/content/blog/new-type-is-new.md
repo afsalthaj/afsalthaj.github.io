@@ -1,14 +1,8 @@
 ---
 title: 'NewType is New Now!'
 description: 'A new mechanism to define new types that is ergonomic, easy to use and devoid of boilerplates.'
-pubDate: 'Mar 18 2026'
+pubDate: 'Apr 16 2020'
 category: 'the-lab'
----
-
-# NewType is New Now!
-
-> Let's come up with a new mechanism to define new types that is ergonomic, easy to use and devoid of boilerplates.
-
 ---
 
 For those who need to get straight into the code with explanations as comments, please feel free to jump to:
