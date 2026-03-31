@@ -1,0 +1,166 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+
+const talks = [
+	{
+		title: 'Rib — A Language That Could Improve the Ecosystem of WASM',
+		event: 'Platonic Systems',
+		year: 2024,
+		url: 'https://www.youtube.com/watch?v=vgrZxN0t-N0',
+		description: 'Introducing Rib, a language built to improve the WebAssembly ecosystem.',
+	},
+	{
+		title: 'Timeline Analytics With Golem Backend',
+		event: 'LambdaConf 2024',
+		year: 2024,
+		url: 'https://www.youtube.com/watch?v=9WjUBOfgriY',
+		description: 'Building timeline analytics powered by the Golem backend.',
+	},
+	{
+		title: 'The Ubiquity of Functional Programming Concepts in Latest Tech',
+		event: 'Functional Scala 2023',
+		year: 2023,
+		url: 'https://www.youtube.com/watch?v=5SUvqLgJKRk',
+		description: 'A journey through how FP concepts have permeated modern tech — from Rust to frontend.',
+	},
+	{
+		title: 'ZIO Constraintless',
+		event: 'ZIO World 2023',
+		year: 2023,
+		url: 'https://www.youtube.com/watch?v=jtxO7LJXW0Q',
+		description: 'Introducing ZIO Constraintless — a game-changing approach to constraints in ZIO.',
+	},
+	{
+		title: 'Build The Most Transparent Analytical Engine Using FP in Scala',
+		event: 'Functional Scala 2020',
+		year: 2020,
+		url: 'https://www.youtube.com/watch?v=1_wlKnFo5wU',
+		description: 'How functional programming in Scala can power transparent and composable analytics.',
+	},
+	{
+		title: 'Unveiling Much Simplified Functional Programming in Scala',
+		event: 'YOW! 2020',
+		year: 2020,
+		url: 'https://www.youtube.com/watch?v=t5tMQ0Kcq1Q',
+		description: 'FP in Scala for Big Data — a practical approach to solving real-world client problems.',
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Talks | ${SITE_TITLE}`} description="Conference talks and presentations by Afsal Thaj" />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="talks">
+				<h1>Talks</h1>
+				<p class="intro">Conference talks and presentations on functional programming, distributed systems, and WebAssembly.</p>
+
+				<div class="talks-grid">
+					{talks.map((talk) => (
+						<a href={talk.url} target="_blank" rel="noopener noreferrer" class="talk-card">
+							<div class="talk-meta">
+								<span class="talk-event">{talk.event}</span>
+								<span class="talk-year">{talk.year}</span>
+							</div>
+							<h3>{talk.title}</h3>
+							<p>{talk.description}</p>
+							<span class="watch-link">Watch →</span>
+						</a>
+					))}
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.talks h1 {
+		text-shadow: var(--glow-cyan);
+		margin-bottom: 0.3em;
+	}
+	.intro {
+		color: var(--text-muted);
+		margin-bottom: 2.5em;
+	}
+	.talks-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1.2em;
+	}
+	.talk-card {
+		display: flex;
+		flex-direction: column;
+		padding: 1.5em;
+		background: var(--bg-surface);
+		border: 1px solid var(--border);
+		border-radius: 6px;
+		text-decoration: none;
+		color: var(--text);
+		transition: all 0.25s ease;
+	}
+	.talk-card:hover {
+		border-color: var(--cyan);
+		box-shadow: var(--glow-cyan);
+		transform: translateY(-2px);
+	}
+	.talk-meta {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 0.8em;
+	}
+	.talk-event {
+		font-family: 'Orbitron', sans-serif;
+		font-size: 0.7em;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--magenta);
+	}
+	.talk-year {
+		font-size: 0.8em;
+		color: var(--text-muted);
+	}
+	.talk-card h3 {
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 1em;
+		color: var(--text);
+		margin-bottom: 0.5em;
+		line-height: 1.4;
+	}
+	.talk-card:hover h3 {
+		color: var(--cyan);
+	}
+	.talk-card p {
+		font-size: 0.85em;
+		color: var(--text-muted);
+		margin: 0;
+		flex: 1;
+	}
+	.watch-link {
+		display: inline-block;
+		margin-top: 1em;
+		font-family: 'Orbitron', sans-serif;
+		font-size: 0.75em;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--magenta);
+		transition: color 0.2s ease;
+	}
+	.talk-card:hover .watch-link {
+		color: var(--cyan);
+		text-shadow: var(--glow-cyan);
+	}
+	@media (max-width: 720px) {
+		.talks-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
