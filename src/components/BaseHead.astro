@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
-import FallbackImage from '../assets/blog-placeholder-1.jpg';
+import defaultOgImage from '../assets/profile.jpeg';
 import { SITE_TITLE } from '../consts';
 
 interface Props {
@@ -12,7 +12,8 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = FallbackImage } = Astro.props;
+/* Default OG image: profile photo (starter blog-placeholder images are Astro-branded). */
+const { title, description, image = defaultOgImage } = Astro.props;
 ---
 
 <!-- Global Metadata -->
