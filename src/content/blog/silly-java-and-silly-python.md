@@ -26,7 +26,7 @@ public class Silliness {
 
 An FP enthusiast may say, `java.Optional` doesn't follow Functor law, while it inherently tried to become a `Functor`.
 
-```
+```scala
 functor.map(f).map(g) === functor.map(g compose f)
 ```
 
@@ -63,8 +63,9 @@ There is something more to this, than being "sadly" happy about that NullPointer
 
 Answer is Yes, but hardly seen. The reason, conceptually is, Scala is that language where it forces you as much as it can to pull you out from doing the wrong thing. In other words, if you begin on the right track (Example: use `Option`), then you end up in the right track due to a strong compiler being your companion.
 
-Show me code yeah?
-The exact code copy paste of Java code doesn't compile in Scala.
+Show me code:
+
+The exact code copy and paste of Java code doesn't compile in Scala.
 
 ```scala
 val map: Map[String, String] = Map() // Just nothing
@@ -76,23 +77,13 @@ Some("afsal").map(v => map.get(v).toUpperCase)
 Some("afsal").flatMap(v => map.get(v)).map(_.toUpperCase)
 ```
 
-Due to a variety of similar behaviour of functions in Scala, the very possibility of `Map("afsal" -> null)` hardly occurs. If you are used to the "real"/"lawful" `map` and `flatMap` in Scala, then you hardly create a NullPointerException too. Just because the language is better, we sort of became a reliable developer too.
+Due to a variety of similar behavior of functions in Scala, the very possibility of `Map("afsal" -> null)` hardly occurs. If you are used to the "real"/"lawful" `map` and `flatMap` in Scala, then you hardly create a NullPointerException too. Just because the language is better, we sort of became a reliable developer too.
 
 This is exactly that small edge that we always see amongst developers who are complaining about language semantics and sounding over-opinionated with FP languages. Most of these developers are just productively lazy as they want the compiler forcing them at an early stage to do the right thing at their workplace.
 
 Now you can ask "what if I am that inexperienced developer with Scala language, and used `map(v)` instead of `map.get(v)`?". Well the answer, is you still don't get a NullPointerException — instead you get a NoSuchElementException, and you know what exactly happened!
 
 End of the day, those stupid snippets above can be mapped to a bigger picture — such as folding over a stream of transactions based on a particular field called "account-balance" and not always the account balance exists in the stream and if your fold logic has a Java `Optional` and subsequent `map` usages, then you sort of see the implications.
-
-## Why Python now from no-where?
-
-For self satisfaction.
-
-Python returns `None` if it doesn't know anything. It can even return `1` in `if` branch and `None` in `else` branch. How about that?
-
-I know there are no types. Ok, then what is this `None` for? Is it "trying" to represent the absence of something?
-
-To be fair, Python can be useful in many places and is undoubtedly one of the most popular languages, but let's don't squeeze it in for anything and everything and over-advocate it.
 
 It is a language that is (deceivingly) simple (opposite of complex) to make it work, but hard (opposite of easy) to make it work _reliably_.
 
