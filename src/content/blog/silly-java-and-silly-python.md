@@ -34,10 +34,6 @@ functor.map(f).map(g) === functor.map(g compose f)
 
 There's something quietly dangerous about borrowing a concept from one paradigm and dropping it into another without carrying over the rules that made it work in the first place. Java's `Optional` is a textbook case. Someone on the JDK team looked at `Option` in Scala (or `Maybe` in Haskell), thought _"that's neat, let's add it"_, probably got a pat on the back for the contribution, and shipped it — without the one property that made the original idea reliable: the Functor law.
 
-And that's the thing about moving fast with half the understanding. It _looks_ like progress. It _feels_ like progress. The API compiles, the tests pass (because no one wrote the test that matters), and everyone moves on. Meanwhile, every developer downstream inherits a subtle, silent contract violation that turns their `map` chains into landmines. The kind of bug that doesn't blow up in a unit test — it blows up in production, on a Friday, when someone maps over a `null` that was never supposed to exist.
-
-This isn't unique to Java. It's a pattern you see everywhere: a concept gets popularised, someone copies the syntax but not the semantics, ships it under deadline pressure, and the rest of us spend years working around the gap. The irony is that _not_ adding `Optional` would have been the more honest choice. At least then, developers would know they're on their own with `null`. Instead, Java gave them a false sense of safety — which, arguably, is worse.
-
 ## How about in Scala (and other comparatively better languages)?
 
 Well the answer is if `null` is considered a value (may be for some legacy/bad reasons), then `Some(null)` is possible in Scala, unlike Java, and thereby holding on to the above law. PS: Avoid nulls as much as possible.
