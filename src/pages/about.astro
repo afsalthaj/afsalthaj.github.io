@@ -100,26 +100,93 @@ import profileImage from '../assets/profile.jpeg';
 <style>
 	/* Hero */
 	.about-hero {
+		position: relative;
 		display: flex;
 		align-items: center;
 		gap: 2em;
 		padding: 3em 0 2em;
 		border-bottom: 1px solid var(--border);
 		margin-bottom: 2.5em;
+		overflow: hidden;
+	}
+	.about-hero::before {
+		content: '';
+		position: absolute;
+		inset: -25% -15% -15%;
+		pointer-events: none;
+		background: radial-gradient(
+			ellipse 70% 60% at 55% 30%,
+			rgba(0, 255, 249, 0.08),
+			transparent 60%
+		);
+		z-index: 0;
+	}
+	.about-hero > * {
+		position: relative;
+		z-index: 1;
 	}
 	.about-photo {
 		width: 180px;
 		height: 180px;
 		border-radius: 50%;
 		border: 2px solid var(--cyan);
-		box-shadow: var(--glow-cyan), 0 0 30px rgba(0, 255, 249, 0.15);
+		box-shadow:
+			0 0 0 1px rgba(0, 255, 249, 0.35),
+			var(--glow-cyan),
+			0 0 28px rgba(0, 255, 249, 0.12);
 		object-fit: cover;
 		flex-shrink: 0;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.about-hero h1 {
+			animation: about-hero-in 0.65s ease backwards;
+		}
+		.about-hero .role,
+		.about-hero .stack {
+			animation: about-hero-in 0.65s ease 0.08s backwards;
+		}
+		.about-photo {
+			animation:
+				about-hero-in 0.65s ease 0.18s backwards,
+				about-photo-ring 3.2s ease-in-out 0.9s infinite;
+		}
+	}
+
+	@keyframes about-hero-in {
+		from {
+			opacity: 0;
+			transform: translateY(12px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes about-photo-ring {
+		0%,
+		100% {
+			box-shadow:
+				0 0 0 1px rgba(0, 255, 249, 0.35),
+				0 0 6px rgba(0, 255, 249, 0.34),
+				0 0 14px rgba(0, 255, 249, 0.18),
+				0 0 26px rgba(0, 255, 249, 0.08),
+				0 0 28px rgba(0, 255, 249, 0.12);
+		}
+		50% {
+			box-shadow:
+				0 0 0 2px rgba(0, 255, 249, 0.45),
+				0 0 10px rgba(0, 255, 249, 0.42),
+				0 0 22px rgba(0, 255, 249, 0.22),
+				0 0 34px rgba(0, 255, 249, 0.1),
+				0 0 36px rgba(0, 255, 249, 0.16);
+		}
 	}
 	.about-hero h1 {
 		font-size: 2.4em;
 		margin-bottom: 0.2em;
-		text-shadow: var(--glow-cyan);
+		text-shadow: var(--glow-cyan-hero);
 	}
 	.role {
 		color: var(--text);

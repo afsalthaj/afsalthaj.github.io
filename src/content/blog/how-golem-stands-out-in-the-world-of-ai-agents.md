@@ -5,7 +5,7 @@ pubDate: 'Oct 15 2025'
 category: 'the-lab'
 ---
 
-## 🔹 AI Agent
+##  AI Agent
 
 An AI agent is a system powered by an LLM (or other AI models) that can:
 
@@ -17,7 +17,7 @@ An AI agent is a system powered by an LLM (or other AI models) that can:
 
 It's not feasible to explain every fundamental of an agentic system in this blog. So for those who are new to this, it's good to have a reasonable idea about various concepts lying around an agentic system such as LLM models, tools etc before you deep dive into the core subject of this blog on how Golem supersedes many of the existing agentic frameworks.
 
-## 🔹 Polluting the Idea of AI Agents with Classic System Design Problems
+## Polluting the Idea of AI Agents with Classic System Design Problems
 
 This may be a bit opinionated, but you're welcome to consider my other thoughts shared publicly before reflecting on the points below.
 
@@ -29,7 +29,7 @@ The main questions are as follows:
 - Which part of your example is really an AI agent? Is everything an AI agent? Where is that boundary between agents and non-agents within your system?
 - Why does my code look different compared to what I would have normally written while still using the reasoning and decision-making power of AI to design the workflow? End of the day, everything is still code.
 
-## 🔹 Current AI Agent Frameworks
+## Current AI Agent Frameworks
 
 Before I clarify the problem with better examples in code, let's be aware of the existing frameworks:
 
@@ -83,13 +83,13 @@ result = counter_agent.invoke(state, {"action": "increment"})
 print(result)  # {"count": 1, "name": "myCounter"}
 ```
 
-## 🔹 That's Where the Agentic Aspect Starts to Get Diluted
+## That's Where the Agentic Aspect Starts to Get Diluted
 
 While there is an LLM call in the process — the key part of the example above lies in its **custom state management**. This mechanism only comes into play when we use **nodes** and **graph edges**.
 
 This is exactly where the line between **true agentic behavior** and **standard stateful workflow management** begins to blur.
 
-## 🔹 A Counter Agent in Golem
+## A Counter Agent in Golem
 
 Welcome to [Golem](https://www.golem.cloud)! Let's get straight to the hands-on:
 
@@ -128,7 +128,7 @@ On the flip side, think about making your `CounterAgent` which you wrote using L
 
 This is the proof that an [agent-native runtime](https://www.golem.cloud) allows better orthogonality in your design.
 
-## 🔹 Agent to Agent and Scalability by Default
+## Agent to Agent and Scalability by Default
 
 ```typescript
 @agent()
@@ -160,7 +160,7 @@ Given you considered `AssistantAgent` and `WeatherAgent` to be agents using the 
 
 With zero development effort, every user (defined by username above) will have their own weather agent and assistant agent running. They can independently scale up or down with zero memory usage when they are idle. Had there been a state in any of these agents, that is also kept intact.
 
-## 🔹 Why Golem Is Devoid of Other Problems in Your Agent?
+## Why Golem Is Devoid of Other Problems in Your Agent?
 
 Golem is an ecosystem with a ***runtime*** natively talking about agents while solving hard problems of system design automatically, and not just a ***library or SDK***. The fundamental lies in leveraging static analysis of the code you write to deliver **automated reliability**. This is not done by most of the other frameworks, where you as a developer need to let the local backend know about every step you jump through in your code.
 
@@ -168,13 +168,13 @@ On the other hand, in Golem, this static observation of the code is fed into its
 
 Thus, it allows developers to just focus on business logic!
 
-## 🔹 Encoding Workflow in a Graph vs Simple TypeScript Instructions
+## Encoding Workflow in a Graph vs Simple TypeScript Instructions
 
 In LangGraph, you encode what you need in a graph as nodes and edges. Every function will become a node, with transitions being encoded as edges.
 
 Back in Golem, this is a normal set of instructions that you usually write in TypeScript. Call first agent, and then call the next, and then call the third one, and stop if needed or loop through. There is no special thing to exercise to get it going.
 
-## 🔹 And Why LangGraph Code Feels More Complicated?
+## And Why LangGraph Code Feels More Complicated?
 
 **It's a *library***, not a ***runtime as such***. If the runtime is devoid of the important details of the code by default, you need to help it out with complex APIs even to do a simple function call, with a mixed bag of plugins that could solve various classic system design problems.
 
@@ -186,7 +186,7 @@ In other words, it relies on the aspect of somehow informing the backend about e
 
 In short it's still a **framework, not infrastructure**. This is not an issue of LangGraph by itself. In fact, I consider LangGraph to be a matured, well-focused framework and does its job very well for what it is designed to. Good documentation along with well-defined APIs are two strong points of LangGraph.
 
-## 🔹 Golem Still Claims SDK Independence?
+## Golem Still Claims SDK Independence?
 
 For those who were already familiar with Golem's durability, you might be familiar with the claim of Golem being SDK independent. In other words, "you write code normally as you do, and let Golem take care of the rest".
 
@@ -194,7 +194,7 @@ The above examples clearly show how much SDK-independent Golem is compared to a 
 
 More recently, Golem has made a natural leap into the **agentic space**, with its **runtime natively understanding the semantics of agents** — with a strong focus on **developer experience (DX)**.
 
-## 🔹 Agent Frameworks Are Batteries Included for AI. How About Golem?
+## Agent Frameworks Are Batteries Included for AI. How About Golem?
 
 ```typescript
 import * as llm from 'golem:llm/llm@1.0.0';

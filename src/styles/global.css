@@ -10,8 +10,21 @@
 	--text: #e0e0e0;
 	--text-muted: #7a7a9e;
 	--border: #2a2a4a;
-	--glow-cyan: 0 0 10px rgba(0, 255, 249, 0.3);
-	--glow-magenta: 0 0 10px rgba(255, 41, 117, 0.3);
+	/* Layered neon halos — used for text-shadow & box-shadow */
+	--glow-cyan:
+		0 0 6px rgba(0, 255, 249, 0.34),
+		0 0 14px rgba(0, 255, 249, 0.18),
+		0 0 26px rgba(0, 255, 249, 0.08);
+	--glow-magenta:
+		0 0 6px rgba(255, 41, 117, 0.3),
+		0 0 14px rgba(255, 41, 117, 0.16),
+		0 0 26px rgba(255, 41, 117, 0.07);
+	/* Stronger halo for hero / page titles */
+	--glow-cyan-hero:
+		0 0 10px rgba(0, 255, 249, 0.45),
+		0 0 22px rgba(0, 255, 249, 0.26),
+		0 0 38px rgba(0, 255, 249, 0.12),
+		0 0 52px rgba(0, 255, 249, 0.05);
 }
 
 * {
@@ -29,6 +42,33 @@ body {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+	position: relative;
+}
+
+/* Subtle grid + scanline overlay (display vibe) */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	background-image:
+		repeating-linear-gradient(
+			0deg,
+			transparent,
+			transparent 2px,
+			rgba(0, 0, 0, 0.11) 2px,
+			rgba(0, 0, 0, 0.11) 4px
+		),
+		linear-gradient(rgba(0, 255, 249, 0.028) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(0, 255, 249, 0.028) 1px, transparent 1px);
+	background-size: 100% 100%, 56px 56px, 56px 56px;
+	opacity: 0.65;
+}
+
+body > * {
+	position: relative;
+	z-index: 1;
 }
 
 main {
@@ -51,10 +91,23 @@ h1:first-child, h2:first-child, h3:first-child {
 	margin-top: 0;
 }
 
-h1 { font-size: 2.4em; }
-h2 { font-size: 1.8em; }
-h3 { font-size: 1.4em; }
-h4 { font-size: 1.2em; }
+h1 {
+	font-size: 2.4em;
+	font-weight: 900;
+}
+h2 {
+	font-size: 1.55em;
+	font-weight: 700;
+}
+h3 {
+	font-size: 1.2em;
+	font-weight: 700;
+}
+h4 {
+	font-size: 1.05em;
+	font-weight: 400;
+	letter-spacing: 0.03em;
+}
 
 strong, b {
 	font-weight: 700;
@@ -72,12 +125,47 @@ a:hover {
 	text-shadow: var(--glow-cyan);
 }
 
+/* Drawn underline for in-flow text links */
+.prose a,
+.about-body a,
+.role a,
+.timeline-content a,
+a.text-link-draw {
+	background-image: linear-gradient(currentColor, currentColor);
+	background-position: 0 calc(100% - 3px);
+	background-size: 0% 1px;
+	background-repeat: no-repeat;
+	transition:
+		color 0.2s ease,
+		background-size 0.3s ease,
+		text-shadow 0.2s ease;
+}
+
+.prose a:hover,
+.about-body a:hover,
+.role a:hover,
+.timeline-content a:hover,
+a.text-link-draw:hover {
+	background-size: 100% 1px;
+}
+
+a:focus-visible,
+button:focus-visible,
+textarea:focus-visible,
+input:focus-visible {
+	outline: 2px solid var(--cyan);
+	outline-offset: 3px;
+	box-shadow: 0 0 0 4px rgba(0, 255, 249, 0.12);
+}
+
 p {
 	margin-bottom: 1em;
 }
 
 .prose p {
 	margin-bottom: 1.5em;
+	line-height: 1.85;
+	max-width: 68ch;
 }
 
 textarea, input {
