@@ -17,6 +17,9 @@ pnpm-debug.log*
 .env
 .env.production
 
+# Subscriber emails (file-backed; do not commit)
+data/subscribers.json
+
 # macOS-specific files
 .DS_Store
 

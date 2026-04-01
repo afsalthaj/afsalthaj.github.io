@@ -1,0 +1,169 @@
+---
+export const prerender = false;
+
+import BaseHead from '../../components/BaseHead.astro';
+import { SITE_TITLE } from '../../consts';
+import { readSubscribers } from '../../lib/subscribers';
+
+const OWNER_EMAIL = 'afsal.taj06@gmail.com';
+
+let accessGranted = false;
+let error = '';
+let subscribers: Awaited<ReturnType<typeof readSubscribers>> = [];
+
+if (Astro.request.method === 'POST') {
+	const form = await Astro.request.formData();
+	const email = String(form.get('email') ?? '').trim().toLowerCase();
+	if (email === OWNER_EMAIL) {
+		accessGranted = true;
+		subscribers = await readSubscribers();
+	} else {
+		error = 'Only the owner email can view this list.';
+	}
+}
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Subscribers (private) | ${SITE_TITLE}`} description="Private subscriber list" />
+		<meta name="robots" content="noindex, nofollow" />
+		<style>
+			body {
+				font-family: 'JetBrains Mono', monospace;
+				background: var(--bg);
+				color: var(--text);
+				margin: 0;
+				padding: 2rem 1rem;
+				min-height: 100vh;
+			}
+			.wrap {
+				max-width: 900px;
+				margin: 0 auto;
+			}
+			h1 {
+				font-family: 'Orbitron', sans-serif;
+				color: var(--cyan);
+				font-size: 1.2rem;
+			}
+			form {
+				padding: 1rem;
+				border: 1px solid var(--border);
+				border-radius: 6px;
+				background: var(--bg-surface);
+				max-width: 30rem;
+			}
+			label {
+				display: block;
+				color: var(--text-muted);
+				font-size: 0.8rem;
+				margin-bottom: 0.35rem;
+			}
+			input[type='email'] {
+				width: 100%;
+				padding: 0.55rem 0.65rem;
+				border: 1px solid var(--border);
+				background: var(--bg);
+				color: var(--text);
+				border-radius: 4px;
+				font-family: inherit;
+				font-size: 16px;
+				margin-bottom: 0.75rem;
+			}
+			button {
+				padding: 0.58rem 1rem;
+				border: 1px solid rgba(0, 255, 249, 0.35);
+				background: linear-gradient(180deg, rgba(0, 255, 249, 0.08), rgba(0, 255, 249, 0.02));
+				color: var(--cyan);
+				border-radius: 4px;
+				cursor: pointer;
+				font-family: 'Orbitron', sans-serif;
+				font-size: 0.72rem;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				transition:
+					border-color 0.2s ease,
+					color 0.2s ease,
+					box-shadow 0.2s ease,
+					transform 0.2s ease;
+			}
+			button:hover {
+				border-color: var(--cyan);
+				color: var(--cyan);
+				box-shadow: var(--glow-cyan);
+				transform: translateY(-1px);
+			}
+			button:focus-visible {
+				outline: 2px solid var(--cyan);
+				outline-offset: 2px;
+				box-shadow: 0 0 0 4px rgba(0, 255, 249, 0.14);
+			}
+			.err {
+				color: var(--magenta);
+				font-size: 0.82rem;
+				margin-top: 0.65rem;
+			}
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				font-size: 0.8rem;
+			}
+			th,
+			td {
+				border: 1px solid var(--border);
+				padding: 0.5rem 0.65rem;
+				text-align: left;
+			}
+			th {
+				background: var(--bg-card);
+				color: var(--cyan);
+				font-family: 'Orbitron', sans-serif;
+				font-size: 0.7rem;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+			}
+			.muted {
+				color: var(--text-muted);
+				font-size: 0.75rem;
+				margin-top: 2rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<h1>Subscriber list</h1>
+			{
+				accessGranted ? (
+					<>
+						<table>
+							<thead>
+								<tr>
+									<th>Email</th>
+									<th>Free mentorship</th>
+									<th>Subscribed</th>
+								</tr>
+							</thead>
+							<tbody>
+								{subscribers.map((s) => (
+									<tr>
+										<td>{s.email}</td>
+										<td>{s.mentorshipInterest ? 'Yes' : '—'}</td>
+										<td>{s.subscribedAt}</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</>
+				) : (
+					<form method="post">
+						<label for="admin-email">Owner email</label>
+						<input id="admin-email" name="email" type="email" required autocomplete="email" />
+						<button type="submit">View list</button>
+						{error ? <p class="err">{error}</p> : null}
+					</form>
+				)
+			}
+			<p class="muted">Only the owner email can view this page.</p>
+		</div>
+	</body>
+</html>

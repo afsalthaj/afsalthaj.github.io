@@ -49,11 +49,11 @@ const talks = [
 				<div class="hero-text">
 					<h1>Afsal Thaj</h1>
 					<p class="tagline">
-						<span class="tagline-accent">Distributed systems</span>
+						<span class="tagline-accent">Distrubted Systems</span>
 						<span class="tagline-sep">·</span>
-						<span class="tagline-accent">Functional programming</span>
+						<span class="tagline-accent">Durable Agent Runtime</span>
 						<span class="tagline-sep">·</span>
-						<span class="tagline-accent">Software engineering</span>
+						<span class="tagline-accent">Functional Programming</span>
 					</p>
 				</div>
 				<Image src={profileImage} alt="Afsal Thaj" class="profile-photo" width={140} height={140} />
@@ -102,17 +102,18 @@ const talks = [
 		align-items: center;
 		justify-content: space-between;
 		gap: 2em;
-		overflow: hidden;
+		overflow: visible;
 	}
+	/* Very soft lift — text glow stays the hero; background stays nearly flat */
 	.hero::before {
 		content: '';
 		position: absolute;
-		inset: -20% -10% -10%;
+		inset: -15% -8% -8%;
 		pointer-events: none;
 		background: radial-gradient(
-			ellipse 75% 65% at 45% 35%,
-			rgba(0, 255, 249, 0.09),
-			transparent 62%
+			ellipse 90% 80% at 48% 28%,
+			rgba(0, 255, 249, 0.03),
+			transparent 70%
 		);
 		z-index: 0;
 	}
@@ -235,6 +236,8 @@ const talks = [
 		color: var(--text-muted);
 		font-size: 0.85em;
 		white-space: nowrap;
+		flex-shrink: 0;
+		padding-right: 0.1em;
 	}
 
 	/* Talks */

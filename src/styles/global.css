@@ -25,10 +25,17 @@
 		0 0 22px rgba(0, 255, 249, 0.26),
 		0 0 38px rgba(0, 255, 249, 0.12),
 		0 0 52px rgba(0, 255, 249, 0.05);
+	/* Align with header nav */
+	--content-max: 960px;
+	--content-pad-x: 1.5em;
 }
 
 * {
 	box-sizing: border-box;
+}
+
+html {
+	overflow-x: clip;
 }
 
 body {
@@ -43,27 +50,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	position: relative;
-}
-
-/* Subtle grid + scanline overlay (display vibe) */
-body::before {
-	content: '';
-	position: fixed;
-	inset: 0;
-	z-index: 0;
-	pointer-events: none;
-	background-image:
-		repeating-linear-gradient(
-			0deg,
-			transparent,
-			transparent 2px,
-			rgba(0, 0, 0, 0.11) 2px,
-			rgba(0, 0, 0, 0.11) 4px
-		),
-		linear-gradient(rgba(0, 255, 249, 0.028) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(0, 255, 249, 0.028) 1px, transparent 1px);
-	background-size: 100% 100%, 56px 56px, 56px 56px;
-	opacity: 0.65;
+	overflow-x: clip;
+	min-width: 0;
 }
 
 body > * {
@@ -73,10 +61,11 @@ body > * {
 
 main {
 	flex: 1;
-	width: 780px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 3em 1em;
+	width: 100%;
+	max-width: var(--content-max);
+	margin: 0 auto;
+	padding: 3em var(--content-pad-x);
+	min-width: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -94,6 +83,12 @@ h1:first-child, h2:first-child, h3:first-child {
 h1 {
 	font-size: 2.4em;
 	font-weight: 900;
+}
+
+@media (max-width: 720px) {
+	h1 {
+		font-size: 1.85em;
+	}
 }
 h2 {
 	font-size: 1.55em;
@@ -165,7 +160,6 @@ p {
 .prose p {
 	margin-bottom: 1.5em;
 	line-height: 1.85;
-	max-width: 68ch;
 }
 
 textarea, input {
@@ -216,6 +210,8 @@ pre {
 	background: var(--bg-surface) !important;
 	border: 1px solid var(--border);
 	overflow-x: auto;
+	max-width: 100%;
+	-webkit-overflow-scrolling: touch;
 }
 
 pre > code {
@@ -259,8 +255,16 @@ li::marker {
 		font-size: 15px;
 	}
 	main {
-		padding: 1em;
+		padding: 1.25em var(--content-pad-x);
 	}
+}
+
+/* Blog / prose: avoid page-wide horizontal scroll on small screens */
+.prose {
+	min-width: 0;
+	max-width: 100%;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
 }
 
 .sr-only {

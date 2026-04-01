@@ -1,0 +1,164 @@
+---
+---
+
+<section class="subscribe" aria-labelledby="subscribe-heading">
+	<h2 id="subscribe-heading">Stay in the loop</h2>
+	<p class="subscribe-lead">
+		Get updates from this site. Optionally flag interest in <strong>free mentorship</strong> — I’ll reach out when I
+		have capacity.
+	</p>
+	<form class="subscribe-form" data-subscribe-form>
+		<label class="sr-only" for="subscribe-email">Email</label>
+		<input
+			id="subscribe-email"
+			name="email"
+			type="email"
+			required
+			placeholder="you@example.com"
+			autocomplete="email"
+			maxlength="254"
+		/>
+		<label class="subscribe-check">
+			<input type="checkbox" name="mentorship" />
+			<span>I’m interested in free mentorship</span>
+		</label>
+		<button type="submit">Subscribe</button>
+	</form>
+	<p class="subscribe-status" data-subscribe-status role="status"></p>
+</section>
+
+<script is:inline>
+	(function () {
+		var form = document.querySelector('[data-subscribe-form]');
+		var statusEl = document.querySelector('[data-subscribe-status]');
+		if (!form || !statusEl) return;
+		form.addEventListener('submit', function (e) {
+			e.preventDefault();
+			statusEl.textContent = '';
+			var fd = new FormData(form);
+			var email = fd.get('email');
+			var mentorship = fd.get('mentorship') === 'on';
+			fetch('/api/subscribe', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ email: email, mentorshipInterest: mentorship }),
+			})
+				.then(function (r) {
+					return r.json().then(function (data) {
+						return { ok: r.ok, data: data };
+					});
+				})
+				.then(function (_ref) {
+					var ok = _ref.ok;
+					var data = _ref.data;
+					if (ok && data.ok) {
+						statusEl.style.color = 'var(--cyan, #00fff9)';
+						statusEl.textContent = "Thanks — you're on the list.";
+						form.reset();
+						return;
+					}
+					statusEl.style.color = 'var(--magenta, #ff2975)';
+					if (data.error === 'duplicate') {
+						statusEl.textContent = 'That email is already subscribed.';
+					} else if (data.error === 'invalid_email') {
+						statusEl.textContent = 'Please enter a valid email.';
+					} else {
+						statusEl.textContent = 'Something went wrong. Try again later.';
+					}
+				})
+				.catch(function () {
+					statusEl.style.color = 'var(--magenta, #ff2975)';
+					statusEl.textContent = 'Something went wrong. Try again later.';
+				});
+		});
+	})();
+</script>
+
+<style>
+	.subscribe {
+		margin-top: 0;
+		padding-top: 0;
+		border-top: none;
+		text-align: left;
+		width: 100%;
+		min-width: 0;
+	}
+	.subscribe h2 {
+		font-family: 'Orbitron', sans-serif;
+		font-size: 0.85rem;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--cyan);
+		margin: 0 0 0.5rem;
+	}
+	.subscribe-lead {
+		color: var(--text-muted);
+		font-size: 0.8rem;
+		margin: 0 0 1rem;
+		line-height: 1.5;
+		max-width: 42rem;
+	}
+	.subscribe-lead strong {
+		color: var(--magenta);
+	}
+	.subscribe-form {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0.75rem;
+		width: 100%;
+		max-width: min(22rem, 100%);
+		min-width: 0;
+	}
+	.subscribe-form input[type='email'] {
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
+		padding: 0.55rem 0.65rem;
+		font-size: 16px;
+		background: var(--bg);
+		color: var(--text);
+		border: 1px solid var(--border);
+		border-radius: 4px;
+		font-family: inherit;
+	}
+	.subscribe-check {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.5rem;
+		font-size: 0.78rem;
+		color: var(--text-muted);
+		text-align: left;
+		width: 100%;
+		cursor: pointer;
+	}
+	.subscribe-check input {
+		margin-top: 0.2rem;
+		accent-color: var(--magenta);
+	}
+	.subscribe-form button {
+		font-family: 'Orbitron', sans-serif;
+		font-size: 0.72rem;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		padding: 0.55rem 1.25rem;
+		background: transparent;
+		color: var(--text-muted);
+		border: 1px solid var(--border);
+		border-radius: 4px;
+		cursor: pointer;
+		transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+	}
+	.subscribe-form button:hover {
+		color: var(--cyan);
+		border-color: var(--cyan);
+		box-shadow: var(--glow-cyan);
+	}
+	.subscribe-status {
+		min-height: 1.25em;
+		font-size: 0.78rem;
+		margin: 0.75rem 0 0;
+		text-align: left;
+		max-width: min(22rem, 100%);
+	}
+</style>
