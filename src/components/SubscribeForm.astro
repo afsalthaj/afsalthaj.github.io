@@ -34,42 +34,8 @@
 		if (!form || !statusEl) return;
 		form.addEventListener('submit', function (e) {
 			e.preventDefault();
-			statusEl.textContent = '';
-			var fd = new FormData(form);
-			var email = fd.get('email');
-			var mentorship = fd.get('mentorship') === 'on';
-			fetch('/api/subscribe', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ email: email, mentorshipInterest: mentorship }),
-			})
-				.then(function (r) {
-					return r.json().then(function (data) {
-						return { ok: r.ok, data: data };
-					});
-				})
-				.then(function (_ref) {
-					var ok = _ref.ok;
-					var data = _ref.data;
-					if (ok && data.ok) {
-						statusEl.style.color = 'var(--cyan, #00fff9)';
-						statusEl.textContent = "Thanks — you're on the list.";
-						form.reset();
-						return;
-					}
-					statusEl.style.color = 'var(--magenta, #ff2975)';
-					if (data.error === 'duplicate') {
-						statusEl.textContent = 'That email is already subscribed.';
-					} else if (data.error === 'invalid_email') {
-						statusEl.textContent = 'Please enter a valid email.';
-					} else {
-						statusEl.textContent = 'Something went wrong. Try again later.';
-					}
-				})
-				.catch(function () {
-					statusEl.style.color = 'var(--magenta, #ff2975)';
-					statusEl.textContent = 'Something went wrong. Try again later.';
-				});
+			statusEl.style.color = 'var(--text-muted, #7a7a9e)';
+			statusEl.textContent = 'Subscriptions are paused on static hosting.';
 		});
 	})();
 </script>
