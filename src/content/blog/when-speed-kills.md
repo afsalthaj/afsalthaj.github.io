@@ -63,23 +63,19 @@ Building more does not mean building what matters. And when speed is used to cha
 
 Even when someone is capable of moving fast without compromising quality, that speed is often misunderstood. From the outside it looks like rapid execution, but internally it is cautious and deliberate. It only appears fast because decisions are precise, not because the process is rushed.
 
-## Questions
-
-### So why are we really speeding?
-
-So the real question is not whether you should move fast, but why you are moving fast.
+## So why are we really speeding?
 
 If the reason is too many features, question them.
 If the reason is scope, reduce it.
 If the reason is pressure or optics, reconsider the cost.
 
-### Should the Most Efficient Developer Be Celebrated or Watched with Caution?
+## Should the Most Efficient Developer Be Celebrated or Watched with Caution?
 
-So here is the core of the matter. 
+My answer is - Celebrate, but be cautious. This is a very nuanced topic. I have seen instances where the most reliable developer who produce less bugs is never appreciated, while the one who produces more bugs but delivers faster is celebrated. 
 
-Given all of what I said above, here is the question: Should the Fastest Developer Be Celebrated or Watched with Caution? My answer is - Celebrate, but be cautious.
+While not claiming myself to be a reliable developer, I have seen this pattern across multiple projects and products. 
 
-If efficiency includes stability, correctness, and how safely others can build on top of that work, then the picture changes.
+This inspired me to write this blog, and I hope it resonates with many of you.
 
 ### So is speed good for startups or bad for big firms?
 
