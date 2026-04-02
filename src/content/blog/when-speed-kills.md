@@ -9,7 +9,9 @@ This is more of a reflection based on my experience across multiple projects and
 
 ## The illusion of efficiency
 
-There is a common assumption in software development that faster development means better efficiency. It sounds reasonable, and in the middle of delivery it even feels correct — tickets are moving, pull requests are getting merged, and there is visible progress every day. But speed of development is not efficiency. It is only movement, and movement in the <span class="accent-red">wrong</span> direction compounds faster than anything else.
+There is a common assumption in software development that faster development means better efficiency. It sounds reasonable, and in the middle of delivery it even feels correct — tickets are moving, pull requests are getting merged, and there is visible progress every day. But speed of development is not efficiency. 
+
+It is only movement, and a faster movement in the wrong direction compounds faster than anything else.
 
 ## Finish-Fast syndrome
 
