@@ -20,9 +20,12 @@ I coined that term myself, but I am sure it is not new. <span class="accent-red"
 We all have it, in some form: the urge to finish things quickly. We might either be <span class="accent-red">competing with our colleagues</span> in terms of delivery efficiency, or <span class="accent-red">being insecure about your own job</span> and worrying what others might think if we take longer for a task, or simply being under pressure <span class="accent-red">to meet deadlines imposed by someone else</span>.
 In all cases, the instinct is the same — push harder, deliver more. But that instinct is exactly where things start going wrong.
 
-Yes we have hot and rushed deliveries that are justified with: *“we have to meet the deadline.”* While this could be a hint to an organizational problem, I would call this a separate issue, and in fact a less important one - it’s not what this piece is about. 
-The real problem is self-imposed urgency: rushing for flimsy reasons, speeding to look good, speeding to exhibit velocity, chasing speed for its own sake, and calling it discipline.
+<blockquote class="pull-quote-pop">
+Yes hot-fixes and rushed deliveries are justified with: “we have to meet the deadline”. I would call this a separate issue- it’s not what this piece is about. 
+The real problem discussed here is self-imposed urgency: rushing for flimsy reasons, speeding to look good, speeding to exhibit velocity, chasing speed for its own sake, and calling it discipline.
 It isn’t discipline. It’s pressure you chose to believe in.
+</blockquote>
+
 
 ## The chain reaction nobody plans for
 
