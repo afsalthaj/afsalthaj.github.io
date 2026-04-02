@@ -19,8 +19,6 @@ Let me get slightly technical here, without hopefully annoying those who are not
 
 ## The most accurate judgement is still a probability
 
-Heard of AI, machine learning? Obviously, in 2023, the answer is yes!
-
 Imagine having trillions of rows of data, where each row is filled with hundreds and thousands of variables, each carrying a label like yes or no, failed or success, true or false, evil or good. Now, in your mind, can you accurately assign a label to a new data point that shares the same variables but with different values?
 
 Now, let's simplify things. Picture just 10 rows of data, each having 10 variables. Can you analyze these rows and make predictions about the 11th row for those same 10 variables? Take a deep breath and ponder the answer within yourself.
