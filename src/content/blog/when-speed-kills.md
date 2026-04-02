@@ -7,11 +7,11 @@ category: 'the-lab'
 
 This is more of a reflection based on my experience across multiple projects and products that I have been part of as a consultant.
 
-### The illusion of efficiency
+## The illusion of efficiency
 
 There is a common assumption in software development that faster development means better efficiency. It sounds reasonable, and in the middle of delivery it even feels correct — tickets are moving, pull requests are getting merged, and there is visible progress every day. But speed of development is not efficiency. It is only movement, and movement in the wrong direction compounds faster than anything else.
 
-### Finish-Fast syndrome
+## Finish-Fast syndrome
 
 I coined that term myself, but I am sure it is not new.
 
@@ -23,7 +23,7 @@ You might be competing with your colleagues in terms of delivery, or being insec
 
 In all cases, the instinct is the same — push harder, deliver more. But that instinct is exactly where things start going wrong.
 
-### Where things quietly start breaking
+## Where things quietly start breaking
 
 The problem usually starts with intent. In high-pressure environments, especially in consultancy, expectations are aligned with output. If the cost is high, the visible progress must also be high. So teams push — more features, more scope, more things “done”.
 
@@ -33,7 +33,7 @@ Most teams unknowingly optimise for higher-level completeness while ignoring fou
 
 This does not immediately surface during development because the focus is on getting things working, not necessarily getting them working correctly from all angles. It shows up during UAT, usually in the form of “basic things are not working”.
 
-### The chain reaction nobody plans for
+## The chain reaction nobody plans for
 
 At that point, fixing L1 is no longer a small change. L1 carries assumptions that L2 and L3 are built upon. So when L1 is corrected, it breaks parts of L2. Fixing L2 then cascades into L3.
 
@@ -45,7 +45,7 @@ The irony is that the team did move fast, but that speed created instability tha
 
 And more importantly, it affects confidence. When basic functionality is unstable, it is hard to feel confident about anything that sits on top of it.
 
-### Speed in startups vs speed in big firms
+## Speed in startups vs speed in big firms
 
 This is where things start getting misunderstood.
 
@@ -63,19 +63,7 @@ Building more does not mean building what matters. And when speed is used to cha
 
 Even when someone is capable of moving fast without compromising quality, that speed is often misunderstood. From the outside it looks like rapid execution, but internally it is cautious and deliberate. It only appears fast because decisions are precise, not because the process is rushed.
 
-### Speed is increasing, but so is the risk
-
-With the current trajectory of tooling, development is becoming easier. Frameworks, libraries, and even AI-assisted coding reduce the effort required to build things. This will only accelerate further.
-
-But this increase in capability should not be used to push more features. It should be used to improve reliability and correctness.
-
-If maintaining quality slows down delivery, the answer is not to push harder. It is to reduce scope, narrow features, or simplify behaviour.
-
-Most products do not fail because they lack features. They fail because the basic functionality is not reliable enough.
-
-### A pattern that repeats
-
-Across multiple projects, especially in consultancy, this pattern repeats. Teams push aggressively to deliver more, but the end result struggles to stabilise. It does not take off, not because the idea was weak, but because the foundation was never solid.
+## Questions
 
 ### So why are we really speeding?
 
@@ -85,31 +73,13 @@ If the reason is too many features, question them.
 If the reason is scope, reduce it.
 If the reason is pressure or optics, reconsider the cost.
 
-### Consistency over spikes
-
-In larger teams, this also reflects in estimation. There is often a tendency to underestimate work to appear efficient. But consistency matters far more than occasional spikes.
-
-A cautious and realistic approach leads to better outcomes than aggressive optimism.
-
 ### Should the Most Efficient Developer Be Celebrated or Watched with Caution?
 
-So here is the core of the matter. Is the most efficient developer the one who delivers the most in the least time? Or is it the one whose work can be relied on without hesitation?
+So here is the core of the matter. 
 
-The idea of an “efficient developer” is often celebrated. High output, fast delivery, always moving things forward — on the surface, this looks ideal.
+Given all of what I said above, here is the question: Should the Fastest Developer Be Celebrated or Watched with Caution? My answer is - Celebrate, but be cautious.
 
-But it depends on what we mean by efficiency.
-
-If efficiency is just speed, then delivering more in less time fits the definition. But if efficiency includes stability, correctness, and how safely others can build on top of that work, then the picture changes.
-
-Fast output does not stay isolated. It introduces assumptions into the system. Those assumptions get consumed by others, and when they turn out to be incorrect or incomplete, the cost spreads. What looked like efficiency at an individual level becomes inefficiency at a system level.
-
-So the question is not whether someone is fast, but whether their speed creates stability or friction for the rest of the team.
-
-In environments where the cost of mistakes is low, this may not matter as much. But in systems with deeper dependencies, speed without restraint becomes risky.
-
-An “efficient” developer, in that sense, is not someone who moves the fastest, but someone whose work others can rely on without hesitation.
-
-And that is a very different definition of efficiency.
+If efficiency includes stability, correctness, and how safely others can build on top of that work, then the picture changes.
 
 ### So is speed good for startups or bad for big firms?
 
@@ -133,7 +103,7 @@ It is the right speed that allows you to deliver something reliable — somethin
 
 If you are known for delivering reliable work, others will trust it and build on top of it. If you are known for delivering things quickly but with instability, others will be cautious about using your work — and that slows down the entire team.
 
-### Speed is just a symptom, not the cause
+## A possible conclusion: Speed is just a symptom, not the cause
 
 Speed, by itself, does not win. In many cases, it reduces the probability of success because it increases the likelihood of foundational issues being overlooked.
 

@@ -9,6 +9,8 @@
 	--bg-card: #1a1a2e;
 	--text: #e0e0e0;
 	--text-muted: #7a7a9e;
+	/* Publication dates: a hair brighter than muted, still quiet */
+	--text-date: #8c8cb0;
 	--border: #2a2a4a;
 	/* Layered neon halos — used for text-shadow & box-shadow */
 	--glow-cyan:
