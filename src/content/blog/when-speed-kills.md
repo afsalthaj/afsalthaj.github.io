@@ -9,85 +9,73 @@ This is more of a reflection based on my experience across multiple projects and
 
 ## The illusion of efficiency
 
-There is a common assumption in software development that faster development means better efficiency. It sounds reasonable, and in the middle of delivery it even feels correct — tickets are moving, pull requests are getting merged, and there is visible progress every day. But speed of development is not efficiency. It is only movement, and movement in the wrong direction compounds faster than anything else.
+There is a common assumption in software development that faster development means better efficiency. It sounds reasonable, and in the middle of delivery it even feels correct — tickets are moving, pull requests are getting merged, and there is visible progress every day. But speed of development is not efficiency. It is only movement, and movement in the <span class="accent-red">wrong</span> direction compounds faster than anything else.
 
-## Finish-Fast syndrome
+## <span class="accent-red">Finish-Fast</span> syndrome
 
-I coined that term myself, but I am sure it is not new.
+I coined that term myself, but I am sure it is not new.  <span class="accent-red">Urge to finish fast</span> is a developer's <span class="accent-red">worst enemy</span>. It is the one thing that can turn a good developer into a bad one, and it is the one thing that can turn a good project into a failed one.
 
-Urge to finish fast is a developer's worst enemy. It is the one thing that can turn a good developer into a bad one, and it is the one thing that can turn a good project into a failed one.
-
-If we sit back and think deeply, isn't it what we thrive to do every day? We want to finish things quickly, but we are not always worried about the quality. The reason for this syndrome is multi-dimensional.
-
-You might be competing with your colleagues in terms of delivery, or being insecure about your own job thinking what others might feel if you took longer for a task, or simply being under pressure to meet deadlines.
-
+We all have this syndrome in some or other way. We want to finish things quickly. Either we might be <span class="accent-red">competing with your colleagues</span> in terms of delivery, or <span class="accent-red">being insecure about your own job</span> thinking what others might feel if you took longer for a task, or simply being under pressure <span class="accent-red">to meet deadlines</span>.
 In all cases, the instinct is the same — push harder, deliver more. But that instinct is exactly where things start going wrong.
-
-## Where things quietly start breaking
-
-The problem usually starts with intent. In high-pressure environments, especially in consultancy, expectations are aligned with output. If the cost is high, the visible progress must also be high. So teams push — more features, more scope, more things “done”.
-
-From a distance, this looks like strong execution. But the cracks appear in a very predictable way.
-
-Most teams unknowingly optimise for higher-level completeness while ignoring foundational correctness. If we break it down into levels — L1 being basic functionality, L2 intermediate behaviour, and L3 more complex flows — what often happens is that L3 gets implemented and demonstrated, L2 mostly behaves as expected, but L1 is not reliably correct across all scenarios.
-
-This does not immediately surface during development because the focus is on getting things working, not necessarily getting them working correctly from all angles. It shows up during UAT, usually in the form of “basic things are not working”.
 
 ## The chain reaction nobody plans for
 
-At that point, fixing L1 is no longer a small change. L1 carries assumptions that L2 and L3 are built upon. So when L1 is corrected, it breaks parts of L2. Fixing L2 then cascades into L3.
+Most teams unknowingly optimise for higher-level completeness while ignoring foundational correctness. If we break it down into levels — L1 being basic functionality, L2 intermediate behaviour, and L3 more complex flows — what often happens is that L3 gets implemented and demonstrated, L2 mostly behaves as expected, but L1 is not reliably correct across all scenarios.
 
-What initially looked like completed work starts collapsing into rework, and the team finds itself in a loop — not because they lacked capability, but because they moved too fast without stabilising the base.
+The focus is on getting things working, not necessarily getting them working correctly from all angles. It shows up during UAT, usually in the form of “basic things are not working”. It's even worse, when your team mate finds a bug in basic functionality. We are not talking about edge cases yet, but just the basic stuff!
+
+At that point, fixing L1 is no longer a small change. L1 carries assumptions that L2 and L3 are built upon. So when L1 is corrected, it breaks parts of L2. Fixing L2 then cascades into L3.
 
 Meanwhile, UAT is waiting, deadlines remain unchanged, and pressure increases. In many cases, the pressure is not even from leadership initially, but from UAT, because delays on development directly reduce their testing window.
 
-The irony is that the team did move fast, but that speed created instability that slows everything down later in a much more expensive way.
-
-And more importantly, it affects confidence. When basic functionality is unstable, it is hard to feel confident about anything that sits on top of it.
-
-## Speed in startups vs speed in big firms
-
-This is where things start getting misunderstood.
-
-In smaller products or early-stage startups, this problem is less visible. There are fewer dependencies, fewer layers, and often no dedicated UAT or testing teams. So speed appears to work.
-
-But that does not mean the approach is correct — it just means the system has not yet reached the level where these problems become visible.
-
-In larger systems, especially in fintech or other critical platforms, this becomes very obvious. Developers coming from fast-moving environments often feel that everything is slow. But what they are actually seeing is a different constraint — uncompromised quality.
-
-The question is no longer “can it be built quickly?”, but “can it be trusted under all conditions?”.
-
-Startups face a different pressure — survival. So the instinct is to maximise feature completeness. But this introduces a tradeoff that is often ignored: feature completeness versus feature relevance.
-
-Building more does not mean building what matters. And when speed is used to chase completeness, quality is usually the first thing to be compromised.
-
-Even when someone is capable of moving fast without compromising quality, that speed is often misunderstood. From the outside it looks like rapid execution, but internally it is cautious and deliberate. It only appears fast because decisions are precise, not because the process is rushed.
-
 ## So why are we really speeding?
 
-If the reason is too many features, question them.
-If the reason is scope, reduce it.
-If the reason is pressure or optics, reconsider the cost.
+If the reason is <span class="accent-red">too many features</span>, question them.
 
-## Should the Most Efficient Developer Be Celebrated or Watched with Caution?
+If the reason is <span class="accent-red">scope of features</span>, re-evaluate and reduce them.
 
-My answer is - Celebrate, but be cautious. This is a very nuanced topic. I have seen instances where the most reliable developer who produce less bugs is never appreciated, while the one who produces more bugs but delivers faster is celebrated. 
+If the reason is <span class="accent-red">critical bug fix</span>, learn the art of hot fix then do post-mortem.
 
-While not claiming myself to be a reliable developer, I have seen this pattern across multiple projects and products. 
+<blockquote class="pull-quote-pop">
+<p>If you don't do any of these, then of course your only solution is to speed up development. Look how much you had to ignore to get to this conclusion!</p>
+</blockquote>
 
-This inspired me to write this blog, and I hope it resonates with many of you.
+## Should the Fastest Developer Be  <span class="accent-red">Celebrated</span> or Watched with  <span class="accent-red">Caution</span> ?
 
-### So is speed good for startups or bad for big firms?
+It is team lead's responsibility to not under-estimate the slowness and not over estimate the fastness.
+
+My answer to whether a fast developer should be celebrated or not is - <span class="accent-red">Celebrate, but be Cautious</span>. This is a very nuanced topic. 
+
+<blockquote class="pull-quote-pop">
+<p>The developer who quietly writes reliable, low-defect code often goes unnoticed, while those who create problems and resolve them quickly are celebrated — seen as indispensable to the team.</p>
+</blockquote>
+
+In fact, this inspired me to write this blog, and I hope it resonates with many of you.
+
+## So is speed good for startups and bad for big companies?
 
 If you want me to give a simple answer, I would say "right speed" is good for both, and "wrong speed" is bad for both. Let me demystify what I mean by "right speed" and "wrong speed".
 
-In a startup environment, speed is often necessary, but if there is no control over your speed, it often ends up skipping necessary thought processes that are crucial for the product's success.
+<blockquote class="pull-quote-pop">
+<p>Speed may <span class="accent-red">kill</span> startup itself - Yes, I said it!</p>
+</blockquote>
 
-Speed allows developers to bypass questions such as: How simple is it for users to use the most basic feature of the product?
+The danger of uncontrolled speed is actually more pronounced in startups than in big firms. Yes, it is counterintuitive. In a startup environment, if there is no control over your speed, it often ends up skipping necessary thought processes that are crucial for the product's success.
 
-We are not asking: Is this feature really necessary? Does it add value? Can we do it in a simpler way? Instead, we end up spending money on things that don’t really matter.
+Speed allows developers to bypass questions such as: **How simple is it for users to use the most basic feature of the product?**, **Is this feature really necessary?**,  
+**Should our product depend on this other firm which is dying?** etc. All black-hats are less preferred in start-ups in the excitement of getting some toy use-case working.
 
-We just fast-forward, particularly for the sake of moving forward. If features and deadlines are tightly scheduled (because it is a startup), that is often the first step towards failure. I can’t see many other outcomes.
+On the other side of the fence, controlled speed often has the trait of **cautiousness** and **cautiousness** gives any product more edge. If not cautious, you end up with a product that is not really usable, and that is the worst thing for a startup.
+
+<blockquote class="pull-quote-pop">
+<p>You built something faster but complex for users. Instead slow down on how to make things simple for users and take 1 more day just thinking!</p>
+</blockquote>
+
+What about **planning**? Can a great planning solve all these issues?  Well the problem is, if you are planning for speed, you are not really planning for the right things. In fact, most often we end up breaking the "First impression is the last impression" rule, and we are not going to get a second chance.  Do you really think an experimental user would come back, if the first thing they see is an extreme complexity? 90% of users will not come back, and the remaining 10% will be your friends and family. That is not a good start for a startup.
+
+<blockquote class="pull-quote-pop">
+<p>Speed may <span class="accent-red">kill</span> your reputation in big firms</p>
+</blockquote>
 
 Now, in a larger environment (a successful startup or big firms), the reputation of a developer becomes more important than speed. Why? Because things here are immediately validated — within the team (UAT, for instance), and more importantly, by users.
 
@@ -99,20 +87,8 @@ It is the right speed that allows you to deliver something reliable — somethin
 
 If you are known for delivering reliable work, others will trust it and build on top of it. If you are known for delivering things quickly but with instability, others will be cautious about using your work — and that slows down the entire team.
 
-## A possible conclusion: Speed is just a symptom, not the cause
+## End of the day..
 
-Speed, by itself, does not win. In many cases, it reduces the probability of success because it increases the likelihood of foundational issues being overlooked.
+Speed, by itself, does not win. In many cases, it reduces the probability of success for ourselves and our company, because it increases the likelihood of foundational issues being overlooked.
 
-Speed bypasses thought processes such as "How simple it is for users, to use the the simplest feature of the product?". Since we are moving fast, we are not asking these questions. 
-
-We are not asking "Is this feature really necessary? Does it add value? Can we do it in a simpler way?". We just fast forward for particularly the sake of moving forward.
-
-If you step back, this is not really about speed. It is about what we choose to optimise for under pressure.
-
-Speed is just the visible symptom.
-
-The real decision happens earlier — in how we define scope, how we prioritise features, and how much imperfection we tolerate in the foundation.
-
-And most of the time, the cost of not asking these questions shows up later, when even small changes become unexpectedly expensive.
-
-At that point, slowing down is no longer a choice. It becomes a necessity.
+If you demystify everything what's said above into one sentece, that would be: **Speed is just the visible symptom!**

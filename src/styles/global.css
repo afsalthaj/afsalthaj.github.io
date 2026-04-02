@@ -269,6 +269,123 @@ li::marker {
 	word-wrap: break-word;
 }
 
+/* Inline emphasis — site magenta reads as neon red on dark bg */
+.prose .accent-red {
+	color: var(--magenta);
+	font-weight: 600;
+	text-shadow: 0 0 12px rgba(255, 41, 117, 0.22);
+}
+
+.prose .accent-trail {
+	color: var(--magenta);
+	font-weight: 700;
+	letter-spacing: 0.2em;
+	text-shadow: 0 0 14px rgba(255, 41, 117, 0.3);
+}
+
+/*
+ * “Fission” metaphor: one trigger, two diverging halos (cyan / magenta).
+ * Decorative atom glyph via ::before — omitted from typical screen-reader output.
+ */
+.prose h2 .accent-chain {
+	position: relative;
+	display: inline-block;
+	color: #eefcff;
+	font-weight: 800;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	text-shadow:
+		-2px 0 14px rgba(0, 255, 249, 0.55),
+		2px 0 14px rgba(255, 41, 117, 0.5),
+		0 0 22px rgba(0, 255, 249, 0.12);
+}
+
+.prose h2 .accent-chain::before {
+	content: '⚛';
+	font-size: 0.55em;
+	margin-right: 0.35em;
+	opacity: 0.9;
+	vertical-align: 0.35em;
+	text-shadow:
+		0 0 10px rgba(0, 255, 249, 0.7),
+		0 0 14px rgba(255, 41, 117, 0.35);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.prose h2 .accent-chain {
+		animation: accent-chain-pulse 5s ease-in-out infinite;
+	}
+}
+
+@keyframes accent-chain-pulse {
+	0%,
+	100% {
+		text-shadow:
+			-2px 0 14px rgba(0, 255, 249, 0.55),
+			2px 0 14px rgba(255, 41, 117, 0.5),
+			0 0 22px rgba(0, 255, 249, 0.12);
+	}
+	50% {
+		text-shadow:
+			-3px 0 18px rgba(0, 255, 249, 0.65),
+			3px 0 18px rgba(255, 41, 117, 0.58),
+			0 0 28px rgba(0, 255, 249, 0.18);
+	}
+}
+
+.prose .accent-chain-inline {
+	font-weight: 600;
+	font-style: italic;
+	color: var(--text);
+	text-shadow:
+		-1px 0 10px rgba(0, 255, 249, 0.22),
+		1px 0 10px rgba(255, 41, 117, 0.2);
+}
+
+/* Standout pull quote — reads like a small “popup” card in the article flow */
+.prose blockquote.pull-quote-pop {
+	margin: 2.25em 0;
+	padding: 1.35em 1.5em 1.35em 1.65em;
+	border: 1px solid var(--border);
+	border-left: 4px solid var(--magenta);
+	border-radius: 10px;
+	background: linear-gradient(
+		145deg,
+		rgba(26, 26, 46, 0.97) 0%,
+		rgba(18, 18, 30, 0.99) 100%
+	);
+	color: var(--text);
+	font-style: normal;
+	box-shadow:
+		0 10px 36px rgba(0, 0, 0, 0.5),
+		0 0 0 1px rgba(255, 41, 117, 0.12),
+		0 0 42px rgba(255, 41, 117, 0.09);
+	overflow: hidden;
+}
+
+.prose blockquote.pull-quote-pop p {
+	margin: 0;
+	font-size: 1.06em;
+	line-height: 1.72;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.prose blockquote.pull-quote-pop {
+		animation: pull-quote-pop-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+	}
+}
+
+@keyframes pull-quote-pop-in {
+	from {
+		opacity: 0;
+		transform: translateY(14px) scale(0.98);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
 .sr-only {
 	border: 0;
 	padding: 0;
