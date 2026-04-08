@@ -276,6 +276,15 @@ li::marker {
 	text-shadow: 0 0 12px rgba(255, 41, 117, 0.22);
 }
 
+/* Paragraph lead — coral / red, distinct from default bold */
+.prose .accent-lead-red {
+	color: #f08080;
+	font-weight: 700;
+	text-shadow:
+		0 0 12px rgba(240, 128, 128, 0.38),
+		0 0 24px rgba(220, 80, 80, 0.12);
+}
+
 .prose .accent-trail {
 	color: var(--magenta);
 	font-weight: 700;
@@ -342,6 +351,26 @@ li::marker {
 		1px 0 10px rgba(255, 41, 117, 0.2);
 }
 
+.prose h2 .accent-faster {
+	color: #4ade80;
+	font-weight: 800;
+	text-shadow: 0 0 14px rgba(74, 222, 128, 0.38);
+}
+
+.prose h2 .accent-dangerous {
+	color: #f87171;
+	font-weight: 800;
+	text-shadow: 0 0 14px rgba(248, 113, 113, 0.35);
+}
+
+/* Section title — warm gold so it breaks up long runs of cyan h2 */
+.prose h2.h2-accent-warm {
+	color: var(--yellow);
+	text-shadow:
+		0 0 14px rgba(240, 230, 140, 0.4),
+		0 0 32px rgba(218, 165, 32, 0.1);
+}
+
 /* Standout pull quote — reads like a small “popup” card in the article flow */
 .prose blockquote.pull-quote-pop {
 	margin: 2.25em 0;
@@ -384,6 +413,107 @@ li::marker {
 		opacity: 1;
 		transform: translateY(0) scale(1);
 	}
+}
+
+/* Section heading as highlighted “popup” card (same language as pull-quote-pop) */
+.prose h2.section-callout-pop {
+	margin: 2.25em 0 1.35em;
+	padding: 1.15em 1.4em 1.2em 1.55em;
+	border: 1px solid var(--border);
+	border-left: 4px solid var(--magenta);
+	border-radius: 10px;
+	background: linear-gradient(
+		145deg,
+		rgba(26, 26, 46, 0.97) 0%,
+		rgba(18, 18, 30, 0.99) 100%
+	);
+	box-shadow:
+		0 10px 36px rgba(0, 0, 0, 0.5),
+		0 0 0 1px rgba(255, 41, 117, 0.12),
+		0 0 42px rgba(255, 41, 117, 0.09);
+	color: var(--cyan);
+	line-height: 1.3;
+	letter-spacing: 0.02em;
+	font-size: clamp(1.15em, 2.8vw, 1.45em);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.prose h2.section-callout-pop {
+		animation: pull-quote-pop-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+	}
+}
+
+/* Blog: before/after system diagrams (complexity vs lean) */
+.prose .system-compare {
+	display: grid;
+	gap: 1.5rem;
+	margin: 2rem 0;
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+	.prose .system-compare {
+		grid-template-columns: 1fr 1fr;
+		gap: 1.25rem;
+		align-items: stretch;
+	}
+}
+
+.prose .system-diagram {
+	margin: 0;
+	padding: 1rem 1rem 1.1rem;
+	border-radius: 10px;
+	border: 1px solid var(--border);
+	background: var(--bg-card);
+	min-width: 0;
+}
+
+.prose .system-diagram--busy {
+	border-left: 4px solid var(--magenta);
+	box-shadow: 0 0 24px rgba(255, 41, 117, 0.08);
+}
+
+.prose .system-diagram--lean {
+	border-left: 4px solid var(--cyan);
+	box-shadow: 0 0 24px rgba(0, 255, 249, 0.06);
+}
+
+.prose .system-diagram__badge {
+	display: inline-block;
+	font-family: 'Orbitron', sans-serif;
+	font-size: 0.68rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	margin-bottom: 0.65rem;
+	padding: 0.2em 0.5em;
+	border-radius: 4px;
+}
+
+.prose .system-diagram--busy .system-diagram__badge {
+	color: var(--magenta);
+	background: rgba(255, 41, 117, 0.12);
+	border: 1px solid rgba(255, 41, 117, 0.25);
+}
+
+.prose .system-diagram--lean .system-diagram__badge {
+	color: var(--cyan);
+	background: rgba(0, 255, 249, 0.08);
+	border: 1px solid rgba(0, 255, 249, 0.22);
+}
+
+.prose .system-diagram__cap {
+	font-size: 0.8rem;
+	color: var(--text-muted);
+	margin: 0.75rem 0 0;
+	line-height: 1.45;
+}
+
+.prose .system-diagram svg {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: 220px;
 }
 
 .sr-only {
