@@ -5,6 +5,8 @@ pubDate: 'Apr 2 2026'
 category: 'the-lab'
 ---
 
+AI makes it easy to solve problems quickly, and almost anyone can play that game. The people who pull ahead step back, think harder, and eliminate problems instead of trying to solve everything.
+
 ## <span class="accent-faster">Code Is Now Cheap</span>. <span class="accent-dangerous">Mistakes Are Not</span>.
 
 AI makes writing code fast and cheap. It does **not** make bad decisions cheap.
