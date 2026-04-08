@@ -1,6 +1,6 @@
 ---
-title: 'The AI Divide: The myth of Developers Lose, Engineers Win'
-description: 'AI makes code cheap to write; bad design still costs the same. The split that matters is who adds complexity versus who uses AI to simplify the model and reduce ongoing work.'
+title: 'The AI Divide: When Everyone Can Solve Fast, Eliminators Win'
+description: 'AI makes it easy to solve problems quickly, and almost anyone can play that game. The people who pull ahead step back, think harder, and eliminate problems instead of trying to solve everything.'
 pubDate: 'Apr 2 2026'
 category: 'the-lab'
 ---
