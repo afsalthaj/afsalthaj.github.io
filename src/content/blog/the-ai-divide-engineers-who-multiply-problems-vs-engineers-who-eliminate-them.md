@@ -49,7 +49,7 @@ That difference affects what you ship and how much ongoing work the system needs
 
 ## Employability in today's AI world
 
-The employability of an engineer now depends heavily on how much they think about what they are building.
+Employability already tilts toward people who think about **what** they are building — not only how fast they clear a board.
 Think of someone on your team whose only goal is to complete a task in JIRA — someone who isn’t really invested in the overall outcome of the system.
 Wouldn’t you already start wondering if you could just use coding assistants instead of relying on them?
 Now think of someone else — someone deeply involved. Given a task, they ask the right questions, write thoughtful documentation, and actively try to make things simpler for both the next engineer and the end user — even while adding a complex feature to the system.
@@ -66,6 +66,7 @@ Your judgement at work is never only up to you. Many engineers **would** like to
 Saying that is not an excuse. It is where a plan starts. When you push back, spell out the risk in plain language: more outages, harder fixes, more pages. Write the trade-off down. Ask to drop one roadmap item when the win is **less** to own. **Leaders** matter here: leave a little room to delete work, cheer when someone merges **less** code, and look at outcomes — not only how busy the team looked. If that never happens, judgement stays a lonely habit. The org trains everyone to ship fast, then asks why the pile of work never gets smaller.
 
 ## Three Pillars of Judgement
+
 Judgement about what to build, what to cut, and what to refactor is at the core of engineering. This idea isn’t new — it’s articulated clearly in Designing Data-Intensive Applications (Chapter 1), through three qualities of good systems:
 
 * Operability — Can the system be kept running without constant heroics?
@@ -109,7 +110,6 @@ A builder sees: “We improved the pipeline by 5 minutes.” Someone with good j
 
 Here’s the uncomfortable question: Who really cares about type safety and compile-time guarantees anymore? In the age of AI, the answer is — you should care even more.
 
-
 There’s already a growing belief:
 
 <blockquote class="pull-quote-pop">
@@ -148,7 +148,7 @@ Both approaches are fast with AI. That’s not the differentiator anymore. The r
 
 **The merge button is still yours.** If you believe there is nothing left to review in generated code, you are not ahead — you have already stopped doing the job that pays.
 
-**Step up from files and tests to boxes and arrows** — the same “add machinery vs fix the contract” move is what teams draw on whiteboards when production hurts.
+**At service boundaries the same fork returns** — add machinery or fix the contract — only now it is boxes and arrows on a whiteboard when production hurts.
 
 ## How Complexity Disguises Itself as Progress
 
@@ -193,13 +193,11 @@ Each addition can feel like progress. Often it is **complexity you now have to o
 </figure>
 </div>
 
-At the diagram level you can drown in <strong>validators, queues, retries, and dashboards</strong> — or you can <strong>tighten contracts, cut cyclic dependencies, and simplify data flow</strong> so several of those pieces are simply unnecessary.
-
-A direct alternative: tighten contracts, make operations idempotent where it matters, simplify data shapes (for example append-only logs instead of shared mutable state) so fewer failure modes exist. **Adding services is easy. Removing the need for them is the harder and more valuable work.**
+**Concrete next moves** (same idea as fewer boxes above): tighten contracts, make operations idempotent where it matters, simplify data shapes (for example append-only logs instead of shared mutable state). **Adding services is easy. Removing the need for them is the harder and more valuable work.**
 
 ## AI Makes Good Engineers <span class="accent-faster">Faster</span>. And Bad Ones <span class="accent-dangerous">Dangerous</span>.
 
-AI still does not know whether it is increasing or reducing complexity — any more than it knew at the type level or on a whiteboard sketch. It will generate more tests, services, layers, and code on request.
+AI still does not know whether it is increasing or reducing complexity — no more at the service level than at the type level. It will generate more tests, services, layers, and code on request.
 
 **You** decide whether that output helps or piles on work. If you cannot tell the difference, you will get both.
 
@@ -217,9 +215,7 @@ If you move faster without better judgement, you can create those problems **fas
 
 <h2 class="h2-accent-warm">A tip for getting judgement right — start with the end-user</h2>
 
-Operability, simplicity, and evolvability are the guardrails — they stay abstract until you anchor them to **someone who will feel the failure**. **In practice, where should judgement start?** With whoever uses what you build: end customers, the next team, or a downstream service. The label does not change the work.
-
-**Judgement starts with thinking from a user’s perspective.** From there, the same lens extends all the way to the internals of the system — to protect operability, simplicity, and evolvability. 
+Operability, simplicity, and evolvability are the guardrails — they stay abstract until you anchor them to **someone who will feel the failure**. Start with whoever uses what you build: end customers, the next team, or a downstream service; the label does not change the bar. **Run the same lens inward** so those three stay real in code and operations, not slide filler.
 
 **More feature implementation is not always right.** Before it lands, ask: **Is this feature needed for users? How valuable is it? Does it push the product forward?** Velocity is not the same as usefulness. Teams that measure success only by output volume still drown in maintenance, support, and rework — they just get there faster now. **A pile of small features is the final nail in the coffin for a product** — not one dramatic failure, but slow death by clutter, drift, and debt.
 
@@ -231,19 +227,13 @@ Operability, simplicity, and evolvability are the guardrails — they stay abstr
 
 <span class="accent-lead-red">Lost in refactoring.</span> Caring about good code does **not** mean feeding an endless urge to reshape the same code again and again. You can always explain a refactor to others with a “why” — but you still owe yourself an honest version: **Is this refactor actually needed? What concrete outcome does it buy** (risk down, speed up, clearer model) **versus churn?** AI makes rewrites cheap to *start*; it does not make perpetual refactoring free. Knowing when to stop, when “good enough” is right, and when the team should ship value instead of polishing internals is **developer judgement** — and that is not replaceable.
 
-<blockquote class="pull-quote-pop">
-<p>Developers who <strong>routinely judge the work from a user perspective</strong>, and who combine that with scepticism about scope, <strong>discipline around refactoring</strong>, and a bias toward clarity, are the ones who make AI a multiplier instead of an accelerant for waste.</p>
-</blockquote>
-
 ## If you think this is “not about us” — it still is
 
-There is no carve-out where **motion beats direction**, or where **piling on work** stops having a bill, or where **AI stops amplifying habits**. The shape changes; the trade-off does not. If any line below sounds like your team, the post still applies — only the costume is different.
+There is still **no carve-out** where **motion beats direction**, where **piled-on work** stops costing, or where tools stop **amplifying habits**. The costume changes; the trade-off does not. If a line below sounds like your team, you are still in scope.
 
-**Regulated, safety-critical, or “we cannot move fast and break things”.** Good — you have extra reason to **tighten models and shrink surface area**, not to drown in generated tests and services that auditors still have to trace. Compliance does not love two parallel code paths and a mystery integration; it loves **fewer states to prove**.
+**Regulated, safety-critical, or “we cannot move fast and break things”.** You have *more* reason to **tighten models and shrink surface area** — not to hide a fuzzy model behind more generated tests and services that auditors still have to trace. Fewer states to prove beats more machinery to explain.
 
-**Internal tools — “we have no end users”.** You do: the next team, the analyst, the on-call person at 3 a.m. If your “customer” is another engineer, **operability and clarity are the product**. The same questions apply: who breaks when this is wrong, and can we achieve the outcome with **less** machinery?
-
-**Platform, infra, or devtools.** Your users are other builders. Shipping a fuzzy API or a fragile pipeline still creates **downstream problems at scale** — often worse than a bad screen, because the blast radius is every service that trusted you.
+**Internal tools, platform, infra, or devtools.** Someone always “uses” the output: the next team, on-call, or every service that called your API. **Operability and clarity are the product** when the consumer is another builder — and a leaky abstraction there often hurts worse than a bad screen, because the blast radius is the whole graph that trusted you.
 
 **Startup — “we have to ship or die”.** Shipping is not the same as **accumulating**. Taking debt on purpose can be right; taking debt **without naming it and without a cut line** is how you become the rewrite someone else sells. Velocity without elimination is still how small teams drown fastest.
 
@@ -263,4 +253,4 @@ If none of those labels fit, you still have **contracts, data, on-call, and a ca
 
 ## Final Thought
 
-How we plan, how we score people, and what we reward when nobody is watching still pick winners more honestly than any tool drop. Fast output is easy to copy; **what you refused to build**, **how you shrank the model before pain**, and whether the next person’s week got quieter — that is still the scarce signature. Not performative slowness: **less world to debug**, owned by people, not by autocomplete.
+Tools come and go; **the signature that survives** is still whether you left behind **less world to debug** — fewer lies in the data model, fewer parallel paths nobody owns, fewer meetings held together by heroics. That work is not performative slowness. It is what autocomplete cannot own end to end: **making a bad diagram less likely before the pager fires** — and making the fallout survivable for people who were not in the room when the box was drawn.
