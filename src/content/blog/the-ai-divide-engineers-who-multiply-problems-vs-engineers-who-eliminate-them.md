@@ -9,9 +9,7 @@ AI makes it easy to solve problems quickly, and almost anyone can play that game
 
 ## <span class="accent-faster">Code Is Now Cheap</span>. <span class="accent-dangerous">Mistakes Are Not</span>.
 
-AI makes writing code fast and cheap. It does **not** make bad decisions cheap.
-
-Wrong abstractions, wrong boundaries, and wrong data models still cost the same in outages, rewrites, and operational pain. You can now ship more bad decisions per week, so the damage can compound faster than before.
+AI makes writing code fast and cheap; it does **not** make bad decisions cheap. Wrong abstractions, wrong boundaries, and wrong data models still cost the same in outages, rewrites, and operational pain — and you can now ship more of those mistakes per week, so the damage compounds faster than before.
 
 ## The myth of “Coders lose, engineers win”
 
@@ -31,7 +29,7 @@ Here is a better way to think about it.
 
 That can come from **great developers** or **great system designers** (or leads, SREs, product-minded engineers — the list is long). **The role name is not the point.** The point is whether you **multiply problems or reduce them**, and whether people and systems leave your orbit a little **sharper** or a little more **tangled**.
 
-**AI does not fill that gap for you — it widens whatever you already reinforce.** Strong habits of judgment turn into leverage; habits of skipping the hard questions turn into volume. The section below names that split in plain terms.
+**AI does not fill that gap for you — it widens whatever you already reinforce.** Strong habits of judgement turn into leverage; habits of skipping the hard questions turn into volume. The section below names that split in plain terms.
 
 ## The Only Divide That Actually Matters
 
@@ -51,7 +49,7 @@ Wouldn’t you already start wondering if you could just use coding assistants i
 Now think of someone else — someone deeply involved. Given a task, they ask the right questions, write thoughtful documentation, and actively try to make things simpler for both the next engineer and the end user — even while adding a complex feature to the system.
 This person will likely take more time than the first. Yet, in very short time, the team realizes how valuable these genuinely slow ones are. They become indispensable — and are often the last person anyone would consider letting go.
 
-## Three Pillars of Judgement 
+## Three Pillars of Judgement
 Judgement about what to build, what to cut, and what to refactor is at the core of engineering. This idea isn’t new — it’s articulated clearly in Designing Data-Intensive Applications (Chapter 1), through three qualities of good systems:
 
 * Operability — Can the system be kept running without constant heroics?
@@ -60,9 +58,7 @@ Judgement about what to build, what to cut, and what to refactor is at the core 
 
 These are not abstract ideals. They are everyday decisions. And importantly — this judgement is not someone else’s job. It’s not “architecture”, not “tech leads”, not “senior engineers”. It’s everyone’s responsibility.
 
-Yes, these sound really very obvious. But they are not. They are often ignored in the rush to ship, and that’s where the divide is. We live in a world that celebrates what gets built and shipped — because those are easy to measure.
-But sooner, the world stops celebrating your speed. If you managed to raise 5 PRs in a day, the world knows its possible because of AI and isn't a big deal. So how can you make others
-feel what you are doing is a big deal end of the day?
+Yes, these sound really very obvious. But they are not. They are often ignored in the rush to ship, and that’s where the divide is. We live in a world that celebrates what gets built and shipped — because those are easy to measure. But speed alone stops impressing anyone: five PRs in a day only shows the tool is fast — **not** that the work was the right work. What still stands out is judgement others can see: what you refused to build, what you simplified, and what you made safe to change tomorrow.
 
 Let me repeat this: In an era where assistants and tools can help anyone produce code faster, your value is no longer just in building — it’s in judgement.
 
@@ -82,7 +78,7 @@ Each change makes sense in isolation. Each saves a bit of time. But over time, t
 
 New engineers don’t understand it. Failures become harder to debug. Someone ends up “owning” it unofficially, fixing it every few weeks. That’s not optimization. That’s accumulated complexity.
 
-A builder sees: “We improved the pipeline by 5 minutes.” A good judger asks: “Does 5 minutes actually matter?”. And more importantly:
+A builder sees: “We improved the pipeline by 5 minutes.” Someone with good judgement asks: “Does 5 minutes actually matter?” And more importantly:
 
 * Has the system been working fine for years?
 * What new complexity are we introducing?
@@ -90,11 +86,11 @@ A builder sees: “We improved the pipeline by 5 minutes.” A good judger asks:
 * Are we solving a real problem — or creating a new one?
 
 <blockquote class="pull-quote-pop">
-<p><strong>Sometimes, the best decision is: Do nothing.Keep it simple. </strong></p>
+<p><strong>Sometimes, the best decision is: do nothing. Keep it simple.</strong></p>
 </blockquote>
 
 
-## Safe Coders Win. Test Generators lose.
+## Safe Systems Win. Tests Alone Cannot Fix a Wrong Model.
 
 Here’s the uncomfortable question: Who really cares about type safety and compile-time guarantees anymore? In the age of AI, the answer is — you should care even more.
 
@@ -105,7 +101,7 @@ There’s already a growing belief:
 <p>“If an LLM generates code in a safer language like Rust instead of Python, and it compiles, it’s probably correct.”</p>
 </blockquote>
 
-There’s some truth to that. A program that compiles has already cleared a meaningful bar. But choosing the right language is only half the story. How you model your system still matters — and AI won’t do that thinking for you.
+There’s some truth to that. A program that compiles has already cleared a meaningful bar. But choosing the right language is only half the story. In Rust, `unsafe` blocks, wrong invariants, and misunderstood requirements still ship in compiled code. How you model your system still matters — and AI won’t do that thinking for you.
 Even today, an LLM will happily generate something like: `HashMap[String, String]` when it could have generated `HashMap[Id, NonEmptyString]`. The difference isn’t syntax. It’s thinking.
 
 Take a piece of logic filled with edge cases.
@@ -205,23 +201,23 @@ Both help. They solve different problems. Together they reduce the need for defe
 
 AI reduced the effort to **produce** code. It did not reduce the cost of poor scaling, weak models, unreliable behaviour, or heavy operations.
 
-If you move faster without better judgment, you can create those problems **faster** too.
+If you move faster without better judgement, you can create those problems **faster** too.
 
-<h2 class="h2-accent-warm">A tip to right judgement — start with the end-user</h2>
+<h2 class="h2-accent-warm">A tip for getting judgement right — start with the end-user</h2>
 
-We already discussed the three pillars of judgement: operability, simplicity, and evolvability. But in reality, given a problem, what should be my direction to judgement? Where do I start? End of the day, you are building something for a user. Somebody is going to end up using what you are building. May be end-user customers, or other developers within your team, or a downstream team. It doesn't matter.
+We already discussed the three pillars of judgement: operability, simplicity, and evolvability. But in reality, given a problem, where should judgement start? At the end of the day, you are building something for a user. Somebody is going to use what you build — maybe end-user customers, or other developers on your team, or a downstream team. It does not matter which.
 
-**Judgement begings from thinking from a user’s perspective.** And finally this journey goes all the way the internals of the system to further ensure its operability, simplicity and extensibility. 
+**Judgement starts with thinking from a user’s perspective.** From there, the same lens extends all the way to the internals of the system — to protect operability, simplicity, and evolvability. 
 
 **More feature implementation is not always right.** Before it lands, ask: **Is this feature needed for users? How valuable is it? Does it push the product forward?** Velocity is not the same as usefulness. Teams that measure success only by output volume still drown in maintenance, support, and rework — they just get there faster now. **A pile of small features is the final nail in the coffin for a product** — not one dramatic failure, but slow death by clutter, drift, and debt.
 
-<span class="accent-lead-red">Deciding what to build — and what to challenge — is invaluable.</span> A developer who can look at a backlog or a spec and ask, from a user’s point of view, “do people actually need this?”, “what are we trading away?”, and “can we achieve the outcome with less?” is not something you install from a model. That judgment shapes cost, clarity, and trust. It is **irreplaceable**.
+<span class="accent-lead-red">Deciding what to build — and what to challenge — is invaluable.</span> A developer who can look at a backlog or a spec and ask, from a user’s point of view, “do people actually need this?”, “what are we trading away?”, and “can we achieve the outcome with less?” is not something you install from a model. That judgement shapes cost, clarity, and trust. It is **irreplaceable**.
 
 <span class="accent-lead-red">Simplicity at the outer level should carry through to inner details.</span> A simple screen backed by a tangled system still fails in practice: behaviour becomes hard to reason about, edge cases explode, and every change hurts. Engineers who insist on **simple models and simple surfaces together** — and who refuse to hide complexity behind UI polish — are similarly hard to replace.
 
 <span class="accent-lead-red">Over complicating for an unseen future....</span> Layers of indirection, speculative generalisation, and “perfect” abstractions slow delivery and drain budgets. AI may help you refactor or untangle that mess later, but you already paid for the slow path: time, money, and opportunity. Correctness matters; **needless** complexity in its name does not.
 
-<span class="accent-lead-red">Lost in refactoring.</span> Caring about good code does **not** mean feeding an endless urge to reshape the same code again and again. You can always explain a refactor to others with a “why” — but you still owe yourself an honest version: **Is this refactor actually needed? What concrete outcome does it buy** (risk down, speed up, clearer model) **versus churn?** AI makes rewrites cheap to *start*; it does not make perpetual refactoring free. Knowing when to stop, when “good enough” is right, and when the team should ship value instead of polishing internals is **developer judgment** — and that is not replaceable.
+<span class="accent-lead-red">Lost in refactoring.</span> Caring about good code does **not** mean feeding an endless urge to reshape the same code again and again. You can always explain a refactor to others with a “why” — but you still owe yourself an honest version: **Is this refactor actually needed? What concrete outcome does it buy** (risk down, speed up, clearer model) **versus churn?** AI makes rewrites cheap to *start*; it does not make perpetual refactoring free. Knowing when to stop, when “good enough” is right, and when the team should ship value instead of polishing internals is **developer judgement** — and that is not replaceable.
 
 <blockquote class="pull-quote-pop">
 <p>Developers who <strong>routinely judge the work from a user perspective</strong>, and who combine that with scepticism about scope, <strong>discipline around refactoring</strong>, and a bias toward clarity, are the ones who make AI a multiplier instead of an accelerant for waste.</p>
