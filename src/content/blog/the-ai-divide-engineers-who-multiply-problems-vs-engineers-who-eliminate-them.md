@@ -1,11 +1,13 @@
 ---
 title: 'The AI Divide: When Everyone Can Solve Fast, Eliminators Win'
-description: 'AI makes it easy to solve problems quickly, and almost anyone can play that game. The people who pull ahead step back, think harder, and eliminate problems instead of trying to solve everything.'
+description: 'When motion is cheap, direction is scarce: shrink invalid state and needless machinery — not typing faster. Regulated, internal, startup, or “we barely use AI”: the multiply-vs-eliminate divide still runs through your stack, incentives, and who you keep.'
 pubDate: 'Apr 2 2026'
 category: 'the-lab'
 ---
 
 AI makes it easy to solve problems quickly, and almost anyone can play that game. The people who pull ahead step back, think harder, and eliminate problems instead of trying to solve everything.
+
+When the cost of **motion** drops, the scarce thing becomes **direction**: what should exist in the system at all. Tools accelerate whatever habit you already have — including the habit of treating symptoms faster instead of removing causes. That is why raw speed stops impressing almost immediately: volume was never the hard part. The hard part was always the **right delta** — less invalid state, less machinery, less scope that fails a user-value bar — and that delta is still earned, not generated.
 
 ## <span class="accent-faster">Code Is Now Cheap</span>. <span class="accent-dangerous">Mistakes Are Not</span>.
 
@@ -41,6 +43,10 @@ Same tools. Opposite outcomes.
 
 That difference affects what you ship and how much ongoing work the system needs. Stack and title matter less than whether you tend to expand mess or reduce it.
 
+**Elimination is not a euphemism for doing less engineering.** It means shrinking what the team has to reason about: invalid data you no longer allow at the boundary, services and queues you no longer need because contracts and flows are honest, work you decline because it does not clear a user-value bar. It does **not** mean skipping tests when the model is still fuzzy, skipping observability when people depend on uptime, or pretending operations are optional. Tests, metrics, and runbooks still matter. What ages poorly is using them as a **substitute** for a clear model — papering over ambiguity — instead of using them as **evidence** that a tight model actually holds in production.
+
+**That split does not stay inside the repo.** It eventually shows up in who teams fight to keep when almost everyone can ship code with help from a model.
+
 ## Employability in today's AI world
 
 The employability of an engineer now depends heavily on how much they think about what they are building.
@@ -48,6 +54,18 @@ Think of someone on your team whose only goal is to complete a task in JIRA — 
 Wouldn’t you already start wondering if you could just use coding assistants instead of relying on them?
 Now think of someone else — someone deeply involved. Given a task, they ask the right questions, write thoughtful documentation, and actively try to make things simpler for both the next engineer and the end user — even while adding a complex feature to the system.
 This person will likely take more time than the first. Yet, in very short time, the team realizes how valuable these genuinely slow ones are. They become indispensable — and are often the last person anyone would consider letting go.
+
+**None of that unfolds in a neutral workplace.** Incentives get a vote too.
+
+## When the organisation punishes judgement
+
+Your judgement at work is never only up to you. Many engineers **would** like to ask “do we really need this?” — but the job only cheers when tickets close, points move, and demos ship. Calendars stay full. Old mess rarely shows up on a scorecard. If you look “slow,” people read it as checked out, not careful. So good people learn to **move fast**, even when they know better. You also inherit mess and deadlines you did not create.
+
+**This story shows up a lot** (not one company — a pattern people tell in different places): in planning, someone says the new work will **double up** an old path and make production harder to reason about. The worry becomes a “follow-up ticket.” The feature still goes out for the big demo. A few weeks later, the same few people are on call at odd hours while the two paths drift. At review time, nobody writes up the change that would have **removed** half the integration. What gets praised is what **adds** more boxes to the slide. **You get what you measure.**
+
+Saying that is not an excuse. It is where a plan starts. When you push back, spell out the risk in plain language: more outages, harder fixes, more pages. Write the trade-off down. Ask to drop one roadmap item when the win is **less** to own. **Leaders** matter here: leave a little room to delete work, cheer when someone merges **less** code, and look at outcomes — not only how busy the team looked. If that never happens, judgement stays a lonely habit. The org trains everyone to ship fast, then asks why the pile of work never gets smaller.
+
+**So when you push back, you need words that are hard to hand-wave** — not slogans, but qualities of systems everyone can recognise. That is where a compact shared vocabulary helps.
 
 ## Three Pillars of Judgement
 Judgement about what to build, what to cut, and what to refactor is at the core of engineering. This idea isn’t new — it’s articulated clearly in Designing Data-Intensive Applications (Chapter 1), through three qualities of good systems:
@@ -58,9 +76,7 @@ Judgement about what to build, what to cut, and what to refactor is at the core 
 
 These are not abstract ideals. They are everyday decisions. And importantly — this judgement is not someone else’s job. It’s not “architecture”, not “tech leads”, not “senior engineers”. It’s everyone’s responsibility.
 
-Yes, these sound really very obvious. But they are not. They are often ignored in the rush to ship, and that’s where the divide is. We live in a world that celebrates what gets built and shipped — because those are easy to measure. But speed alone stops impressing anyone: five PRs in a day only shows the tool is fast — **not** that the work was the right work. What still stands out is judgement others can see: what you refused to build, what you simplified, and what you made safe to change tomorrow.
-
-Let me repeat this: In an era where assistants and tools can help anyone produce code faster, your value is no longer just in building — it’s in judgement.
+Yes, these sound really very obvious. But they are not. They are often ignored in the rush to ship, and that’s where the divide is. We live in a world that celebrates what gets built and shipped — because those are easy to measure. But speed alone stops impressing anyone: five PRs in a day only shows the tool is fast — **not** that the work was the right work. What still stands out is judgement others can see: what you refused to build, what you simplified, and what you made safe to change tomorrow. Assistants changed the economics of typing; they did not change the economics of **being wrong in a hurry**.
 
 ### A concrete example: CI/CD pipelines
 Almost every team has seen this. A pipeline starts simple. Then we optimize it:
@@ -89,6 +105,7 @@ A builder sees: “We improved the pipeline by 5 minutes.” Someone with good j
 <p><strong>Sometimes, the best decision is: do nothing. Keep it simple.</strong></p>
 </blockquote>
 
+**CI is one place the pattern appears.** The same fork — paper over mess versus tighten the model — shows up directly in the code you merge.
 
 ## Safe Systems Win. Tests Alone Cannot Fix a Wrong Model.
 
@@ -137,6 +154,7 @@ In an AI-driven world, many developers can generate “good” code. The ones wh
 
 At the end of the day, the final reviewer is you. If you feel there’s nothing left for you to review in AI-generated code, you’re not ahead — you’re already falling behind.
 
+**Step up from files and tests to boxes and arrows** — the same “add machinery vs fix the contract” move is what teams draw on whiteboards when production hurts.
 
 ## How Complexity Disguises Itself as Progress
 
@@ -185,6 +203,8 @@ This is the same move as earlier with tests. You can drown in <strong>thousands 
 
 A direct alternative: tighten contracts, make operations idempotent where it matters, simplify data shapes (for example append-only logs instead of shared mutable state) so fewer failure modes exist. **Adding services is easy. Removing the need for them is the harder and more valuable work.**
 
+**Assistants do not pick a direction for you** — they will help you sketch more boxes or help you delete them. What happens next is still a human habit.
+
 ## AI Makes Good Engineers <span class="accent-faster">Faster</span>. And Bad Ones <span class="accent-dangerous">Dangerous</span>.
 
 AI does not know if it is increasing or reducing complexity. It will generate more tests, services, layers, and code on request.
@@ -203,9 +223,11 @@ AI reduced the effort to **produce** code. It did not reduce the cost of poor sc
 
 If you move faster without better judgement, you can create those problems **faster** too.
 
+**Operability, simplicity, and evolvability stay abstract until you know who the work is for.** Everything below ties those guardrails to that person — whoever they are.
+
 <h2 class="h2-accent-warm">A tip for getting judgement right — start with the end-user</h2>
 
-We already discussed the three pillars of judgement: operability, simplicity, and evolvability. But in reality, given a problem, where should judgement start? At the end of the day, you are building something for a user. Somebody is going to use what you build — maybe end-user customers, or other developers on your team, or a downstream team. It does not matter which.
+Operability, simplicity, and evolvability are the guardrails. **In practice, given a problem, where should judgement start?** At the end of the day, you are building something for a user. Somebody is going to use what you build — maybe end-user customers, or other developers on your team, or a downstream team. It does not matter which.
 
 **Judgement starts with thinking from a user’s perspective.** From there, the same lens extends all the way to the internals of the system — to protect operability, simplicity, and evolvability. 
 
@@ -223,6 +245,32 @@ We already discussed the three pillars of judgement: operability, simplicity, an
 <p>Developers who <strong>routinely judge the work from a user perspective</strong>, and who combine that with scepticism about scope, <strong>discipline around refactoring</strong>, and a bias toward clarity, are the ones who make AI a multiplier instead of an accelerant for waste.</p>
 </blockquote>
 
+## If you think this is “not about us” — it still is
+
+There is no carve-out where **motion beats direction**, or where **piling on work** stops having a bill, or where **AI stops amplifying habits**. The shape changes; the trade-off does not. If any line below sounds like your team, the post still applies — only the costume is different.
+
+**Regulated, safety-critical, or “we cannot move fast and break things”.** Good — you have extra reason to **tighten models and shrink surface area**, not to drown in generated tests and services that auditors still have to trace. Compliance does not love two parallel code paths and a mystery integration; it loves **fewer states to prove**.
+
+**Internal tools — “we have no end users”.** You do: the next team, the analyst, the on-call person at 3 a.m. If your “customer” is another engineer, **operability and clarity are the product**. The same questions apply: who breaks when this is wrong, and can we achieve the outcome with **less** machinery?
+
+**Platform, infra, or devtools.** Your users are other builders. Shipping a fuzzy API or a fragile pipeline still creates **downstream problems at scale** — often worse than a bad screen, because the blast radius is every service that trusted you.
+
+**Startup — “we have to ship or die”.** Shipping is not the same as **accumulating**. Taking debt on purpose can be right; taking debt **without naming it and without a cut line** is how you become the rewrite someone else sells. Velocity without elimination is still how small teams drown fastest.
+
+**Big enterprise — “we have process for that”.** Process rarely deletes ambiguity; it often **routes** it. More sign-offs do not replace **one fewer invalid state**. If anything, the cost of a messy model shows up as **more meetings, more CABs, more runbooks** — the busy diagram in business casual.
+
+**“We barely use AI.”** You still paste from Stack Overflow, accept large diffs you skim, merge dependency bumps you did not read, and live with configs nobody owns. The muscle this post is about is **review and refusal**, not the brand name on the autocomplete. When assistants do land in your workflow, the habit is already set.
+
+**“Our culture already values quality.”** Pressure-test it: does review praise **removals** and scope cuts the same way it praises launches? Do metrics reward **less** owned system, or only more shipped? Do new hires understand the system in weeks, or only the hero who wrote it? Culture that is real shows up in **what gets promoted and what gets cut** — not in slogans.
+
+**Research, spikes, “we are just exploring”.** Exploration is legitimate. The failure mode is **shipping the spike** — or never choosing what dies — so exploration quietly becomes **production debt**. Judgement includes saying: this experiment ends **here**, and here is what we delete when we learn.
+
+**Agency, consulting, “we only build what clients pay for”.** Your repo and your reputation still carry the pile. “The client asked for it” is the same abdication as “the ticket was in JIRA” if nobody names the **long-term cost** on the people who maintain it.
+
+**“We are special — our domain is inherently complex.”** Some domains are hard. **Inherent complexity** is not the same as **self-inflicted complexity**. The post targets the second: duplicate paths, vague types, machinery that exists because nobody had the political air to fix the contract. Hard problems still benefit from **fewer lies in the model**.
+
+If none of those labels fit, you still have **contracts, data, on-call, and a calendar**. Unless you have **no** production system and **no** colleagues, the divide — multiply versus eliminate — is live in your work. The only real opt-out is to stop pretending the loophole was ever there.
+
 ## Final Thought
 
-The quality of atmosphere we make in a team in all dimensions decides employability. The atmosphere you make in the AI world is not through the velocity of what you produce. It is the quality of your judgement on what to produce, and how to produce.
+The atmosphere we make in a team — in planning, in how we measure people, in what we reward when nobody is watching — shapes employability as much as any tool hype cycle. In a market saturated with fast output, visible velocity is a weak differentiator almost by definition. What stays scarce is judgement: what you argued **not** to build, how you tightened the model before the outage, and whether you left the next person’s week calmer instead of louder. That is not performative slowness. It is the craft of leaving behind **less world to debug** — and that is still the job only a human team can own end to end.
