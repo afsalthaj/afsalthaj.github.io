@@ -43,27 +43,104 @@ Same tools. Opposite outcomes.
 
 That difference affects what you ship and how much ongoing work the system needs. Stack and title matter less than whether you tend to expand mess or reduce it.
 
-## You Didn’t Solve It — You Just Tested Around It
+## Employability in today's AI world
 
-Take logic with many edge cases.
+The employability of an engineer now depends heavily on how much they think about what they are building.
+Think of someone on your team whose only goal is to complete a task in JIRA — someone who isn’t really invested in the overall outcome of the system.
+Wouldn’t you already start wondering if you could just use coding assistants instead of relying on them?
+Now think of someone else — someone deeply involved. Given a task, they ask the right questions, write thoughtful documentation, and actively try to make things simpler for both the next engineer and the end user — even while adding a complex feature to the system.
+This person will likely take more time than the first. Yet, in very short time, the team realizes how valuable these genuinely slow ones are. They become indispensable — and are often the last person anyone would consider letting go.
 
-**Approach 1:** Accept the complexity and use AI to generate a huge test suite. Coverage looks great. Over time, CI slows down, tests flake, and maintaining tests becomes a real cost.
+## Three Pillars of Judgement 
+Judgement about what to build, what to cut, and what to refactor is at the core of engineering. This idea isn’t new — it’s articulated clearly in Designing Data-Intensive Applications (Chapter 1), through three qualities of good systems:
 
-**Approach 2:** Ask **why** those edge cases exist. Change the model so invalid cases cannot be represented: stronger types, clearer invariants, better abstractions. Many “edge cases” disappear because the bad states are no longer expressible.
+* Operability — Can the system be kept running without constant heroics?
+* Simplicity — Can a new engineer understand it without decoding tribal knowledge?
+* Evolvability — Can it adapt gracefully to future change?
 
-Both approaches can be done quickly with AI in the short term. The difference is what you leave behind: a system that **always needs heavy validation**, or a system that **needs less validation because the model is tighter**.
+These are not abstract ideals. They are everyday decisions. And importantly — this judgement is not someone else’s job. It’s not “architecture”, not “tech leads”, not “senior engineers”. It’s everyone’s responsibility.
 
-## The Biggest Misclassification in Engineering
+Yes, these sound really very obvious. But they are not. They are often ignored in the rush to ship, and that’s where the divide is. We live in a world that celebrates what gets built and shipped — because those are easy to measure.
+But sooner, the world stops celebrating your speed. If you managed to raise 5 PRs in a day, the world knows its possible because of AI and isn't a big deal. So how can you make others
+feel what you are doing is a big deal end of the day?
 
-We correctly treat scalability, reliability, correctness, data, and performance as big concerns.
+Let me repeat this: In an era where assistants and tools can help anyone produce code faster, your value is no longer just in building — it’s in judgement.
 
-We often wrongly assume that **only** big, architectural choices affect them. **Small modeling choices affect them too** — how types are defined, how state is represented, what is allowed at compile time vs left to runtime checks.
+### A concrete example: CI/CD pipelines
+Almost every team has seen this. A pipeline starts simple. Then we optimize it:
 
-## The Decisions That Look Small — But Break Systems
+* parallel steps
+* caching layers
+* conditional triggers
+* environment tweaks
 
-Naming and constraining data is not cosmetic. Weak types lead to ambiguity, extra defensive checks, and bugs that are hard to trace. Stronger types rule out invalid states early — often before deploy.
+Each change makes sense in isolation. Each saves a bit of time. But over time, the pipeline becomes:
 
-Those “small” decisions are part of reliability and maintainability, not separate from them.
+* harder to understand
+* more fragile
+* dependent on hidden assumptions
+
+New engineers don’t understand it. Failures become harder to debug. Someone ends up “owning” it unofficially, fixing it every few weeks. That’s not optimization. That’s accumulated complexity.
+
+A builder sees: “We improved the pipeline by 5 minutes.” A good judger asks: “Does 5 minutes actually matter?”. And more importantly:
+
+* Has the system been working fine for years?
+* What new complexity are we introducing?
+* What is the long-term cost of maintaining this?
+* Are we solving a real problem — or creating a new one?
+
+<blockquote class="pull-quote-pop">
+<p><strong>Sometimes, the best decision is: Do nothing.Keep it simple. </strong></p>
+</blockquote>
+
+
+## Safe Coders Win. Test Generators lose.
+
+Here’s the uncomfortable question: Who really cares about type safety and compile-time guarantees anymore? In the age of AI, the answer is — you should care even more.
+
+
+There’s already a growing belief:
+
+<blockquote class="pull-quote-pop">
+<p>“If an LLM generates code in a safer language like Rust instead of Python, and it compiles, it’s probably correct.”</p>
+</blockquote>
+
+There’s some truth to that. A program that compiles has already cleared a meaningful bar. But choosing the right language is only half the story. How you model your system still matters — and AI won’t do that thinking for you.
+Even today, an LLM will happily generate something like: `HashMap[String, String]` when it could have generated `HashMap[Id, NonEmptyString]`. The difference isn’t syntax. It’s thinking.
+
+Take a piece of logic filled with edge cases.
+
+### Approach 1 — Test your way out 
+
+Accept the complexity. Lean on AI to generate a massive test suite.
+
+* Coverage looks impressive
+* Edge cases are “handled”
+* CI gets slower
+* Tests start flaking
+* Maintenance cost quietly grows
+
+### Approach 2 — Model your way out
+
+Ask a different question: Why do these edge cases exist in the first place? Then redesign:
+
+* Use stronger types
+* Encode invariants
+* Introduce better abstractions
+
+Now something interesting happens: many “edge cases” simply disappear — because the invalid states can no longer be represented.
+
+Both approaches are fast with AI. That’s not the differentiator anymore. The real difference is what you leave behind:
+
+* A system that demands continuous validation
+* Or a system that is correct by construction
+
+We correctly treat scalability, reliability, correctness, data, and performance as major concerns. But we often assume that only big architectural decisions shape them. That’s not true. Small modeling choices matter just as much — how types are defined, how state is represented, and what is enforced at compile time versus left to runtime checks.
+
+In an AI-driven world, many developers can generate “good” code. The ones who stand out are those who consistently generate the right code. That doesn’t happen by accident; it comes from carefully reviewing what AI produces and making sure these fundamentals are preserved.
+
+At the end of the day, the final reviewer is you. If you feel there’s nothing left for you to review in AI-generated code, you’re not ahead — you’re already falling behind.
+
 
 ## How Complexity Disguises Itself as Progress
 
