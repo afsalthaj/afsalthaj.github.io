@@ -207,9 +207,11 @@ AI reduced the effort to **produce** code. It did not reduce the cost of poor sc
 
 If you move faster without better judgment, you can create those problems **faster** too.
 
-<h2 class="h2-accent-warm">How to improve our judgement — start with the user</h2>
+<h2 class="h2-accent-warm">A tip to right judgement — start with the end-user</h2>
 
-**The cornerstone for getting judgement right is thinking from a user’s perspective.**
+We already discussed the three pillars of judgement: operability, simplicity, and evolvability. But in reality, given a problem, what should be my direction to judgement? Where do I start? End of the day, you are building something for a user. Somebody is going to end up using what you are building. May be end-user customers, or other developers within your team, or a downstream team. It doesn't matter.
+
+**Judgement begings from thinking from a user’s perspective.** And finally this journey goes all the way the internals of the system to further ensure its operability, simplicity and extensibility. 
 
 **More feature implementation is not always right.** Before it lands, ask: **Is this feature needed for users? How valuable is it? Does it push the product forward?** Velocity is not the same as usefulness. Teams that measure success only by output volume still drown in maintenance, support, and rework — they just get there faster now. **A pile of small features is the final nail in the coffin for a product** — not one dramatic failure, but slow death by clutter, drift, and debt.
 
