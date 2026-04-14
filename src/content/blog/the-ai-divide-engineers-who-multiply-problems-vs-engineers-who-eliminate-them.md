@@ -23,6 +23,26 @@ AI makes it easy to solve problems quickly, and almost anyone can play that game
 
 When the cost of **motion** drops, the scarce thing becomes **direction**: what should exist in the system at all. Tools accelerate whatever habit you already have — including the habit of treating symptoms faster instead of removing causes. That is why raw speed stops impressing almost immediately: volume was never the hard part. The hard part was always the **right delta** — less invalid state, less machinery, less scope that fails a user-value bar — and that delta is still earned, not generated.
 
+## Employability in today's AI world
+
+First and foremost, no one can predict the future — and I’m certainly in no position to even pretend I can. One strategy could be optimism. You know, the same kind we all have when we confidently think, “Yeah, earthquakes? Not happening in my city.” It sounds illogical, but if it gives peace of mind, why not!
+
+If we really need to talk about employability in the context of AI, here is what I think. Employability already tilts toward people who think about **what** they are building — not only how **fast** they clear a board.
+**Fast** is a commodity now. In today's world, fortunately or unfortunately, the more `faster` you are, it implies the more `tokens` you used.
+
+Sure, you can finish an entire epic in one sprint by spinning up 10 AI agents and going full Productivity Pro Max™. But let’s be honest — you didn’t become exceptional. You just scaled your AI bill.
+
+The process might look impressive. The outcome might even be good. But the person? Still replaceable.
+
+Let’s not dance around it. Think of that one person on a team whose only goal is to move a JIRA ticket from “In Progress” to “Done,” like it’s a video game achievement. They’re not really thinking about the system, the trade-offs, or the future — they’re just… clearing levels.
+
+Wouldn’t you already start wondering if you could just use coding assistants instead of relying on them?
+
+Now think of someone else — someone deeply involved. Given a task, they ask the right questions, write thoughtful documentation, and actively try to make things simpler for both the next engineer and the end user — even while adding a complex feature to the system.
+
+So the real game isn’t just being fast — it’s figuring out which game you’re actually being scored on before you optimize yourself into irrelevance. Sometimes it is about being fast, but many times it’s your knowledge and judgment that create a positive atmosphere around you — so much so that you become your team’s assistant.
+
+
 ## The myth of “Coders lose, Engineers win”
 
 You hear a lazy version of the story: developers get automated, but **system designers** stay safe because their work is “high level.” That map is weak. Models are already trained on architecture — patterns, trade-offs, scaling, production-style designs. With enough context, they can sketch boundaries and talk about failure modes. **No title is “safe”** just because it sounds strategic on a chart.
@@ -72,25 +92,6 @@ Here, **eliminators** are the people who know what they are doing well enough th
 First-level thinking is: we have a gap, so we add a thing. The eliminator habit is one step harder: we have a gap — can we remove the cause, tighten the contract, or fold this into what already exists so the system stays easier to reason about? When they add, the addition earns its rent. When they merge, the organisation’s mental load often goes **down**, not up, for the same user-visible win.
 
 That is why the word is *eliminate*: they shrink what must be owned — invalid states, duplicate paths, clever machinery nobody will maintain — not because they refuse to build, but because they refuse to fund ghost towns.
-
-## Employability in today's AI world
-
-First and foremost, no one can predict the future — and I’m certainly in no position to even pretend I can. One strategy could be optimism. You know, the same kind we all have when we confidently think, “Yeah, earthquakes? Not happening in my city.” It sounds illogical, but if it gives peace of mind, why not! 
-
-If we really need to talk about employability in the context of AI, here is what I think. Employability already tilts toward people who think about **what** they are building — not only how **fast** they clear a board.
-**Fast** is a commodity now. In today's world, fortunately or unfortunately, the more `faster` you are, it implies the more `tokens` you used.
-
-Sure, you can finish an entire epic in one sprint by spinning up 10 AI agents and going full Productivity Pro Max™. But let’s be honest — you didn’t become exceptional. You just scaled your AI bill.
-
-The process might look impressive. The outcome might even be good. But the person? Still replaceable.
-
-Let’s not dance around it. Think of that one person on a team whose only goal is to move a JIRA ticket from “In Progress” to “Done,” like it’s a video game achievement. They’re not really thinking about the system, the trade-offs, or the future — they’re just… clearing levels.
-
-Wouldn’t you already start wondering if you could just use coding assistants instead of relying on them?
-
-Now think of someone else — someone deeply involved. Given a task, they ask the right questions, write thoughtful documentation, and actively try to make things simpler for both the next engineer and the end user — even while adding a complex feature to the system.
-
-So the real game isn’t just being fast — it’s figuring out which game you’re actually being scored on before you optimize yourself into irrelevance. Sometimes it is about being fast, but many times it’s your knowledge and judgment that create a positive atmosphere around you — so much so that you become your team’s assistant.
 
 ## When the organisation punishes judgement
 
