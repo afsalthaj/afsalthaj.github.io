@@ -5,19 +5,31 @@ pubDate: 'Apr 2 2026'
 category: 'the-lab'
 ---
 
-AI makes it easy to solve problems quickly, and almost anyone can play that game. The people who pull ahead step back, think harder, and eliminate problems instead of trying to solve everything.
+<h2 class="h2-accent-warm">Before you read</h2>
+
+Some of this will feel **familiar**, even **repetitive** to you. Read it **so it stays with you** — something you **notice and reuse day after day** at work, not a page you skim once and leave behind.
+
+After every technology revolution came layoffs, and the people who stayed — usually the **last** anyone would let go — were not random: they were worth keeping because they worked in a more valuable way, and that value was <span class="accent-lead-red">the atmosphere they created in the team with how they work</span> — the *way* itself was the solution already in the room.
+
+This technology revolution — the **AI** wave — is **more aggressive** than the cycles we have lived through before. What keeps you valuable and employable is still the same *how* you show up — tone, judgement, the lift you bring. Only the **pace** changes: because the revolution is **aggressive**, that same remedy has to be **seen and applied aggressively** too. 
+
+For that reason, what needs doing has to be **stated plainly in one place** — **this essay is that statement**. It is not a roster of tools to master in 2026, nor a grab-bag of productivity tips.
+
+It is not meant as preaching — just an observation from my own thinking and from working on a range of projects over the years.
+
+<h2 class="h2-accent-warm">With that out of the way</h2>
+
+AI makes it easy to solve problems quickly, and almost anyone can play that game. The ones who get ahead **think first** — then **eliminate** problems instead of trying to fix everything.
 
 When the cost of **motion** drops, the scarce thing becomes **direction**: what should exist in the system at all. Tools accelerate whatever habit you already have — including the habit of treating symptoms faster instead of removing causes. That is why raw speed stops impressing almost immediately: volume was never the hard part. The hard part was always the **right delta** — less invalid state, less machinery, less scope that fails a user-value bar — and that delta is still earned, not generated.
 
-## <span class="accent-faster">Code Is Now Cheap</span>. <span class="accent-dangerous">Mistakes Are Not</span>.
-
-Bad abstractions and wrong boundaries still cost outages and rewrites — only now you can ship **more** of them per week, so the bill arrives sooner.
-
-## The myth of “Coders lose, engineers win”
+## The myth of “Coders lose, Engineers win”
 
 You hear a lazy version of the story: developers get automated, but **system designers** stay safe because their work is “high level.” That map is weak. Models are already trained on architecture — patterns, trade-offs, scaling, production-style designs. With enough context, they can sketch boundaries and talk about failure modes. **No title is “safe”** just because it sounds strategic on a chart.
 
-Here is a better way to think about it.
+We often come up with these kind of statements now and then, just to make some noise in the room. If everything had been as black and white as these statements, the whole story of humanity’s survival would have been much easier.
+
+Anyway, here is a better way to think about it.
 
 **“Safe” has more to do with how you show up than what your title says.** Every person on a team **shapes the atmosphere** — how honest the debate is, how much people care about the outcome, and whether the work stays tied to the product and the company you are building. That is not abstract: it shows up in decisions, in code, and in who stays and who burns out.
 
@@ -29,9 +41,9 @@ Here is a better way to think about it.
 <p><strong>What makes you create the right wave?</strong> Your <strong>judgement</strong> — at every point: what you build, what you cut, what you refactor, and what you refuse to treat as normal. Your judgement directs the tools you use, and directs the people around you to converge to great outcomes.</p>
 </blockquote>
 
-That can come from **great developers** or **great system designers** (or leads, SREs, product-minded engineers — the list is long). **The role name is not the point.** The point is whether you **multiply problems or reduce them**, and whether people and systems leave your orbit a little **sharper** or a little more **tangled**.
+That can come from **great developers** or **great system designers** (or leads, SREs, product-minded engineers — the list is long). **The role name is not the point.** The point is whether you **multiply problems or reduce them**.
 
-**AI does not fill that gap for you — it widens whatever you already reinforce.** Strong habits of judgement turn into leverage; habits of skipping the hard questions turn into volume. The section below names that split in plain terms.
+**AI does not fill that gap for you — it widens whatever you already reinforce.** Habits of skipping the hard questions turn into volume.
 
 ## The Only Divide That Actually Matters
 
@@ -47,19 +59,42 @@ That difference affects what you ship and how much ongoing work the system needs
 
 **That split does not stay inside the repo.** It eventually shows up in who teams fight to keep when almost everyone can ship code with help from a model.
 
+<blockquote class="pull-quote-pop">
+<p><strong>Small bonus, half in jest:</strong> if you keep this frame in mind — clearer intent, tighter contracts, less “just make it work” — your <strong>prompts to coding assistants</strong> tend to get better too. Not the main point; take it or leave it.</p>
+</blockquote>
+
+## Why we call them “eliminators”
+
+The label is easy to misread. **Eliminator does not mean “no to new functionality.”** It does not mean the engineer who blocks the roadmap because every idea sounds risky. Those postures exist; they are not what this essay is praising.
+
+Here, **eliminators** are the people who know what they are doing well enough that their footprint is often **smaller**, not larger: fewer blind alleys, fewer moving parts, fewer first-pass “obvious” additions that the team regrets once the model tightens. They still say **yes** to real product work. What they avoid is **extra** — the liability of a new service, queue, abstraction, or even a **line** of code that does not pay for itself. They treat technical debt the way a serious team treats money: every draw has an interest rate, and compounding is not theoretical. Their work tends to have a **clear ROI**: less machinery carried for the same or better outcome.
+
+First-level thinking is: we have a gap, so we add a thing. The eliminator habit is one step harder: we have a gap — can we remove the cause, tighten the contract, or fold this into what already exists so the system stays easier to reason about? When they add, the addition earns its rent. When they merge, the organisation’s mental load often goes **down**, not up, for the same user-visible win.
+
+That is why the word is *eliminate*: they shrink what must be owned — invalid states, duplicate paths, clever machinery nobody will maintain — not because they refuse to build, but because they refuse to fund ghost towns.
+
 ## Employability in today's AI world
 
-Employability already tilts toward people who think about **what** they are building — not only how fast they clear a board.
-Think of someone on your team whose only goal is to complete a task in JIRA — someone who isn’t really invested in the overall outcome of the system.
-Wouldn’t you already start wondering if you could just use coding assistants instead of relying on them?
-Now think of someone else — someone deeply involved. Given a task, they ask the right questions, write thoughtful documentation, and actively try to make things simpler for both the next engineer and the end user — even while adding a complex feature to the system.
-This person will likely take more time than the first. Yet, in very short time, the team realizes how valuable these genuinely slow ones are. They become indispensable — and are often the last person anyone would consider letting go.
+First and foremost, no one can predict the future — and I’m certainly in no position to even pretend I can. One strategy could be optimism. You know, the same kind we all have when we confidently think, “Yeah, earthquakes? Not happening in my city.” It sounds illogical, but if it gives peace of mind, why not! 
 
-**None of that unfolds in a neutral workplace.** Incentives get a vote too.
+If we really need to talk about employability in the context of AI, here is what I think. Employability already tilts toward people who think about **what** they are building — not only how **fast** they clear a board.
+**Fast** is a commodity now. In today's world, fortunately or unfortunately, the more `faster` you are, it implies the more `tokens` you used.
+
+Sure, you can finish an entire epic in one sprint by spinning up 10 AI agents and going full Productivity Pro Max™. But let’s be honest — you didn’t become exceptional. You just scaled your AI bill.
+
+The process might look impressive. The outcome might even be good. But the person? Still replaceable.
+
+Let’s not dance around it. Think of that one person on a team whose only goal is to move a JIRA ticket from “In Progress” to “Done,” like it’s a video game achievement. They’re not really thinking about the system, the trade-offs, or the future — they’re just… clearing levels.
+
+Wouldn’t you already start wondering if you could just use coding assistants instead of relying on them?
+
+Now think of someone else — someone deeply involved. Given a task, they ask the right questions, write thoughtful documentation, and actively try to make things simpler for both the next engineer and the end user — even while adding a complex feature to the system.
+
+So the real game isn’t just being fast — it’s figuring out which game you’re actually being scored on before you optimize yourself into irrelevance. Sometimes it is about being fast, but many times it’s your knowledge and judgment that create a positive atmosphere around you — so much so that you become your team’s assistant.
 
 ## When the organisation punishes judgement
 
-Your judgement at work is never only up to you. Many engineers **would** like to ask “do we really need this?” — but the job only cheers when tickets close, points move, and demos ship. Calendars stay full. Old mess rarely shows up on a scorecard. If you look “slow,” people read it as checked out, not careful. So good people learn to **move fast**, even when they know better. You also inherit mess and deadlines you did not create.
+Your judgment at work is never only up to you. Many engineers **would** like to ask “do we really need this?” — but the job only cheers when tickets close, points move, and demos ship. Calendars stay full. Old mess rarely shows up on a scorecard. If you look “slow,” people read it as checked out, not careful. So good people learn to **move fast**, even when they know better. You also inherit mess and deadlines you did not create.
 
 **This story shows up a lot** (not one company — a pattern people tell in different places): in planning, someone says the new work will **double up** an old path and make production harder to reason about. The worry becomes a “follow-up ticket.” The feature still goes out for the big demo. A few weeks later, the same few people are on call at odd hours while the two paths drift. At review time, nobody writes up the change that would have **removed** half the integration. What gets praised is what **adds** more boxes to the slide. **You get what you measure.**
 
@@ -106,7 +141,9 @@ A builder sees: “We improved the pipeline by 5 minutes.” Someone with good j
 
 **CI is one place the pattern appears.** The same fork — paper over mess versus tighten the model — shows up directly in the code you merge.
 
-## Safe Systems Win. Tests Alone Cannot Fix a Wrong Model.
+## <span class="accent-faster">Code Is Now Cheap</span>. <span class="accent-dangerous">Mistakes Are Not</span>.
+
+Bad abstractions and wrong boundaries still cost outages and rewrites — only now you can ship **more** of them per week, so the bill arrives sooner.
 
 Here’s the uncomfortable question: Who really cares about type safety and compile-time guarantees anymore? In the age of AI, the answer is — you should care even more.
 
@@ -195,35 +232,19 @@ Each addition can feel like progress. Often it is **complexity you now have to o
 
 **Concrete next moves** (same idea as fewer boxes above): tighten contracts, make operations idempotent where it matters, simplify data shapes (for example append-only logs instead of shared mutable state). **Adding services is easy. Removing the need for them is the harder and more valuable work.**
 
-## AI Makes Good Engineers <span class="accent-faster">Faster</span>. And Bad Ones <span class="accent-dangerous">Dangerous</span>.
-
-AI still does not know whether it is increasing or reducing complexity — no more at the service level than at the type level. It will generate more tests, services, layers, and code on request.
-
-**You** decide whether that output helps or piles on work. If you cannot tell the difference, you will get both.
-
-**Domain types** (e.g. `UserId` instead of a raw `string`) reduce confusion for people and for tools. They document intent.
-
-**Type parameterisation** goes further: it encodes **rules and relationships** in the type system, so some mistakes show up as **compile-time errors** instead of runtime bugs.
-
-Both help. They solve different problems. Together they reduce the need for defensive code everywhere.
-
-<h2 class="section-callout-pop">Code Is Cheap. Consequences Are Not.</h2>
-
-AI reduced the effort to **produce** code. It did not reduce the cost of poor scaling, weak models, unreliable behaviour, or heavy operations.
-
-If you move faster without better judgement, you can create those problems **faster** too.
-
 <h2 class="h2-accent-warm">A tip for getting judgement right — start with the end-user</h2>
 
-Operability, simplicity, and evolvability are the guardrails — they stay abstract until you anchor them to **someone who will feel the failure**. Start with whoever uses what you build: end customers, the next team, or a downstream service; the label does not change the bar. **Run the same lens inward** so those three stay real in code and operations, not slide filler.
+Operability, simplicity, and evolvability are the guardrails — they stay abstract until you anchor them to **someone who will feel the failure**. Who is that someone? Well, the users. The users can be end-user of your product, or just the next team, or a downstream service. The validation begins here and it almost always re-enforces the three pillars inwards.
 
-**More feature implementation is not always right.** Before it lands, ask: **Is this feature needed for users? How valuable is it? Does it push the product forward?** Velocity is not the same as usefulness. Teams that measure success only by output volume still drown in maintenance, support, and rework — they just get there faster now. **A pile of small features is the final nail in the coffin for a product** — not one dramatic failure, but slow death by clutter, drift, and debt.
+We add a service, and we judge ourselves that it is a necessity for some reason. But if this avoidable service produce more latency or increased response time, then it goes all the way to the user. So many times, a validation of our judgment is just about wearing the hat of an average user.
 
-<span class="accent-lead-red">Deciding what to build — and what to challenge — is invaluable.</span> A developer who can look at a backlog or a spec and ask, from a user’s point of view, “do people actually need this?”, “what are we trading away?”, and “can we achieve the outcome with less?” is not something you install from a model. That judgement shapes cost, clarity, and trust. It is **irreplaceable**.
+Here are some tips that I created for myself:
 
-<span class="accent-lead-red">Simplicity at the outer level should carry through to inner details.</span> A simple screen backed by a tangled system still fails in practice: behaviour becomes hard to reason about, edge cases explode, and every change hurts. Engineers who insist on **simple models and simple surfaces together** — and who refuse to hide complexity behind UI polish — are similarly hard to replace.
+<span class="accent-lead-red">Deciding what to build — and what to challenge — is invaluable.</span> More feature implementation is not always right. Even if I am not the product owner, I do ask myself: **Is this feature needed for users? How valuable is it? Does it push the product forward?** Velocity is not the same as usefulness. In my recent experience of working in Golem, we had a great visionary, and most of the time, the answer was "yes, the feature is needed to push the product forward". But this was a rare scenario.
 
-<span class="accent-lead-red">Over complicating for an unseen future....</span> Layers of indirection, speculative generalisation, and “perfect” abstractions slow delivery and drain budgets. AI may help you refactor or untangle that mess later, but you already paid for the slow path: time, money, and opportunity. Correctness matters; **needless** complexity in its name does not.
+<span class="accent-lead-red">Simplicity at the outer level should carry through to inner details.</span> A simple screen backed by a tangled system still fails in practice: behavior becomes hard to reason about, edge cases explode, and every change hurts. Engineers who insist on **simple models and simple surfaces together** — and who refuse to hide complexity behind UI polish — are similarly hard to replace.
+
+<span class="accent-lead-red">Over complicating for an unseen future.</span> Here is an exaggerated version of it: What if the whole amazon region is exploded in a nuclear attack ? The response to such a question should be `what if anything` (obviously inspired). You get the point. Stop over complicating by listing caveats. Caveats from engineers may sound relevant (no-one is stupid here), but it takes one more level of thinking whether it is a forgettable caveat or not. Asking too many questions and addressing all of them will make us the slowest in the market. Yes, layers of indirection for some future cause is something I saw almost everywhere. But I think, I never realized it on the spot.
 
 <span class="accent-lead-red">Lost in refactoring.</span> Caring about good code does **not** mean feeding an endless urge to reshape the same code again and again. You can always explain a refactor to others with a “why” — but you still owe yourself an honest version: **Is this refactor actually needed? What concrete outcome does it buy** (risk down, speed up, clearer model) **versus churn?** AI makes rewrites cheap to *start*; it does not make perpetual refactoring free. Knowing when to stop, when “good enough” is right, and when the team should ship value instead of polishing internals is **developer judgement** — and that is not replaceable.
 
