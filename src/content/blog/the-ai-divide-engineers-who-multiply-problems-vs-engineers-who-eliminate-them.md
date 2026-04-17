@@ -34,14 +34,9 @@ Sure, you can finish an entire epic in one sprint by spinning up 10 AI agents an
 
 The process might look impressive. The outcome might even be good. But the person? Still replaceable.
 
-Let’s not dance around it. Think of that one person on a team whose only goal is to move a JIRA ticket from “In Progress” to “Done,” like it’s a video game achievement. They’re not really thinking about the system, the trade-offs, or the future — they’re just… clearing levels.
+Think of that one person on a team whose only goal is to move a JIRA ticket from “In Progress” to “Done".
 
-Wouldn’t you already start wondering if you could just use coding assistants instead of relying on them?
-
-Now think of someone else — someone deeply involved. Given a task, they ask the right questions, write thoughtful documentation, and actively try to make things simpler for both the next engineer and the end user — even while adding a complex feature to the system.
-
-So the real game isn’t just being fast — it’s figuring out which game you’re actually being scored on before you optimize yourself into irrelevance. Sometimes it is about being fast, but many times it’s your knowledge and judgment that create a positive atmosphere around you — so much so that you become your team’s assistant.
-
+Wouldn’t you already start wondering if you could just use coding assistants instead of relying on them? 
 
 ## The myth of “Coders lose, Engineers win”
 
