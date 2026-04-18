@@ -74,15 +74,9 @@ Same tools. Opposite outcomes.
 
 That difference affects what you ship and how much ongoing work the system needs. Stack and title matter less than whether you tend to expand mess or reduce it.
 
-**Elimination does not mean doing less engineering.** It means shrinking what the team has to reason about: invalid data you no longer allow at the boundary, services and queues you no longer need because contracts and flows are honest, work you decline because it does not clear a user-value bar. It does **not** mean skipping tests when the model is still fuzzy, skipping observability when people depend on uptime, or pretending operations are optional. Tests, metrics, and runbooks still matter. What ages poorly is using them as a **substitute** for a clear model — papering over ambiguity — instead of using them as **evidence** that a tight model actually holds in production.
+## Why we call them “Eliminators”
 
-**That split does not stay inside the repo.** It eventually shows up in who teams fight to keep when almost everyone can ship code with help from a model.
-
-<blockquote class="pull-quote-pop">
-<p><strong>Small bonus, half in jest:</strong> if you keep this frame in mind — clearer intent, tighter contracts, less “just make it work” — your <strong>prompts to coding assistants</strong> tend to get better too. Not the main point; take it or leave it.</p>
-</blockquote>
-
-## Why we call them “eliminators”
+There are two ways to tackle a problem. Either solve the problem, or eliminate the problem. The first is the default. The second is harder, and more rewarding.
 
 The label is easy to misread. **Eliminator does not mean “no to new functionality.”** It does not mean the engineer who blocks the roadmap because every idea sounds risky. Those postures exist; they are not what this essay is praising.
 
@@ -91,6 +85,11 @@ Here, **eliminators** are the people who know what they are doing well enough th
 First-level thinking is: we have a gap, so we add a thing. The eliminator habit is one step harder: we have a gap — can we remove the cause, tighten the contract, or fold this into what already exists so the system stays easier to reason about? When they add, the addition earns its rent. When they merge, the organisation’s mental load often goes **down**, not up, for the same user-visible win.
 
 That is why the word is *eliminate*: they shrink what must be owned — invalid states, duplicate paths, clever machinery nobody will maintain — not because they refuse to build, but because they refuse to fund ghost towns.
+
+<blockquote class="pull-quote-pop">
+<p><strong>Small bonus, half in jest:</strong> if you keep this frame in mind — clearer intent, tighter contracts, less “just make it work” — your <strong>prompts to coding assistants</strong> tend to get better too. Not the main point; take it or leave it.</p>
+</blockquote>
+
 
 ## When the organisation punishes judgement
 
