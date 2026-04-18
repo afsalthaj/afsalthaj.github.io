@@ -9,7 +9,7 @@ category: 'the-lab'
 
 You might find parts of this post familiar — even repetitive.
 
-After every cycle of technology revolutions, many times came layoffs, and the people who stayed — usually the **last** one anyone would let go — were not random: they were worth keeping because of certain fundamental qualities that's hard for anyone to overlook. 
+After every major technology revolution, layoffs have often followed. The people who remained — usually the last ones anyone would let go — were rarely chosen randomly. They were kept because they possessed fundamental qualities that are hard to ignore.
 
 The current technology revolution — the **AI** wave — is **more aggressive** than the cycles we have lived through before. What keeps you valuable and employable is still the same fundamental qualities. Only the **pace** changes: because the revolution is **aggressive**, so the solution has to be **seen, expanded and applied aggressively** too. 
 
