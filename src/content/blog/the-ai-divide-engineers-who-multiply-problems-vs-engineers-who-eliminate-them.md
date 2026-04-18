@@ -7,36 +7,40 @@ category: 'the-lab'
 
 <h2 class="h2-accent-warm">Before you read</h2>
 
-Some of this will feel **familiar**, even **repetitive** to you. Read it **so it stays with you** — something you **notice and reuse day after day** at work, not a page you skim once and leave behind.
+You might find parts of this post familiar — even repetitive.
 
-After every technology revolution came layoffs, and the people who stayed — usually the **last** anyone would let go — were not random: they were worth keeping because they worked in a more valuable way, and that value was <span class="accent-lead-red">the atmosphere they created in the team with how they work</span> — the *way* itself was the solution already in the room.
+After every cycle of technology revolutions, many times came layoffs, and the people who stayed — usually the **last** one anyone would let go — were not random: they were worth keeping because of certain fundamental qualities that's hard for anyone to overlook. 
 
-This technology revolution — the **AI** wave — is **more aggressive** than the cycles we have lived through before. What keeps you valuable and employable is still the same *how* you show up — tone, judgement, the lift you bring. Only the **pace** changes: because the revolution is **aggressive**, that same remedy has to be **seen and applied aggressively** too. 
+The current technology revolution — the **AI** wave — is **more aggressive** than the cycles we have lived through before. What keeps you valuable and employable is still the same fundamental qualities. Only the **pace** changes: because the revolution is **aggressive**, so the solution has to be **seen, expanded and applied aggressively** too. 
 
-For that reason, what needs doing has to be **stated plainly in one place** — **this essay is that statement**. It is not a roster of tools to master in 2026, nor a grab-bag of productivity tips.
+Many of us are already aware of fundamentals discussed here, but a mere awareness don't make us special anymore, but aggressive execution of them does.
 
-It is not meant as preaching — just an observation from my own thinking and from working on a range of projects over the years.
+This blog aims to be a reminder of those fundamentals, and a call to action to apply them aggressively. It is **not a roster of tools to master in 2026, nor a grab-bag of productivity tips**.
+
+This isn’t **preaching** — just an observation drawn from years of thinking through these problems across a range of projects.
 
 <h2 class="h2-accent-warm">With that out of the way</h2>
 
 AI makes it easy to solve problems quickly, and almost anyone can play that game. The ones who get ahead **think first** — then **eliminate** problems instead of trying to fix everything.
 
-When the cost of **motion** drops, the scarce thing becomes **direction**: what should exist in the system at all. Tools accelerate whatever habit you already have — including the habit of treating symptoms faster instead of removing causes. That is why raw speed stops impressing almost immediately: volume was never the hard part. The hard part was always the **right delta** — less invalid state, less machinery, less scope that fails a user-value bar — and that delta is still earned, not generated.
+Tools accelerate whatever habit you already have — including the habit of treating symptoms faster instead of removing causes. That is why raw speed stops impressing almost immediately: volume was never the hard part.
 
 ## Employability in today's AI world
 
 First and foremost, no one can predict the future — and I’m certainly in no position to even pretend I can. One strategy could be optimism. You know, the same kind we all have when we confidently think, “Yeah, earthquakes? Not happening in my city.” It sounds illogical, but if it gives peace of mind, why not!
 
-If we really need to talk about employability in the context of AI, here is what I think. Employability already tilts toward people who think about **what** they are building — not only how **fast** they clear a board.
-**Fast** is a commodity now. In today's world, fortunately or unfortunately, the more `faster` you are, it implies the more `tokens` you used.
+If we really need to talk about employability in the context of AI, here is what I think. Employability already tilts toward people **who think about what they are building — not only how fast they clear a board**.
 
-Sure, you can finish an entire epic in one sprint by spinning up 10 AI agents and going full Productivity Pro Max™. But let’s be honest — you didn’t become exceptional. You just scaled your AI bill.
 
-The process might look impressive. The outcome might even be good. But the person? Still replaceable.
+**Fast** is a commodity now. In today's world, fortunately or unfortunately, the more `faster` you are, it may simply imply, you just used `more AI tokens`. There was a time when this was not the case. When you were faster in solving things, the appreciations flowed in. It didn't matter the quality index of what you produce, you were valued because you could rapidly understand complex systems written by others, implement new features quickly, and fix bugs in tangled, difficult codebases.
+You kept repeating this pattern in your team, and the steady stream of praise became real fuel that kept your momentum going. You were the Rockstar of the team, and it felt damn good to be in that position.
 
-Think of that one person on a team whose only goal is to move a JIRA ticket from “In Progress” to “Done".
+However, that perspective has started fading fast. The difference in raw speed between you and others is no longer as dramatic as it once was. The gap has narrowed significantly — largely because AI has made “getting things done quickly” far more accessible to everyone.
 
-Wouldn’t you already start wondering if you could just use coding assistants instead of relying on them? 
+Your existing reputation might still keep you looking like a rockstar for a while, especially if your team already knows you from before the AI wave. But it’s only a matter of time before perspectives shift.
+
+So let’s ask ourselves honestly:
+**Who is the person in the team you would actually fight to keep around?**
 
 ## The myth of “Coders lose, Engineers win”
 
@@ -246,28 +250,40 @@ Here are some tips that I created for myself:
 
 ## If you think this is “not about us” — it still is
 
-There is still **no carve-out** where **motion beats direction**, where **piled-on work** stops costing, or where tools stop **amplifying habits**. The costume changes; the trade-off does not. If a line below sounds like your team, you are still in scope.
+There is no real exceptions. Motion never beats direction, piled-on work always costs, and tools always amplify your existing habits. The context changes, but the trade-off stays the same. If any of the lines below sound like your team, this still applies to you.
 
-**Regulated, safety-critical, or “we cannot move fast and break things”.** You have *more* reason to **tighten models and shrink surface area** — not to hide a fuzzy model behind more generated tests and services that auditors still have to trace. Fewer states to prove beats more machinery to explain.
+**Regulated, safety-critical, or “we cannot move fast and break things”.**  
+You actually have *more* reason to tighten your models and shrink surface area. Hiding a fuzzy model behind more generated tests and services just makes life harder for auditors who still have to trace everything. Fewer states to prove is almost always better than more machinery to explain.
 
-**Internal tools, platform, infra, or devtools.** Someone always “uses” the output: the next team, on-call, or every service that called your API. **Operability and clarity are the product** when the consumer is another builder — and a leaky abstraction there often hurts worse than a bad screen, because the blast radius is the whole graph that trusted you.
+**Internal tools, platform, infra, or devtools.**  
+Someone always uses what you build — the next team, on-call, or every service that depends on your API. In this case, operability and clarity *are* the product. A leaky abstraction here hurts more because the blast radius reaches the whole system that trusted you.
 
-**Startup — “we have to ship or die”.** Shipping is not the same as **accumulating**. Taking debt on purpose can be right; taking debt **without naming it and without a cut line** is how you become the rewrite someone else sells. Velocity without elimination is still how small teams drown fastest.
+**Startup — “we have to ship or die”.**  
+Shipping is not the same as accumulating. Taking on debt deliberately can make sense, but taking debt without naming it or planning when to pay it back is how small teams quietly drown. Velocity without elimination catches up fast.
 
-**Big enterprise — “we have process for that”.** Process rarely deletes ambiguity; it often **routes** it. More sign-offs do not replace **one fewer invalid state**. If anything, the cost of a messy model shows up as **more meetings, more CABs, more runbooks** — the busy diagram in business casual.
+**Big enterprise — “we have process for that”.**  
+Process rarely removes ambiguity — it usually just routes around it. More sign-offs don’t replace having one fewer invalid state. The real cost of a messy model usually shows up as more meetings, more CABs, and longer runbooks.
 
-**“We barely use AI.”** You still paste from Stack Overflow, accept large diffs you skim, merge dependency bumps you did not read, and live with configs nobody owns. The muscle this post is about is **review and refusal**, not the brand name on the autocomplete. When assistants do land in your workflow, the habit is already set.
+**“We barely use AI.”**  
+You still paste from Stack Overflow, accept large diffs without deep review, merge dependency bumps you didn’t fully read, and live with configs nobody really owns. The muscle this post talks about is review and refusal, not the name of the autocomplete tool. When AI does arrive, the habit is already set.
 
-**“Our culture already values quality.”** If review never celebrates **removals** and scope cuts the way it celebrates launches, or if metrics only ever move when something new ships, you do not yet have the culture you think you have — you have a slogan.
+**“Our culture already values quality.”**  
+If your reviews celebrate new launches far more than removals and scope cuts, or if metrics only move when something new ships, then the culture may not be quite what you think it is.
 
-**Research, spikes, “we are just exploring”.** Exploration is legitimate. The failure mode is **shipping the spike** — or never choosing what dies — so exploration quietly becomes **production debt**. Judgement includes saying: this experiment ends **here**, and here is what we delete when we learn.
+**Research, spikes, “we are just exploring”.**  
+Exploration is valid. The trap is shipping the spike as production — or never deciding what should die. Real judgement includes knowing when an experiment ends and what to delete once you’ve learned from it.
 
-**Agency, consulting, “we only build what clients pay for”.** Your repo and your reputation still carry the pile. “The client asked for it” is the same abdication as “the ticket was in JIRA” if nobody names the **long-term cost** on the people who maintain it.
+**Agency, consulting, “we only build what clients pay for”.**  
+Your repo and your team’s reputation still carry whatever you leave behind. “The client asked for it” or “the ticket was in JIRA” doesn’t remove the long-term cost on the people who have to maintain it.
 
-**“We are special — our domain is inherently complex.”** Some domains are hard. **Inherent complexity** is not the same as **self-inflicted complexity**. The post targets the second: duplicate paths, vague types, machinery that exists because nobody had the political air to fix the contract. Hard problems still benefit from **fewer lies in the model**.
+**“We are special — our domain is inherently complex.”**  
+Some domains *are* genuinely hard. But inherent complexity is different from self-inflicted complexity. This post is aimed at the second kind: duplicate paths, vague types, and extra machinery that exists only because no one pushed to simplify the contract. Even hard problems benefit from fewer lies in the model.
 
-If none of those labels fit, you still have **contracts, data, on-call, and a calendar**. Unless you have **no** production system and **no** colleagues, the divide — multiply versus eliminate — is live in your work. The only real opt-out is to stop pretending the loophole was ever there.
+If none of those labels fit, you still have contracts, data, on-call rotations, and colleagues. As long as you have a production system and other people depending on your work, the divide between multiplying problems and eliminating them is still very much alive in your day-to-day.
 
 ## Final Thought
 
-Tools come and go; **the signature that survives** is still whether you left behind **less world to debug** — fewer lies in the data model, fewer parallel paths nobody owns, fewer meetings held together by heroics. That work is not performative slowness. It is what autocomplete cannot own end to end: **making a bad diagram less likely before the pager fires** — and making the fallout survivable for people who were not in the room when the box was drawn.
+Tools come and go. What truly endures is whether you left the system with less world to debug — fewer lies in the data model, fewer parallel paths nobody owns, and fewer situations held together only by heroics.
+The real elimination is rarely the direct goal. It emerges as a natural outcome of exercising good judgment — consistently making the right choices. When you prioritize sound judgment, the eliminator effect follows almost by itself.
+
+We don’t usually give these people a fancy title, but I’ve come to call them eliminators. In the age of AI, they quietly reduce the burden on the team — and they keep winning.
