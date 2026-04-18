@@ -234,7 +234,7 @@ Each addition can feel like progress. Often it is **complexity you now have to o
 
 <h2 class="h2-accent-warm">A tip for getting judgement right — start with the end-user</h2>
 
-Operability, simplicity, and evolvability are the guardrails — they stay abstract until you anchor them to **someone who will feel the failure**. Who is that someone? Well, the users. The users can be end-user of your product, or just the next team, or a downstream service. The validation begins here and it almost always re-enforces the three pillars inwards.
+Operability, simplicity, and evolvability are the guardrails — but they simply stay abstract until you anchor them to **someone who will feel the failure**. Who is that someone? Well, the users. The users can be end-user of your product, or just the next team, or a downstream service. The validation begins here and it almost always re-enforces the three pillars inwards.
 
 We add a service, and we judge ourselves that it is a necessity for some reason. But if this avoidable service produce more latency or increased response time, then it goes all the way to the user. So many times, a validation of our judgment is just about wearing the hat of an average user.
 
