@@ -61,7 +61,7 @@ We learn not to notice. It helps. It looks like success.
 You don’t end where you began.
 But you don’t leave either.
 
-When every win quietly reminds you what it cost, the only future that still feels honest to me is this  an old RX 100,
+When every win quietly reminds you what it cost, the only future that still feels honest to me is an old RX 100,
 empty roads, a city half-asleep, no one watching, no one waiting.
 
 Just movement.
