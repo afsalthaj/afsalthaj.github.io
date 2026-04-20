@@ -1,0 +1,246 @@
+---
+title: 'Golem: Make your Regular Code work with Claude Desktop in Minutes (automatic MCP server)'
+description: 'Write normal TypeScript → Deploy once on Golem → Instantly use it as a first-class tool in Claude, ChatGPT, Gemini, Cursor, Grok-powered tools, and any other MCP-compatible AI client. Stateful, multimodal, and restart-proof — no extra glue code required.'
+pubDate: 'Apr 20 2026'
+category: 'the-lab'
+---
+
+import { Image } from 'astro:assets';
+import johnBoulder from '../../assets/john-boulder.jpg';
+import claudeDesktop from '../../assets/claude-desktop-mcp-settings.png';
+import claudeGolemConnector from '../../assets/claude-desktop-golem-connector.png';
+import claudeListTools from '../../assets/claude-desktop-list-tools.png';
+import claudeUploadImage from '../../assets/claude-desktop-upload-image.png';
+import claudeDesktopEditImage from '../../assets/claude-desktop-edit-image.png';
+import claudeDesktopEditImageRequest from '../../assets/claude-desktop-edit-image-request.png';
+
+In 2026, the real power of agentic AI comes from turning your everyday code into durable, reusable tools that modern AI clients can discover and call reliably — with real multimodal data like images and binaries.
+
+If you are already familiar with the whole stack, and looking for how to build an MCP Server and use it through MCP Inspector (validating your server) with Golem, please refer https://blog.vigoo.dev/posts/golem15-part3-mcp/.
+
+This blog is more of developing a use-case referring to Vigoo's blog, and we will see some of the special data types discussed in real action from Claude Desktop.
+
+We will never directly invoke any of these tools. We will only be using AI which decides which code to use when.
+
+This post will also fill the gap for those who are  wondering how your code can be used from AI clients like Claude Desktop, ChatGPT Agents, Google Gemini, Cursor, Continue.dev, Windsurf, and more.
+
+## Why Golem 1.5 + MCP Feels Like Magic
+
+**Golem 1.5** makes the entire process of exposing your simple TS methods as real AI tools incredibly fast. With this you can expose your code (deployed in Golem) to be used from AI tools like OpenAI, Claude Desktop etc.
+ Any Golem agent is automatically exposed as an **MCP server**. You write clean business logic in TypeScript. Golem + MCP handles discovery, tool calling, binary streaming, and durability.
+
+MCP is an open standard that lets LLMs and AI tools (Claude Desktop, ChatGPT Agents, Google Gemini, Cursor, Continue.dev, Windsurf, and more) seamlessly discover and use external capabilities.
+Even if you have never heard of MCP tools, you might have already used them — like when you ask ChatGPT to "what's the weather today" and it does so by calling an MCP tool which is `web-search`.
+
+We all write code. With golem SDK (TS, Rust or Scala), you annotate that code with `@agent()` (in the case of TS) and it becomes a durable agent that remembers your state forever.
+
+With latest release of Golem 1.5, MCP exposure is **automatic** via a small manifest section.
+
+We will showcase this with a simple example. We will use Claude Desktop as the AI client, but the same agent will work with any MCP-compatible client without any changes.
+
+## The Example: Image Studio Agent
+On a high level, we are going to do the following:
+
+* We will write some TypeScript code that can upload and edit an image.
+* We will deploy this in Golem and it will automatically expose a MCP server (with a 4 line configuration within the code)
+* We will have a server URL which we configure in `Claude Desktop` and simply start conversation in the chatbox of Claude Desktop
+* In plain english, we will ask Claude toto create an image and upload it.
+* Later we will ask Claude to edit the same image with some instructions.
+* We will see that Claude automatically invoking your agent methods to do these operations.
+
+
+As always the agent stays fully **stateful** — it remembers projects, image history, and context across restarts, scaling, or failures.
+
+We will all this `ImageStudioAgent`. Note that, the `ImageStudioAgent` is durable. Meaning, after you upload the image and the studio goes down,
+you can still ask through Claude to edit this image and it will work.
+
+## Set up your project to write TS code
+
+Given its 1.5 is currently RC, the documentation(https://learn.golem.cloud/quickstart) to install golem may not be up to date.
+But you can install it from here: https://github.com/golemcloud/golem/releases/tag/v1.5.0-rc1
+
+```sh
+> golem new
+> Select "TypeScript Agent" template
+> Name it "image-studio-agent"
+> cd image-studio-agent
+> golem build
+```
+
+Now let's replace the `CounterAgent` code with the following: Mostly it is self explanatory as it is regular type-script code.
+The only difference here is usage of `@agent()` and `@description()` to label your class as an `agent` in golem runtime, and a description that will help AI clients to discover appropriate once they are available as MCP tools
+
+```ts
+import {
+    BaseAgent,
+    agent,
+    description,
+} from '@golemcloud/golem-ts-sdk';
+
+import { UnstructuredBinary, UnstructuredText } from '@golemcloud/golem-ts-sdk';
+
+@agent()
+export class ImageStudioAgent extends BaseAgent {
+    private projectId: string;
+    // Let's store the images with an image-id and this is automatically persistent with Golem
+    private images: Map<string, Uint8Array> = new Map();
+
+    constructor(projectId: string) {
+        super();
+        this.projectId = projectId;
+    }
+
+    @description("Upload a new image to the project. Returns a unique image_id.")
+    async uploadImage(
+        name: string,
+        // The UnstructuredBinary type allows for flexible binary data input (inline or URL) with MIME type constraints
+        // Here we specify you can upload JPEG, PNG, or WebP images
+        data: UnstructuredBinary<['image/jpeg', 'image/png', 'image/webp']>
+    ): Promise<string> {
+        const imageId = `img_${Date.now()}_${name.replace(/[^a-z0-9]/gi, '_')}`;
+
+        const binaryData = this.extractBinary(data);
+
+        this.images.set(imageId, binaryData);
+        return imageId;
+    }
+
+    @description("Edit an image with natural language instructions and return the result as PNG.")
+    async editImage(
+        imageId: string,
+        instructions: UnstructuredText<['en']>
+    ): Promise<UnstructuredBinary<['image/png']>> {
+        const original = this.images.get(imageId);
+        if (!original) {
+            throw new Error(`Image not found: ${imageId}`);
+        }
+
+        const edited = await this.applyEdits(original, instructions);
+
+        // Store the edited version for future reference
+        this.images.set(`${imageId}_edited`, edited);
+
+        return {
+            tag: 'inline',
+            val: edited,
+            mimeType: 'image/png' as const,
+        };
+    }
+
+    /**
+     * Helper to safely extract Uint8Array from UnstructuredBinary
+     */
+    private extractBinary(
+        data: UnstructuredBinary<['image/jpeg', 'image/png', 'image/webp']>
+    ): Uint8Array {
+        if (data.tag === 'inline') {
+            return data.val;
+        } else if (data.tag === 'url') {
+            // In a real implementation, you could fetch the URL here.
+            // For simplicity in this demo, we'll throw (or you can add fetch logic).
+            throw new Error(`Remote URL support not implemented in this demo: ${data.val}`);
+        }
+        throw new Error('Unsupported UnstructuredBinary format');
+    }
+
+    private async applyEdits(
+        data: Uint8Array,
+        instructions: UnstructuredText<['en']>
+    ): Promise<Uint8Array> {
+        console.log(`Applying edits with instructions: "${instructions}"`);
+
+        // For now, just return the original (so the demo works)
+        return data;
+    }
+}
+```
+
+Try building it again using `golem build` just to ensure everything is intact. Before you deploy it, add the following into `golem.yaml` which exist in the root.
+
+
+```yaml
+mcp:
+  deployments:
+    local:
+      - domain: mcp-image-studio.localhost:9007
+        agents:
+          ImageStudioAgent: {}
+```
+
+Please do remove the `httpApi` block since we are not using it, and avoids a deployment failure.
+
+Once configured, deploy your agent with:
+
+```sh
+> golem deploy
+```
+
+Now your agent is available in Golem runtime. Not only that, it is also automatically exposed as an MCP server at `mcp-image-studio.localhost:9007` with the domain `mcp-image-studio.localhost:9007`.
+
+## Configure it in Claude Desktop (or AI client of your choice)
+Regardless of the AI client, you have to always configure the MCP server URL. These will be documented in the respective AI client documentation.UnstructuredBinary
+For Claude Desktop, you can do it from the settings page. Open Claude Desktop, go to `Settings -> Developer -> Edit Config` and simply add the following:
+
+
+```json
+{
+  "mcpServers": {
+    "golem": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "http://mcp-image-studio.localhost:9007/mcp",
+        "--header",
+        "Host: mcp-image-studio.localhost:9007",
+        "--allow-http"
+      ]
+    }
+  }
+}
+
+```
+
+You are basically editing `claude_desktop_config.json` in Claude's configuration file. There is nothing specific to Golem here, you can configure any MCP server in the same way.
+
+Now, all you need to do is restart `Claude Desktop` so that it picks up this configuration.
+
+<Image src={claudeDesktop} alt="Once you restarted check if Local MCP server is picked up" width={720} />
+*Once you restarted check if Local MCP server is picked up*
+
+<h2 class="h2-accent-warm">Open a chat in Claude Desktop</h2>
+
+You can cross verify if everything is setup correctly.  Within the chat, go to the `+` sign and there you can see your MCP server in action.
+
+<Image src={claudeGolemConnector} alt="Once you restarted check if Local MCP server is picked up" width={720} />
+
+You can even ask Claude itself using plain english "list the tools in golem" and it gets it
+
+<Image src={claudeListTools} alt="Once you restarted check if Local MCP server is picked up" width={720} />
+*Claude automatically describing your agent methods*
+
+<h2 class="h2-accent-warm">Ask Claude to generate and upload an image</h2>
+
+I was lazy to select and upload, so I asked `Claude` itself to generate one and upload in the chat
+
+<Image src={claudeUploadImage} alt="Once you restarted check if Local MCP server is picked up" width={720} />
+*Claude automatically generates an image, and automatically calls our agent method*
+
+Claude knows your agent method expects base64 encoded image, and it does it automatically.
+We can also see the image-id that was created. See `uploadImage` function in our code.
+
+<h2 class="h2-accent-warm">Ask Claude to edit the image</h2>
+
+<Image src={claudeDesktopEditImage} alt="Once you restarted check if Local MCP server is picked up" width={720} />
+*Claude edits the image, and automatically calls our agent method*
+
+<h2 class="h2-accent-warm">Claude knowing the available tools and it's right usage</h2>
+
+In all these cases, Claude does a lot of things under the hood. Golem already exposes functionalities required for Claude to ensure
+it passes the right parameters in the right format and so on. The details don't matter here, because I will be explaining about MCP protocol at that point.
+
+For example, you can view the actual request made by Claude within the chat itself.
+
+<Image src={claudeDesktopEditImageRequest} alt="Once you restarted check if Local MCP server is picked up" width={720} />
+*Claude sending the right parameters*
+
+But even without you having deep knowledge about the MCP protocol and the requirements of an MCP server, you made a useful agent ready to be used from various AI tools.
