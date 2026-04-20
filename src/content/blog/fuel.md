@@ -2,7 +2,7 @@
 title: 'Singularity'
 description: 'Circle of Life'
 pubDate: 'Apr 20 2019'
-category: 'waypoints'
+category: 'inner-loop'
 ---
 
 I still catch the smallest string trembling in any piece of music.
