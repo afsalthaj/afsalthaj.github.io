@@ -1,7 +1,7 @@
 ---
 title: 'Singularity'
 description: 'Circle of Life'
-pubDate: 'Apr 20 2026'
+pubDate: 'Apr 20 2019'
 category: 'waypoints'
 ---
 
