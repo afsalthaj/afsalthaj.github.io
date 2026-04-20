@@ -201,7 +201,7 @@ code {
 	background: var(--bg-card);
 	border: 1px solid var(--border);
 	border-radius: 3px;
-	color: var(--cyan);
+	color: var(--text);
 	font-family: 'JetBrains Mono', monospace;
 	font-size: 0.9em;
 }
@@ -441,6 +441,67 @@ li::marker {
 	.prose h2.section-callout-pop {
 		animation: pull-quote-pop-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 	}
+}
+
+/* Click-to-expand code card with stronger visual affordance */
+.prose details.code-pop {
+	margin: 1em 0 1.25em;
+	border: 1px solid rgba(0, 255, 249, 0.3);
+	border-radius: 12px;
+	background: linear-gradient(
+		145deg,
+		rgba(22, 26, 46, 0.95) 0%,
+		rgba(14, 18, 36, 0.98) 100%
+	);
+	box-shadow:
+		0 10px 30px rgba(0, 0, 0, 0.28),
+		0 0 16px rgba(0, 255, 249, 0.14),
+		inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+	transition:
+		transform 180ms ease,
+		box-shadow 180ms ease,
+		border-color 180ms ease;
+}
+
+.prose details.code-pop:hover {
+	transform: translateY(-1px);
+	border-color: rgba(0, 255, 249, 0.5);
+	box-shadow:
+		0 14px 36px rgba(0, 0, 0, 0.34),
+		0 0 20px rgba(0, 255, 249, 0.2),
+		inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.prose details.code-pop > summary {
+	padding: 0.78em 0.95em;
+	cursor: pointer;
+	list-style: none;
+	color: #7af0ff;
+	font-weight: 800;
+	letter-spacing: 0.015em;
+	text-shadow:
+		0 0 10px rgba(0, 255, 249, 0.45),
+		0 0 22px rgba(0, 255, 249, 0.12);
+}
+
+.prose details.code-pop > summary::-webkit-details-marker {
+	display: none;
+}
+
+.prose details.code-pop > summary::before {
+	content: '▶';
+	display: inline-block;
+	margin-right: 0.6em;
+	transition: transform 180ms ease;
+	color: #e8f9ff;
+}
+
+.prose details.code-pop[open] > summary::before {
+	transform: rotate(90deg);
+}
+
+.prose details.code-pop > :not(summary) {
+	padding: 0 0.95em 0.95em;
 }
 
 /* Blog: before/after system diagrams (complexity vs lean) */
