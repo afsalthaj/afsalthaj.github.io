@@ -20,19 +20,68 @@
 		<button type="submit">Subscribe</button>
 	</form>
 	<p class="subscribe-status" data-subscribe-status role="status"></p>
+<p class="subscribe-note" data-subscribe-note hidden>
+	Configure <code>PUBLIC_SUPABASE_URL</code> and <code>PUBLIC_SUPABASE_ANON_KEY</code> — see
+	<code>docs/SUPABASE.md</code>.
+</p>
 </section>
 
-<script is:inline>
-	(function () {
-		var form = document.querySelector('[data-subscribe-form]');
-		var statusEl = document.querySelector('[data-subscribe-status]');
+<script>
+	import { getEngagementConfig, insertSubscriber } from '../lib/engagementApi';
+
+	function init() {
+		const form = document.querySelector<HTMLFormElement>('[data-subscribe-form]');
+		const statusEl = document.querySelector<HTMLElement>('[data-subscribe-status]');
+		const noteEl = document.querySelector<HTMLElement>('[data-subscribe-note]');
 		if (!form || !statusEl) return;
-		form.addEventListener('submit', function (e) {
+
+		// Always prevent native submit — without this, a missing build-time env would GET-reload
+		// the page (jump to top) and never call Supabase.
+		form.addEventListener('submit', async (e) => {
 			e.preventDefault();
-			statusEl.style.color = 'var(--text-muted, #7a7a9e)';
-			statusEl.textContent = 'Subscriptions are paused on static hosting.';
+			const config = getEngagementConfig();
+			if (!config) {
+				if (noteEl) noteEl.hidden = false;
+				statusEl.style.color = 'var(--magenta)';
+				statusEl.textContent =
+					'Subscription is not configured for this build. Add PUBLIC_SUPABASE_URL and PUBLIC_SUPABASE_ANON_KEY to the GitHub Actions / build env, then redeploy. See docs/SUPABASE.md.';
+				return;
+			}
+			if (noteEl) noteEl.hidden = true;
+			const fd = new FormData(form);
+			const email = String(fd.get('email') || '');
+			if (!email) return;
+			statusEl.style.color = 'var(--text-muted)';
+			statusEl.textContent = 'Sending…';
+			const r = await insertSubscriber(config.url, config.key, email);
+			if (r === 'ok') {
+				statusEl.style.color = 'var(--cyan)';
+				statusEl.textContent = "You're subscribed — thank you.";
+				form.reset();
+			} else if (r === 'duplicate') {
+				statusEl.style.color = 'var(--text-muted)';
+				statusEl.textContent = "You're already on the list.";
+			} else {
+				statusEl.style.color = 'var(--magenta)';
+				statusEl.textContent =
+					'Could not subscribe (check Network tab: 401 = wrong key, CORS = add your site URL in Supabase).';
+			}
 		});
-	})();
+
+		// Show hint on load if env missing (static deploys often forget secrets)
+		const config = getEngagementConfig();
+		if (!config) {
+			if (noteEl) noteEl.hidden = false;
+			statusEl.textContent = '';
+		} else if (noteEl) {
+			noteEl.hidden = true;
+		}
+	}
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', init, { once: true });
+	} else {
+		init();
+	}
 </script>
 
 <style>
@@ -121,5 +170,15 @@
 		margin: 0.75rem 0 0;
 		text-align: left;
 		max-width: min(22rem, 100%);
+	}
+	.subscribe-note {
+		font-size: 0.72rem;
+		color: var(--text-muted);
+		margin: 0.5rem 0 0;
+		max-width: min(28rem, 100%);
+		line-height: 1.4;
+	}
+	.subscribe-note code {
+		font-size: 0.85em;
 	}
 </style>
