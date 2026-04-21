@@ -5,16 +5,6 @@ pubDate: 'Apr 16 2020'
 category: 'the-lab'
 ---
 
-For those who need to get straight into the code with explanations as comments, please feel free to jump to:
-
-https://scastie.scala-lang.org/afsalthaj/4rTuhrx6Tw6wohdyaP73bg/2
-
-Others, read on!
-
----
-
-## Type-driven development
-
 In type-driven development, it is often necessary to distinguish between different interpretations of the same underlying type.
 
 For example, for the underlying type `Int`, there are multiple possible Monoids:
