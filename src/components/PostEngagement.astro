@@ -110,6 +110,10 @@ const { postSlug } = Astro.props;
 		document.querySelectorAll<HTMLElement>('.post-engagement').forEach((root) => syncBlock(root));
 	}
 
+	// ClientRouter (View Transitions): in-site navigations swap the DOM without reload, so
+	// DOMContentLoaded does not run again — likes would stay at SSR "…" / wrong state until a full refresh.
+	document.addEventListener('astro:page-load', init);
+
 	if (document.readyState === 'loading') {
 		document.addEventListener('DOMContentLoaded', init, { once: true });
 	} else {
