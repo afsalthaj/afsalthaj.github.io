@@ -31,7 +31,50 @@ const { postSlug } = Astro.props;
 
 	const LIKE_KEY = (slug: string) => `ribbb_liked_${slug}`;
 
-	function initBlock(root: HTMLElement) {
+	type RibbbWin = Window & { __ribbbLikeClickBound?: boolean };
+
+	/** One listener for the whole tab — avoids duplicate handlers when init runs again (e.g. bfcache). */
+	function ensureDelegatedLikeClick() {
+		const w = window as RibbbWin;
+		if (w.__ribbbLikeClickBound) return;
+		w.__ribbbLikeClickBound = true;
+		document.body.addEventListener(
+			'click',
+			async (e) => {
+				const t = e.target as HTMLElement | null;
+				if (!t) return;
+				const btn = t.closest<HTMLButtonElement>('[data-like-btn]');
+				if (!btn || btn.disabled) return;
+				const root = btn.closest<HTMLElement>('.post-engagement');
+				if (!root) return;
+				const slug = (root.dataset.postSlug || '').trim();
+				if (!slug) return;
+				const config = getEngagementConfig();
+				if (!config) return;
+				const hintEl = root.querySelector<HTMLElement>('[data-like-hint]');
+				const countEl = root.querySelector<HTMLElement>('[data-like-count]');
+				if (!countEl) return;
+
+				const ok = await incrementPostLike(config.url, config.key, slug);
+				if (!ok) {
+					if (hintEl) hintEl.textContent = 'Could not record like. Try again later.';
+					return;
+				}
+				const n = await fetchPostLikeCount(config.url, config.key, slug);
+				countEl.textContent = String(n);
+				try {
+					localStorage.setItem(LIKE_KEY(slug), '1');
+				} catch {
+					/* private mode / blocked */
+				}
+				btn.disabled = true;
+				if (hintEl) hintEl.textContent = 'Thanks!';
+			},
+			true
+		);
+	}
+
+	function syncBlock(root: HTMLElement) {
 		const slug = (root.dataset.postSlug || '').trim();
 		const btn = root.querySelector<HTMLButtonElement>('[data-like-btn]');
 		const countEl = root.querySelector<HTMLElement>('[data-like-count]');
@@ -48,44 +91,35 @@ const { postSlug } = Astro.props;
 		}
 		if (disabledEl) disabledEl.hidden = true;
 
+		countEl.textContent = '…';
 		void (async () => {
 			const n = await fetchPostLikeCount(config.url, config.key, slug);
 			countEl.textContent = String(n);
 		})();
 
+		btn.disabled = false;
+		if (hintEl) hintEl.textContent = '';
 		if (typeof localStorage !== 'undefined' && localStorage.getItem(LIKE_KEY(slug))) {
 			btn.disabled = true;
 			if (hintEl) hintEl.textContent = 'Thanks — you already liked this on this device.';
 		}
-
-		btn.addEventListener('click', async () => {
-			if (btn.disabled) return;
-			const ok = await incrementPostLike(config.url, config.key, slug);
-			if (!ok) {
-				if (hintEl) hintEl.textContent = 'Could not record like. Try again later.';
-				return;
-			}
-			const n = await fetchPostLikeCount(config.url, config.key, slug);
-			countEl.textContent = String(n);
-			try {
-				localStorage.setItem(LIKE_KEY(slug), '1');
-			} catch {
-				/* private mode / blocked */
-			}
-			btn.disabled = true;
-			if (hintEl) hintEl.textContent = 'Thanks!';
-		});
 	}
 
 	function init() {
-		// One script module can run on many blog pages: init *every* block, not the first only.
-		document.querySelectorAll<HTMLElement>('.post-engagement').forEach((root) => initBlock(root));
+		ensureDelegatedLikeClick();
+		document.querySelectorAll<HTMLElement>('.post-engagement').forEach((root) => syncBlock(root));
 	}
+
 	if (document.readyState === 'loading') {
 		document.addEventListener('DOMContentLoaded', init, { once: true });
 	} else {
 		init();
 	}
+
+	// Back/forward cache (Safari / Chrome): page can be shown again without re-running the module.
+	window.addEventListener('pageshow', (ev) => {
+		if (ev.persisted) init();
+	});
 </script>
 
 <style>

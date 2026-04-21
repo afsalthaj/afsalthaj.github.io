@@ -53,6 +53,33 @@ After adding secrets, **re-run the workflow** or push a commit so the site is re
 - **Likes:** anonymous; total per post; one like per post per device (localStorage) to reduce double-clicks.
 - **Subscribers:** email rows in `subscribers`; you read them in the Supabase **Table Editor** (no public list on the site).
 
-## Email notifications
+## Email notifications (new posts → subscribers)
 
-Not included. Check the Supabase table when you want, or add a free automation (e.g. trigger → external mailer) later if you need alerts.
+After each successful **GitHub Pages** deploy, the **`notify`** job in `.github/workflows/deploy.yml` runs `scripts/notify-subscribers.mjs`. It:
+
+1. Detects **added or modified** files under `src/content/blog/*.md` or `*.mdx` between `BEFORE_SHA` and `AFTER_SHA` (from the push event), or the files in the commit when `before` is empty / all zeros.
+2. Reads the **title** from the first changed post’s frontmatter.
+3. Loads all emails from **`subscribers`** using the **service role** key (server-side only — never put this in the site bundle).
+4. Sends one message per address via **[Resend](https://resend.com)**.
+
+### Repository secrets (Actions)
+
+Add these under **Settings → Secrets and variables → Actions** (in addition to `PUBLIC_SUPABASE_*` for the build):
+
+| Secret | Purpose |
+|--------|---------|
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase **Settings → API → service_role** JWT. Bypasses RLS so the script can `select` on `subscribers`. **Do not** expose as `PUBLIC_*`. |
+| `RESEND_API_KEY` | Resend API key. |
+| `NOTIFY_FROM` | (Optional) From header, e.g. `Your Name <newsletter@yourdomain.com>`. If omitted, the script uses Resend’s trial sender (`onboarding@resend.dev`) until you verify a domain in Resend. |
+
+The workflow sets `SITE_URL` to `https://afsalthaj.github.io`. If you use a custom domain, change that literal in `deploy.yml` or add a workflow variable.
+
+### Dry run
+
+Locally or in CI, set `NOTIFY_DRY_RUN=1` to log who would receive mail without calling Resend.
+
+### Limits and follow-ups
+
+- Only the **first** changed blog file in a push is used for title/link; multiple new posts in one push get one combined notification subject/body for that file.
+- Re-running the workflow on the same commit may send duplicate mail unless you add deduplication later.
+- Unsubscribe is a manual note in the email today; a proper link would need a small API or Edge Function.
