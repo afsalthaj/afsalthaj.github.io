@@ -33,12 +33,16 @@ const { postSlug } = Astro.props;
 
 	type RibbbWin = Window & { __ribbbLikeClickBound?: boolean };
 
-	/** One listener for the whole tab — avoids duplicate handlers when init runs again (e.g. bfcache). */
+	/**
+	 * One listener for the whole tab — avoids duplicate handlers when init runs again (e.g. bfcache).
+	 * Must use `document`, not `document.body`: Astro ClientRouter replaces the entire `<body>` on each
+	 * in-site navigation, so a body listener is orphaned and `__ribbbLikeClickBound` would block rebinding.
+	 */
 	function ensureDelegatedLikeClick() {
 		const w = window as RibbbWin;
 		if (w.__ribbbLikeClickBound) return;
 		w.__ribbbLikeClickBound = true;
-		document.body.addEventListener(
+		document.addEventListener(
 			'click',
 			async (e) => {
 				const t = e.target as HTMLElement | null;
