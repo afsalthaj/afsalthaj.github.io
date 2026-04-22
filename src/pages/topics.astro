@@ -1,0 +1,219 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+
+const posts = await getCollection('blog');
+const byId = new Map(posts.map((p) => [p.id, p]));
+
+const topicSections = [
+	{
+		title: 'AI agents and durable execution',
+		description:
+			'Deep dives on AI agents, durable execution, and building reliable agent-native systems on WebAssembly.',
+		postIds: [
+			'everything-you-must-know-about-ai-agents',
+			'how-golem-stands-out-in-the-world-of-ai-agents',
+			'the-ai-divide-engineers-who-multiply-problems-vs-engineers-who-eliminate-them',
+			'golem-mcp',
+		],
+	},
+	{
+		title: 'Data engineering, data science, Spark, Scala',
+		description:
+			'Practical writing on data engineering architecture, data science workflows, Spark/Scala functional patterns, and reliability.',
+		postIds: [
+			'transforming-data-engineering-with-golem-timeline',
+			'combine-free-monad-algebra-with-scalaz',
+			'monad-transformers-in-scala-unlocked',
+			'fix-points-and-y-combinator-in-scala',
+		],
+	},
+	{
+		title: 'Docker and integration tests',
+		description:
+			'Hands-on writeups focused on Docker-driven environments and integration testing approaches for production systems.',
+		postIds: ['docker-and-managing-integration-tests'],
+	},
+	{
+		title: 'Rust, Python, Haskell, functional programming',
+		description:
+			'Language and FP-heavy content across Rust, Python, Scala, Haskell-like patterns, and algebraic thinking in real systems.',
+		postIds: [
+			'silly-java-and-silly-python',
+			'free-algebra-in-scala-with-java-visitor-pattern',
+			'invariant-functors-unlocked',
+			'square-is-a-monad-join-of-a-function',
+			'new-type-is-new',
+		],
+	},
+	{
+		title: 'Travel and sky diving',
+		description:
+			'Personal essays and perspective pieces including travel reflections and sky-diving moments that shaped how I think.',
+		postIds: ['fuel', 'just-let-it-all-go', 'when-speed-kills', 'the-paradox-of-following-the-crowd'],
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`Topics | ${SITE_TITLE}`}
+			description="Topic hub: AI agents, durable execution, data engineering, data science, Spark, Scala, Docker, integration tests, Rust, Haskell, Python, travel, sky diving, and functional programming."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Topics</h1>
+			<p class="intro">
+				Explore my writing by theme: AI agents, durable execution, data engineering, Docker integration testing, Scala/FP, language design, and personal essays.
+			</p>
+
+			<section class="topic-guides">
+				<h2>Deep-dive guides</h2>
+				<div class="topic-guides-grid">
+					<a class="topic-guide-card" href="/topics/ai-agents-durable-execution/">
+						<span class="topic-guide-title">AI agents and durable execution</span>
+						<span class="topic-guide-desc"
+							>How to design reliable agent-native systems with durability, tool orchestration, and
+							observability.</span
+						>
+					</a>
+					<a class="topic-guide-card" href="/topics/scala-fp-data-engineering/">
+						<span class="topic-guide-title">Scala/FP for data engineering</span>
+						<span class="topic-guide-desc"
+							>Functional design patterns for data engineering, Spark-like workloads, and production data
+							systems.</span
+						>
+					</a>
+					<a class="topic-guide-card" href="/topics/docker-integration-testing/">
+						<span class="topic-guide-title">Docker integration testing</span>
+						<span class="topic-guide-desc"
+							>Practical patterns for Docker-based environments and robust integration tests in real
+							projects.</span
+						>
+					</a>
+				</div>
+			</section>
+
+			{topicSections.map((section) => {
+				const sectionPosts = section.postIds.map((id) => byId.get(id)).filter(Boolean);
+				return (
+					<section class="topic-section">
+						<h2>{section.title}</h2>
+						<p class="topic-desc">{section.description}</p>
+						<ul>
+							{sectionPosts.map((post) => (
+								<li>
+									<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+								</li>
+							))}
+						</ul>
+					</section>
+				);
+			})}
+
+			<section class="topic-section">
+				<h2>Talks on these topics</h2>
+				<p class="topic-desc">
+					Conference talks on functional programming, durable systems, and engineering practice.
+				</p>
+				<p><a href="/talks">Browse talks</a></p>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	h1 {
+		text-shadow: var(--glow-cyan);
+		margin-bottom: 0.5em;
+	}
+	.intro {
+		color: var(--text-muted);
+		margin-bottom: 2.2em;
+		line-height: 1.7;
+	}
+	.topic-section {
+		margin-bottom: 2em;
+		padding: 1.25em 1.35em;
+		background: var(--bg-surface);
+		border: 1px solid var(--border);
+		border-radius: 8px;
+	}
+	.topic-section h2 {
+		font-size: 1.05em;
+		margin: 0 0 0.45em;
+	}
+	.topic-desc {
+		margin: 0 0 0.8em;
+		color: var(--text-muted);
+		font-size: 0.92em;
+	}
+	.topic-guides {
+		margin-bottom: 2.2em;
+	}
+	.topic-guides h2 {
+		margin: 0 0 0.85em;
+		font-size: 1.05em;
+	}
+	.topic-guides-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.8em;
+	}
+	.topic-guide-card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35em;
+		padding: 1em;
+		background: var(--bg-surface);
+		border: 1px solid var(--border);
+		border-radius: 8px;
+		text-decoration: none;
+		transition: all 0.25s ease;
+	}
+	.topic-guide-card:hover {
+		border-color: var(--cyan);
+		box-shadow: var(--glow-cyan);
+		transform: translateY(-2px);
+	}
+	.topic-guide-title {
+		font-family: 'Orbitron', sans-serif;
+		font-size: 0.82em;
+		letter-spacing: 0.04em;
+		color: var(--text);
+	}
+	.topic-guide-desc {
+		font-size: 0.82em;
+		line-height: 1.45;
+		color: var(--text-muted);
+	}
+	.topic-section ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.topic-section li {
+		margin: 0.4em 0;
+	}
+	.topic-section a {
+		color: var(--text);
+		text-decoration: none;
+	}
+	.topic-section a:hover {
+		color: var(--cyan);
+		text-shadow: var(--glow-cyan);
+	}
+	@media (max-width: 860px) {
+		.topic-guides-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

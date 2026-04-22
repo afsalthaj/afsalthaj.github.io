@@ -5,6 +5,8 @@ pubDate: 'Oct 15 2025'
 category: 'the-lab'
 ---
 
+If you are comparing **AI agent frameworks** and want clarity on **durable execution**, orchestration boundaries, and production reliability, this write-up focuses on exactly that.
+
 ##  AI Agent
 
 An AI agent is a system powered by an LLM (or other AI models) that can:

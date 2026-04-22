@@ -1,0 +1,65 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+
+const links = [
+	{ href: '/blog/transforming-data-engineering-with-golem-timeline/', label: 'Transforming Data Engineering with Golem & Durable Timeline Analytics' },
+	{ href: '/blog/combine-free-monad-algebra-with-scalaz/', label: 'Combine Free Monad Algebra with Scalaz' },
+	{ href: '/blog/monad-transformers-in-scala-unlocked/', label: 'Monad Transformers in Scala' },
+	{ href: '/blog/fix-points-and-y-combinator-in-scala/', label: 'Fix Points and Y Combinator in Scala' },
+	{ href: '/blog/invariant-functors-unlocked/', label: 'Invariant Functors Unlocked' },
+	{ href: '/talks', label: 'Talks on Scala, FP, and data systems' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`Scala, FP, and Data Engineering | ${SITE_TITLE}`}
+			description="Functional programming in Scala for data engineering and distributed systems: practical patterns and architecture trade-offs."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Scala, Functional Programming, and Data Engineering</h1>
+			<p class="intro">
+				A focused collection of posts and talks on Scala, functional programming, and data engineering architecture,
+				including Spark-adjacent design concerns and durable data systems.
+			</p>
+			<ul>
+				{links.map((l) => (
+					<li><a href={l.href}>{l.label}</a></li>
+				))}
+			</ul>
+			<p class="back"><a href="/topics">← Back to all topics</a></p>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	h1 {
+		text-shadow: var(--glow-cyan);
+	}
+	.intro {
+		color: var(--text-muted);
+		max-width: 70ch;
+		line-height: 1.7;
+	}
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 1.2em 0 0;
+	}
+	li {
+		padding: 0.6em 0;
+		border-bottom: 1px solid var(--border);
+	}
+	.back {
+		margin-top: 1.6em;
+	}
+</style>

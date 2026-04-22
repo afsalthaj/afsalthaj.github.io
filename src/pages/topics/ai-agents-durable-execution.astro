@@ -1,0 +1,64 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+
+const links = [
+	{ href: '/blog/everything-you-must-know-about-ai-agents/', label: 'Everything You Must Know About AI Agents' },
+	{ href: '/blog/how-golem-stands-out-in-the-world-of-ai-agents/', label: 'How Golem Stands Out in the World of AI Agents' },
+	{ href: '/blog/the-ai-divide-engineers-who-multiply-problems-vs-engineers-who-eliminate-them/', label: 'The AI Divide: Who Wins in the Long Run' },
+	{ href: '/blog/golem-mcp/', label: 'Golem MCP: practical developer workflow' },
+	{ href: '/talks', label: 'Talks on durable execution and functional systems' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`AI Agents and Durable Execution | ${SITE_TITLE}`}
+			description="Practical guides on AI agents, durable execution, agent reliability, and distributed systems engineering."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>AI Agents and Durable Execution</h1>
+			<p class="intro">
+				This page curates my best writing on AI agents and durable execution: reliability patterns, stateful agents,
+				fault tolerance, and practical engineering trade-offs.
+			</p>
+			<ul>
+				{links.map((l) => (
+					<li><a href={l.href}>{l.label}</a></li>
+				))}
+			</ul>
+			<p class="back"><a href="/topics">← Back to all topics</a></p>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	h1 {
+		text-shadow: var(--glow-cyan);
+	}
+	.intro {
+		color: var(--text-muted);
+		max-width: 70ch;
+		line-height: 1.7;
+	}
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 1.2em 0 0;
+	}
+	li {
+		padding: 0.6em 0;
+		border-bottom: 1px solid var(--border);
+	}
+	.back {
+		margin-top: 1.6em;
+	}
+</style>

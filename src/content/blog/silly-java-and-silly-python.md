@@ -5,6 +5,8 @@ pubDate: 'Jun 11 2021'
 category: 'the-lab'
 ---
 
+For readers interested in **functional programming**, **Scala**, **Haskell-style laws**, and **Python/Java** ergonomics, this post examines where language design can break core FP guarantees.
+
 This is a blatant copy of Atlassian's https://blog.developer.atlassian.com/optional-broken/ .
 
 You can jump into below snippet and understand what's the issue, and choose to skip rest of the blog.

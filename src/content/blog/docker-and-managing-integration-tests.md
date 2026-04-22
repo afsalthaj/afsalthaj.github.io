@@ -5,6 +5,8 @@ pubDate: 'Dec 2 2018'
 category: 'the-lab'
 ---
 
+If you are searching for better **Docker integration tests** and more reliable CI test environments, this post covers a practical pattern to manage docker-compose and test orchestration cleanly.
+
 Its good to talk about summary in an intro:
 
 As a summary of requirements, there shouldn't be any more separate docker related orchestrations. Everything that you do with docker are first class citizens in the project that can run along with other test cases in your project. We can see bits and pieces of code everywhere trying to achieve this, but here we strive for the best possible way of doing it.

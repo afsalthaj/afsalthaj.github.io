@@ -5,6 +5,8 @@ pubDate: 'Apr 20 2019'
 category: 'inner-loop'
 ---
 
+For those who found this site through **travel** or **sky diving** reflections, this personal piece explores movement, identity, and perspective across places and experiences.
+
 I still catch the smallest string trembling in any piece of music.
 
 I get lost in the smallest details of life.

@@ -5,6 +5,8 @@ pubDate: 'Oct 22 2025'
 category: 'the-lab'
 ---
 
+If you searched for **AI agents**, **agent architectures**, or **durable execution** patterns for reliable AI systems, this guide walks through design trade-offs and practical engineering choices.
+
 This blog covers just about everything that you need to be aware of AI agentic systems, both conceptually and technically. Whether you are an engineer stepping into this space, or someone who has been building agentic systems for a while, there is something here for you.
 
 ## Good to Know Before You Know!

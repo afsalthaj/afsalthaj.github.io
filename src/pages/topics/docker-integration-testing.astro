@@ -1,0 +1,63 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+
+const links = [
+	{ href: '/blog/docker-and-managing-integration-tests/', label: 'Docker and Managing Integration Tests — A Better Approach' },
+	{ href: '/blog/everything-you-must-know-about-ai-agents/', label: 'AI agents post with reliability principles for real systems' },
+	{ href: '/blog/how-golem-stands-out-in-the-world-of-ai-agents/', label: 'Durable runtime patterns that reduce flaky orchestration' },
+	{ href: '/topics', label: 'More topic hubs' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`Docker and Integration Testing | ${SITE_TITLE}`}
+			description="Docker integration testing patterns, CI reliability, and practical engineering approaches for robust test environments."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Docker and Integration Testing</h1>
+			<p class="intro">
+				Guides and related posts on Docker-driven integration tests, environment orchestration, and reliability-focused
+				testing practices.
+			</p>
+			<ul>
+				{links.map((l) => (
+					<li><a href={l.href}>{l.label}</a></li>
+				))}
+			</ul>
+			<p class="back"><a href="/topics">← Back to all topics</a></p>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	h1 {
+		text-shadow: var(--glow-cyan);
+	}
+	.intro {
+		color: var(--text-muted);
+		max-width: 70ch;
+		line-height: 1.7;
+	}
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 1.2em 0 0;
+	}
+	li {
+		padding: 0.6em 0;
+		border-bottom: 1px solid var(--border);
+	}
+	.back {
+		margin-top: 1.6em;
+	}
+</style>

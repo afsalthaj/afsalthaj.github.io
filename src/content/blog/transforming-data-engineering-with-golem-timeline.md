@@ -5,6 +5,8 @@ pubDate: 'Jun 20 2024'
 category: 'the-lab'
 ---
 
+For engineers exploring **data engineering**, **data science pipelines**, and **Spark-like distributed workloads**, this article explains a durable execution approach that improves observability and reliability.
+
 ## Prelude
 
 For those who work in the data engineering space (or even in the software engineering space building scalable backends), almost all frameworks and system designs expose a few terms (or their synonyms) that are quite common.
