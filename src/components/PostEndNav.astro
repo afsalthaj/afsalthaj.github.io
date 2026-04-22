@@ -1,0 +1,125 @@
+---
+import FormattedDate from './FormattedDate.astro';
+
+export interface PostLink {
+	id: string;
+	title: string;
+	pubDate: Date;
+}
+interface Props {
+	otherPosts: PostLink[];
+}
+
+const { otherPosts } = Astro.props;
+---
+
+<nav class="post-end-nav" aria-labelledby="post-end-nav-heading">
+	<h2 id="post-end-nav-heading" class="post-end-nav__title">Other recent posts</h2>
+	<ul class="post-end-nav__list">
+		{
+			otherPosts.map((p) => (
+				<li>
+					<a href={`/blog/${p.id}/`}>
+						<span class="post-end-nav__link-title">{p.title}</span>
+						<span class="post-end-nav__link-date">
+							<FormattedDate date={p.pubDate} />
+						</span>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</nav>
+
+<style>
+	/* Aligns with blog index: surface card, body text for titles, accent on hover */
+	.post-end-nav {
+		margin-top: 2.5rem;
+		padding: 1.25rem 1.5rem 1.35rem;
+		background: var(--bg-surface);
+		border: 1px solid var(--border);
+		border-radius: 8px;
+		border-left: 3px solid var(--cyan);
+	}
+
+	.post-end-nav__title {
+		margin: 0 0 0.9rem;
+		padding: 0 0 0.75rem;
+		border-bottom: 1px solid var(--border);
+		font-size: 1.05rem;
+		font-weight: 700;
+		font-family: 'Orbitron', sans-serif;
+		letter-spacing: 0.04em;
+		color: var(--text);
+		line-height: 1.3;
+	}
+
+	.post-end-nav__list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.post-end-nav__list li {
+		padding: 0.7rem 0;
+	}
+
+	.post-end-nav__list li + li {
+		border-top: 1px solid var(--border);
+	}
+
+	/* Outside .prose link pattern: no drawn underline (global .prose a adds one) */
+	.post-end-nav__list a {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.75rem 1.25rem;
+		text-decoration: none;
+		color: var(--text);
+		font-size: 0.95rem;
+		line-height: 1.45;
+		background-image: none;
+		background-size: 0;
+		transition: color 0.2s ease;
+	}
+
+	/* Beat global .prose a:hover { background-size: 100% 1px } */
+	:global(.prose) .post-end-nav__list a:hover,
+	:global(.prose) .post-end-nav__list a:focus {
+		color: var(--cyan);
+		text-shadow: var(--glow-cyan);
+		background-image: none;
+		background-size: 0;
+	}
+
+	.post-end-nav__link-title {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.post-end-nav__link-date {
+		flex-shrink: 0;
+		white-space: nowrap;
+		font-size: 0.82em;
+	}
+
+	.post-end-nav__link-date :global(time) {
+		color: var(--text-date);
+	}
+
+	.post-end-nav__list a:hover .post-end-nav__link-date :global(time) {
+		color: var(--text-date);
+		opacity: 0.85;
+	}
+
+	@media (max-width: 720px) {
+		.post-end-nav__list a {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.25rem;
+		}
+		.post-end-nav__link-date {
+			white-space: normal;
+		}
+	}
+</style>

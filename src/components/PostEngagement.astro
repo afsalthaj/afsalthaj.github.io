@@ -105,7 +105,7 @@ const { postSlug } = Astro.props;
 		if (hintEl) hintEl.textContent = '';
 		if (typeof localStorage !== 'undefined' && localStorage.getItem(LIKE_KEY(slug))) {
 			btn.disabled = true;
-			if (hintEl) hintEl.textContent = 'Thanks — you already liked this on this device.';
+			if (hintEl) hintEl.textContent = 'Thanks!';
 		}
 	}
 

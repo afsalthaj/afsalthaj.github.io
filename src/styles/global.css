@@ -61,6 +61,14 @@ body > * {
 	z-index: 1;
 }
 
+/* Keep primary nav visible while scrolling (read-progress bar in blog layout is z-index 200) */
+body > header {
+	position: sticky;
+	top: 0;
+	z-index: 160;
+	box-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+}
+
 main {
 	flex: 1;
 	width: 100%;

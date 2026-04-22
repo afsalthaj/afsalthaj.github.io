@@ -47,7 +47,9 @@ const talks = [
 		<main>
 			<section class="hero">
 				<div class="hero-text">
-					<h1>Afsal Thaj</h1>
+					<h1>
+						<a href="/about" class="hero-title-link">Afsal Thaj</a>
+					</h1>
 					<p class="tagline">
 						<span class="tagline-accent">Distrubted Systems</span>
 						<span class="tagline-sep">·</span>
@@ -128,6 +130,21 @@ const talks = [
 		font-size: 2.8em;
 		margin-bottom: 0.3em;
 		text-shadow: var(--glow-cyan-hero);
+	}
+	/* Keep hero cyan — global `a` would otherwise be magenta */
+	.hero h1 .hero-title-link {
+		color: var(--cyan);
+		text-decoration: none;
+		text-shadow: var(--glow-cyan-hero);
+		cursor: pointer;
+		transition: filter 0.2s ease;
+	}
+	.hero h1 .hero-title-link:hover,
+	.hero h1 .hero-title-link:focus-visible {
+		color: var(--cyan);
+		text-shadow: var(--glow-cyan-hero);
+		text-decoration: none;
+		filter: brightness(1.1);
 	}
 	.tagline {
 		color: var(--text-muted);
