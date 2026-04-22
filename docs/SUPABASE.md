@@ -70,7 +70,7 @@ Add these under **Settings → Secrets and variables → Actions** (in addition 
 |--------|---------|
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase **Settings → API → service_role** JWT. Bypasses RLS so the script can `select` on `subscribers`. **Do not** expose as `PUBLIC_*`. |
 | `RESEND_API_KEY` | Resend API key. |
-| `NOTIFY_FROM` | (Optional) From header, e.g. `Your Name <newsletter@yourdomain.com>`. If omitted, the script uses Resend’s trial sender (`onboarding@resend.dev`) until you verify a domain in Resend. |
+| `NOTIFY_FROM` | (Optional) From header, e.g. `Your Name <newsletter@yourdomain.com>`. If omitted, the script uses `Afsal Thaj <onboarding@resend.dev>` until you verify a domain in Resend and set `NOTIFY_FROM`. |
 
 The workflow sets `SITE_URL` to `https://afsalthaj.github.io`. If you use a custom domain, change that literal in `deploy.yml` or add a workflow variable.
 

@@ -10,7 +10,7 @@
  *   SITE_URL              — e.g. https://afsalthaj.github.io
  *
  * Optional:
- *   NOTIFY_FROM           — default: "Blog <onboarding@resend.dev>" (Resend trial; verify domain for production)
+ *   NOTIFY_FROM           — default: "Afsal Thaj <onboarding@resend.dev>" (Resend trial; verify domain for production)
  *   CHANGED_BLOG_FILES    — newline-separated paths (set by workflow). If unset, tries git diff from BEFORE_SHA/AFTER_SHA.
  *   NOTIFY_DRY_RUN        — if "1", log only, no Resend calls
  */
@@ -23,7 +23,7 @@ const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 const resendKey = process.env.RESEND_API_KEY || '';
 const siteUrl = (process.env.SITE_URL || '').replace(/\/+$/, '');
 const notifyFrom =
-	process.env.NOTIFY_FROM || 'Blog <onboarding@resend.dev>';
+	process.env.NOTIFY_FROM || 'Afsal Thaj <onboarding@resend.dev>';
 const dryRun = process.env.NOTIFY_DRY_RUN === '1';
 
 function log(...a) {
