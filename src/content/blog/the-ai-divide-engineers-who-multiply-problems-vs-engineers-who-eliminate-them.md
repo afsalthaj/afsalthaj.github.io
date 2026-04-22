@@ -7,7 +7,9 @@ category: 'the-lab'
 
 <h2 class="h2-accent-warm">Before you read</h2>
 
-You might find parts of this post familiar — even repetitive.
+You might find parts of this post familiar — even repetitive. While writing it, I was reminded of something I wrote six years ago: [When Speed Kills](https://afsalthaj.github.io/blog/when-speed-kills/).
+
+This post is essentially an updated take on those same ideas, applied to the AI revolution.
 
 After every major technology revolution, layoffs have often followed. The people who remained — usually the last ones anyone would let go — were rarely chosen at random. They were kept because they shared certain fundamental qualities that transcended their individual specialized talents. These qualities were hard to ignore.
 
