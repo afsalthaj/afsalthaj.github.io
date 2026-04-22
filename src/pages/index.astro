@@ -35,6 +35,43 @@ const talks = [
 		url: 'https://www.youtube.com/watch?v=jtxO7LJXW0Q',
 	},
 ];
+
+/**
+ * Home OSS grid: order by GitHub interest (roughly: stars) — Golem, zio-config, then
+ * zio-constraintless, rib, durable-timeline-analytics. Two-column layout puts zio-config beside Golem.
+ */
+const ossRecent = [
+	{
+		orgRepo: 'golemcloud/golem',
+		name: 'Golem',
+		blurb: 'Durable, WASM-based distributed runtime',
+		url: 'https://github.com/golemcloud/golem',
+	},
+	{
+		orgRepo: 'zio/zio-config',
+		name: 'zio-config',
+		blurb: 'Composable config in ZIO apps',
+		url: 'https://github.com/zio/zio-config',
+	},
+	{
+		orgRepo: 'zio/zio-constraintless',
+		name: 'zio-constraintless',
+		blurb: 'DSLs and typeclass instances at interpretation',
+		url: 'https://github.com/zio/zio-constraintless',
+	},
+	{
+		orgRepo: 'golemcloud/rib',
+		name: 'Rib',
+		blurb: 'Type-safe language for WebAssembly',
+		url: 'https://github.com/golemcloud/rib',
+	},
+	{
+		orgRepo: 'afsalthaj/durable-timeline-analytics',
+		name: 'durable-timeline-analytics',
+		blurb: 'Durable data engineering on Golem',
+		url: 'https://github.com/afsalthaj/durable-timeline-analytics',
+	},
+] as const;
 ---
 
 <!doctype html>
@@ -77,7 +114,7 @@ const talks = [
 			</section>
 
 			<section class="talks">
-				<h2>Talks</h2>
+				<h2>Recent Talks</h2>
 				<div class="talks-grid">
 					{talks.map((talk) => (
 						<a href={talk.url} target="_blank" rel="noopener noreferrer" class="talk-card">
@@ -88,6 +125,25 @@ const talks = [
 					))}
 				</div>
 				<a href="/talks" class="view-all text-link-draw">View all talks →</a>
+			</section>
+
+			<section class="oss-recent" aria-label="Open source contributions">
+				<h2>Recent OSS contributions</h2>
+				<div class="oss-recent-grid">
+					{ossRecent.map((repo) => (
+						<a href={repo.url} target="_blank" rel="noopener noreferrer" class="oss-recent-card">
+							<span class="oss-recent-org">{repo.orgRepo}</span>
+							<span class="oss-recent-name">{repo.name}</span>
+							<span class="oss-recent-blurb">{repo.blurb}</span>
+							<span class="oss-recent-cta">↗ GitHub</span>
+						</a>
+					))}
+				</div>
+				<a
+					href="https://github.com/afsalthaj"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="view-all text-link-draw">View all my work →</a>
 			</section>
 		</main>
 		<Footer />
@@ -218,7 +274,9 @@ const talks = [
 	.recent-posts {
 		margin-bottom: 3em;
 	}
-	.recent-posts h2, .talks h2 {
+	.recent-posts h2,
+	.talks h2,
+	.oss-recent h2 {
 		font-size: 1.2em;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
@@ -259,7 +317,7 @@ const talks = [
 
 	/* Talks */
 	.talks {
-		margin-bottom: 2em;
+		margin-bottom: 3em;
 	}
 	.talks-grid {
 		display: grid;
@@ -310,6 +368,65 @@ const talks = [
 		text-shadow: var(--glow-cyan);
 	}
 
+	/* Recent OSS */
+	.oss-recent {
+		margin-bottom: 2em;
+	}
+	.oss-recent-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1em;
+	}
+	.oss-recent-card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35em;
+		padding: 1.2em;
+		background: var(--bg-surface);
+		border: 1px solid var(--border);
+		border-radius: 6px;
+		text-decoration: none;
+		color: var(--text);
+		transition: all 0.25s ease;
+	}
+	.oss-recent-card:hover {
+		border-color: var(--cyan);
+		box-shadow: var(--glow-cyan);
+		transform: translateY(-2px);
+	}
+	.oss-recent-org {
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 0.68em;
+		letter-spacing: 0.02em;
+		color: var(--magenta);
+	}
+	.oss-recent-name {
+		font-family: 'Orbitron', sans-serif;
+		font-size: 0.95em;
+		color: var(--text);
+		line-height: 1.35;
+	}
+	.oss-recent-card:hover .oss-recent-name {
+		color: var(--cyan);
+	}
+	.oss-recent-blurb {
+		font-size: 0.82em;
+		line-height: 1.45;
+		color: var(--text-muted);
+		flex: 1;
+	}
+	.oss-recent-cta {
+		font-family: 'Orbitron', sans-serif;
+		font-size: 0.7em;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--magenta);
+	}
+	.oss-recent-card:hover .oss-recent-cta {
+		color: var(--cyan);
+		text-shadow: var(--glow-cyan);
+	}
+
 	/* Shared */
 	.view-all {
 		display: inline-block;
@@ -337,7 +454,8 @@ const talks = [
 			flex-direction: column;
 			gap: 0.2em;
 		}
-		.talks-grid {
+		.talks-grid,
+		.oss-recent-grid {
 			grid-template-columns: 1fr;
 		}
 	}

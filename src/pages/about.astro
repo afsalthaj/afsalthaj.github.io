@@ -38,63 +38,6 @@ import profileImage from '../assets/profile.jpeg';
 				</p>
 			</section>
 
-			<section class="oss about-body" aria-label="Open-source key contributions">
-				<h2>Open-source key contributions</h2>
-				<ul class="oss-list">
-					<li>
-						<div class="oss-item-head">
-							Author of
-							<a href="https://github.com/zio/zio-config" target="_blank" rel="noopener noreferrer">zio-config</a>
-						</div>
-						<p class="oss-item-desc">
-							Easily use and document any config from anywhere in ZIO apps — Scala, composable config layers, and
-							multiple sources (e.g. HOCON).
-						</p>
-					</li>
-					<li>
-						<div class="oss-item-head">
-							Author of
-							<a href="https://github.com/zio/zio-constraintless" target="_blank" rel="noopener noreferrer">zio-constraintless</a>
-						</div>
-						<p class="oss-item-desc">
-							A library for building DSLs where you can defer the existence of typeclass instances until
-							interpretation.
-						</p>
-					</li>
-					<li>
-						<div class="oss-item-head">
-							Active contributor to
-							<a href="https://github.com/golemcloud/golem" target="_blank" rel="noopener noreferrer">Golem</a>
-							OSS
-						</div>
-						<p class="oss-item-desc">
-							Open, Rust-based stack for durable distributed systems and WebAssembly: fault-tolerant workers,
-							agents, and durable execution without you owning all the infrastructure.
-						</p>
-					</li>
-					<li>
-						<div class="oss-item-head">
-							Author of
-							<a href="https://github.com/afsalthaj/golem-timeline" target="_blank" rel="noopener noreferrer">golem-timeline</a>
-						</div>
-						<p class="oss-item-desc">
-							Durable data engineering framework for timeline and analytics on Golem&rsquo;s durable
-							execution.
-						</p>
-					</li>
-					<li>
-						<div class="oss-item-head">
-							Author and maintainer of
-							<a href="https://github.com/golemcloud/rib" target="_blank" rel="noopener noreferrer">Rib</a>
-						</div>
-						<p class="oss-item-desc">
-							A type-safe expression language to interact with WebAssembly components; powers scripting against
-							Wasmtime in the Golem stack.
-						</p>
-					</li>
-				</ul>
-			</section>
-
 			<section class="timeline">
 				<h2>Journey</h2>
 				<div class="timeline-track">
@@ -103,7 +46,7 @@ import profileImage from '../assets/profile.jpeg';
 						<div class="timeline-content">
 							<span class="timeline-date">2023 — Present</span>
 							<h3>Golem Cloud · USA</h3>
-							<p>Building durable computing infrastructure with Rust & WebAssembly. Created Rib language, language SDKs, and <a href="https://www.youtube.com/watch?v=9WjUBOfgriY" target="_blank">golem-timeline</a> — a data engineering layer powered by durable execution.</p>
+							<p>Building durable computing infrastructure with Rust & WebAssembly. Created Rib language, language SDKs, and <a href="https://www.youtube.com/watch?v=9WjUBOfgriY" target="_blank">durable-timeline-analytics</a> — a data engineering layer powered by durable execution.</p>
 						</div>
 					</div>
 					<div class="timeline-item">
@@ -271,41 +214,6 @@ import profileImage from '../assets/profile.jpeg';
 	.about-body em {
 		color: var(--cyan);
 		font-style: normal;
-	}
-
-	.oss h2 {
-		font-size: 1.2em;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		margin: 0 0 1em;
-	}
-	.oss-list {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-	.oss-list li {
-		color: var(--text);
-		padding: 0.9em 0;
-		border-bottom: 1px solid var(--border);
-		line-height: 1.5;
-	}
-	.oss-list li:first-child {
-		padding-top: 0;
-	}
-	.oss-list li:last-child {
-		border-bottom: none;
-		padding-bottom: 0;
-	}
-	.oss-item-head {
-		color: var(--text);
-		line-height: 1.45;
-	}
-	.oss-item-desc {
-		margin: 0.4em 0 0;
-		font-size: 0.88em;
-		line-height: 1.6;
-		color: var(--text-muted);
 	}
 
 	/* Timeline */

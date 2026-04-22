@@ -1,5 +1,5 @@
 ---
-title: 'Transforming Data Engineering with Golem & Golem-Timeline'
+title: 'Transforming Data Engineering with Golem & Durable Timeline Analytics'
 description: 'Why existing data engineering frameworks are built on a suboptimal foundation, and how durable computing changes everything.'
 pubDate: 'Jun 20 2024'
 category: 'the-lab'
@@ -76,7 +76,7 @@ This description straight away addresses many of the burning concerns discussed 
 
 ### What Does This Mean for Timeline?
 
-Now that you have seen an example of a timeline operation, such as "has the user ever started playing", or the "duration in which user was seeking" — internally `timeline` will be a group of workers listening to events or other workers performing the logic based on the DSL node and these workers are durable. The state of these workers are simple in-memory maps. This implies deploying golem-timeline in your company doesn't involve a plethora of infrastructure requirements.
+Now that you have seen an example of a timeline operation, such as "has the user ever started playing", or the "duration in which user was seeking" — internally `timeline` will be a group of workers listening to events or other workers performing the logic based on the DSL node and these workers are durable. The state of these workers are simple in-memory maps. This implies deploying durable-timeline-analytics in your company doesn't involve a plethora of infrastructure requirements.
 
 But the main point here is, this worker or group of workers live there forever and you can poke them to get the current status of, say, seek events! The responsibility of each of these workers doesn't change. Also developing timeline using Golem didn't require learning any other framework or language. Just plain Rust application to a significant extent!
 
@@ -133,7 +133,7 @@ This is simply another WebAssembly component, that's the starting point of the e
 
 ### The Final Workflow
 
-This is the current state of the execution plan when you instantiate a golem-timeline job. Here you can see the worker information from which you can access the final result, as well as the leaf worker to which you will need to send the events to.
+This is the current state of the execution plan when you instantiate a durable-timeline-analytics job. Here you can see the worker information from which you can access the final result, as well as the leaf worker to which you will need to send the events to.
 
 1. Kick off event feeder — a simple Pulsar consumer sending the events to event processors
 2. The job keeps running. The event processors continuously stream
@@ -148,7 +148,7 @@ At the core, the declarative DSL allows us to inspect what's going on, and with 
 
 In real-world scenarios, computation of a complex query involves running queries for primitives. For example, here is an example from the video distribution domain, where `CompletionRate` is derived from the primitives `Total Number of Playback Attempts Count` and `Total Number of Completed Playbacks`.
 
-Once you start running a golem-timeline job to compute the above metrics, each worker will be responsible for computing certain parts of this computation. Golem-Timeline naturally may tackle this problem more like a map-reduce job, where we will have some final reducer workers that pull results from other intermediate workers and aggregate the results.
+Once you start running a durable-timeline-analytics job to compute the above metrics, each worker will be responsible for computing certain parts of this computation. Golem-Timeline naturally may tackle this problem more like a map-reduce job, where we will have some final reducer workers that pull results from other intermediate workers and aggregate the results.
 
 Let's say as part of the above computation, there is a reducer worker (`rw1`) that aggregates partial sums of playback attempts, and another (`rw2`) for completed playbacks, and a third (`rw3`) that divides these values.
 
@@ -164,7 +164,7 @@ Firstly, any data that the business is concerned about can be stored in a persis
 
 ## Overhead of Employing Golem-Timeline
 
-Using golem-timeline doesn't necessitate a complete overhaul of existing company platforms. Many companies heavily rely on Kafka/Pulsar/Kinesis to stream events into their platforms. With Golem Timeline, you're not altering this data flow. Deploying a Golem Timeline job simply means it's another job in your platform, akin to any other job if deployed on-premise. Over time, a suite of timeline jobs can gradually replace redundant tasks if necessary.
+Using durable-timeline-analytics doesn't necessitate a complete overhaul of existing company platforms. Many companies heavily rely on Kafka/Pulsar/Kinesis to stream events into their platforms. With Golem Timeline, you're not altering this data flow. Deploying a Golem Timeline job simply means it's another job in your platform, akin to any other job if deployed on-premise. Over time, a suite of timeline jobs can gradually replace redundant tasks if necessary.
 
 ## Should the User Learn Rust?
 
