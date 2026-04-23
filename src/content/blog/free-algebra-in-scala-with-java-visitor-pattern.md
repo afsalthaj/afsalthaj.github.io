@@ -5,8 +5,6 @@ pubDate: 'Apr 14 2018'
 category: 'the-lab'
 ---
 
----
-
 For those who are familiar with [Free Monad](https://underscore.io/blog/posts/2015/04/14/free-monads-are-simple.html) pattern, we know defining algebra for your operation is an intuitive process. For those who are familiar with visitor pattern in Java, you know Scala has an alternative (to a great extent) using pattern matching. In this blog, we are trying to integrate the visitor pattern (forgetting Scala's highly powerful pattern matching) with the operations which you have encoded using Free Monad algebra. We will see why we did this later on.
 
 Let us go straight into some examples. Below given is a console operation encoded using Free Monad. It is straight forward and in fact the best solution for this particular use-case which is simple enough.

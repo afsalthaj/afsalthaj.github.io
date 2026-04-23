@@ -5,11 +5,6 @@ pubDate: 'Apr 11 2018'
 category: 'the-lab'
 ---
 
-_This blog was originally published on [Medium](https://afsal-taj06.medium.com/shapeless-and-applicative-functors-together-a-typical-use-case-433111f0a69f)._
-
----
-
-_(Work in progress, there are typos and inconsistencies, so excuse)_
 
 This is a quick deep dive into shapeless and Scalaz applicative builder pattern working together and solving a use-case for better understanding. You may well be tweaking further to get your stuff done based on what is presented here.
 
