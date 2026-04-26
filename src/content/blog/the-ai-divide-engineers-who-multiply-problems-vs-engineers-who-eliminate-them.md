@@ -138,7 +138,7 @@ Clear judgment can feel brutal — but it is necessary.
 <blockquote class="pull-quote-pop">
 <p><strong>Sometimes, the best decision is: do nothing. Keep it simple.</strong></p>
 </blockquote>
-
+ 
 We too often offload these questions to our team leads, as if good engineering judgment isn’t *our* responsibility. In today’s world, everyone must raise their bar. Leadership in engineering starts with asking the uncomfortable questions.
 
 
@@ -241,7 +241,7 @@ We add a service, and we judge ourselves that it is a necessity for some reason.
 
 Here are some tips that I created for myself:
 
-<span class="accent-lead-red">Deciding what to build — and what to challenge — is invaluable.</span> More feature implementation is not always right. Even if I am not the product owner, I do ask myself: **Is this feature needed for users? How valuable is it? Does it push the product forward?** Velocity is not the same as usefulness. In my recent experience of working in Golem, we had a great visionary, and most of the time, the answer was "yes, the feature is needed to push the product forward". But this was a rare scenario.
+<span class="accent-lead-red">Deciding what to build — and what to challenge — is invaluable.</span> More feature implementation is not always right. Even if I am not the product owner, I do ask myself: **Is this feature needed for users? How valuable is it? Does it push the product forward?** Velocity is not the same as usefulness.
 
 <span class="accent-lead-red">Simplicity at the outer level should carry through to inner details.</span> A simple screen backed by a tangled system still fails in practice: behavior becomes hard to reason about, edge cases explode, and every change hurts. Engineers who insist on **simple models and simple surfaces together** — and who refuse to hide complexity behind UI polish — are similarly hard to replace.
 
