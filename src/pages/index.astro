@@ -11,7 +11,33 @@ import profileImage from '../assets/profile.jpeg';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-const recentPosts = posts.slice(0, 5);
+
+/** Always surface these alongside newest posts (waypoints / personal). */
+const alwaysShowIds = [
+	'a-planet-journey-with-ziverge-and-golem',
+	'just-let-it-all-go',
+] as const;
+
+const byId = new Map(posts.map((p) => [p.id, p]));
+const recentPosts: typeof posts = [];
+const seen = new Set<string>();
+
+for (const id of alwaysShowIds) {
+	const post = byId.get(id);
+	if (post) {
+		recentPosts.push(post);
+		seen.add(id);
+	}
+}
+
+for (const post of posts) {
+	if (recentPosts.length >= 6) break;
+	if (seen.has(post.id)) continue;
+	recentPosts.push(post);
+	seen.add(post.id);
+}
+
+recentPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const talks = [
 	{
