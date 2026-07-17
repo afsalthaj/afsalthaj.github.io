@@ -25,3 +25,15 @@ data/subscribers.json
 
 # jetbrains setting folder
 .idea/
+
+# nix
+result
+result-*
+
+# polyglot-local example runtime
+examples/polyglot-local/.pgdata/
+examples/polyglot-local/.pgsocket/
+examples/polyglot-local/.pglog
+examples/polyglot-local/scala-api/target/
+examples/polyglot-local/scala-api/project/target/
+examples/polyglot-local/scala-api/project/project/
