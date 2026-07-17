@@ -1,22 +1,39 @@
 ---
 title: 'Nix Is Simpler With AI — The Bare Minimum You Shouldn''t Skip'
-description: 'Hate Nix or new to it? AI collapsed the barrier. flake.nix + nix develop — bare minimum, hard to ignore.'
+description: 'Still maintaining install READMEs, setup scripts, and CONTRIBUTING walls — while juggling conflicting toolchains across projects? Nix + AI ends that. Bare minimum.'
 pubDate: 'Jul 17 2026'
 category: 'the-lab'
 ---
 
-**Nix is simpler with AI.**
+## Why
 
-If you hate Nix, or if you are new to Nix — either way, this is for you. The old objection was real: alien syntax, loud errors, a side quest you never asked for. That barrier is mostly gone. You list what the project needs. AI writes `flake.nix`. You run `nix develop` and work.
+Still writing a long **project README** that tells people what to install — versions, tools, footnotes — and it goes stale every week?
 
-Focus on what Nix **provides**:
+Or a **setup script** that “just works” on your machine and fails on everyone else’s?
 
-- a declared, immutable, project-scoped toolchain
-- no more lying README with a long install checklist
-- Go 1.22 next to Go 1.23, Python 3.11 next to 3.12, Terraform 1.5 next to 1.9 — without `pyenv` / `nvm` / `tfenv` / `jenv` theatre
-- kubectl, helm, cloud CLIs, JDK, Node — whatever the repo needs — without mutating your whole machine
+Or you clone a repo and burn half a day before anything runs — turns out it needed **Java 8**, and somebody forgot to put that in the README?
 
-This post walks toward a project with **many** dependencies (Go, Python, Scala, Postgres, …). It does **not** ask you to install any of that by hand.
+Or your **CONTRIBUTING** doc is basically another product — pages of setup, then “ask in Slack”?
+
+Or you jump between **many projects** — old and new — and the versions fight: Go, Python, Terraform, JDK, kubectl — plus a pile of version managers that never quite agree?
+
+That pain is the why you should use Nix.
+
+Sounds too good to be true? Maybe. You might hit one or two hiccups the first time you install Nix or follow this post. I am a **user** of Nix — not a Nix contributor — and I only tried this write-up on a Mac. So I expect a clean path for most Mac users, but not a perfect guarantee on every machine. A couple of bumps should not stop you.
+
+<blockquote class="pull-quote-pop">
+<p>Because Nix — it is really worth it, especially in today’s agentic coding world.</p>
+</blockquote>
+
+## If you hate Nix — or you are new to it
+
+Either way, this blog is for you.
+
+The old objection was real: alien syntax, loud errors, a side quest you never asked for. That barrier is mostly gone. Nix collapses the mess above into a declared, project-scoped toolchain. AI collapses the excuse that writing Nix was too hard. You list what the project needs. AI writes `flake.nix`. You run `nix develop` and work.
+
+A README is not the enemy. You can still keep one — even **generate** an honest setup section from the flake. The difference is the source of truth is `flake.nix`, not a paragraph someone forgot to update.
+
+This post walks toward a stack with **many** dependencies (Go, Python, Scala, Postgres, …). It does **not** ask you to install any of that by hand.
 
 ## Stop writing a long README on how to set up the project locally
 
@@ -27,7 +44,7 @@ cd my-project
 nix develop          # or: nix develop -c zsh
 ```
 
-Done. Dusted. Refuse Nix if you want — keep the version managers. Up to you.
+Done. Dusted. If you want a short README, generate it from the flake — don’t hand-maintain a lying install novel. Refuse Nix if you want — keep the version managers. Up to you.
 
 ## Install Nix quickly (macOS)
 
@@ -45,7 +62,9 @@ Other platforms: [https://nixos.org/download/](https://nixos.org/download/).
 
 ## A hello-world you can try today
 
-Tiny Scala/sbt project + Nix toolchain.
+Tiny Scala/sbt project. **Do not install sbt. Do not install a JDK.** If they are missing on your machine, that is fine — `nix develop` brings them in from the flake.
+
+Drop these files in a folder (`hello-nix`):
 
 `build.sbt`:
 
@@ -96,6 +115,8 @@ object Hello {
 }
 ```
 
+Then:
+
 ```bash
 nix flake lock
 nix develop
@@ -103,7 +124,7 @@ java -version
 sbt run
 ```
 
-The JDK and sbt on your `PATH` come from this flake — not whatever random versions were already on the laptop.
+That is the point. `nix develop` did the installing. The JDK and sbt on your `PATH` come from this flake — not from a global install you managed by hand.
 
 ## A separate legacy project: older versions on purpose
 
